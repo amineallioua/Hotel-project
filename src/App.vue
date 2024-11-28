@@ -1,6 +1,6 @@
 <template>
   <div class="w-full h-screen">
-    <navbar/>
+    <navbar v-if="!$route.meta.hideNavbar" />
  <router-view/>
 </div>
 

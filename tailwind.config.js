@@ -12,6 +12,7 @@ export default {
       boxShadow: {
         custom: "20px 20px 30.2px 6 rgba(0, 0, 0, 0.25)", // x: 20, y: 20, blur: 30.2, spread: 0, opacity: 25%
         custom2: "10px 10px 6.7px 0 rgba(0, 0, 0, 0.25)",
+        form:"6px 6px 11.4px -10 rgba(0, 0, 0, 0.25)"
       },
       backgroundImage: {
         "custom-gradient": "linear-gradient(to right, #4796A9, #3A7988)",
