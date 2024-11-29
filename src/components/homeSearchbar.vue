@@ -1,5 +1,5 @@
 <template>
-<div class=" relative flex w-[746px] h-[100px] p-4 gap-4 rounded-[19px] bg-white  " >
+<div class=" relative flex w-[746px] h-[100px] p-4 gap-4 rounded-[19px] bg-white shadow-custom " >
 
     <div class=" w-[210px] h-full bg-custom-gradient1  rounded-[14px] shadow-custom border-[1px] border-opacity-10 border-[#4796A91A]  px-[15px] justify-center flex flex-col  gap-[10px]  " >
         <h3 class=" text-[#4B4B4B] font-[500] text-[14px] " >Location</h3>
