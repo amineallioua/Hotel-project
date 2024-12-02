@@ -4,6 +4,7 @@
   import login from '../views/auth/login.vue'
   import realSignup from '../views/auth/realSignup.vue'
   import Explore from '../views/explore.vue'
+  import searchPage from '../views/searchPage.vue'
 
 
 
@@ -12,7 +13,8 @@
     { path:'/signup' , component:signUp,meta: { hideNavbar: true }  },
     { path:'/login' , component:login,meta: { hideNavbar: true }  },
     { path:'/realsignUp' , component:realSignup,meta: { hideNavbar: true }  },
-    {path:'/explore' , component:Explore  }
+    {path:'/explore' , component:Explore  },
+    {path:'/search' , component:searchPage  }
     
   ]
 
