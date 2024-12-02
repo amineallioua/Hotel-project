@@ -21,9 +21,7 @@ export default {
         "custom-gradient1": "linear-gradient(to right, #4796A90A, #3A79880A)",
         "card-gradient":
           "linear-gradient(to bottom, #181C1D1A 10%, #242828 100%)",
-        'card-gradient2': 'linear-gradient(to right, #2D555FDB 50%, #203135DB 86%)',
-        'filter-gradient': 'linear-gradient(to right, #CEE1E5 100%, #81969B 100%)',
-        },
+        'card-gradient2': 'linear-gradient(to right, #2D555FDB 50%, #203135DB 86%)',        },
     },
   },
   plugins: [],
