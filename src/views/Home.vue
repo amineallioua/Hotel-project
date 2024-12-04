@@ -36,9 +36,9 @@
     
 
     <div class="  w-full pt-[64px] pb-10 px-[115px] bg-gray-100  ">
-        <div class=" flex justify-between text-[#4796A9] font-[500] my-5 ">
-            <h3 class="text-[28px]">Hotels</h3>
-            <p class="text-[14px]">Explore more hotels</p>
+        <div class=" flex justify-between text-[#4796A9] font-[500] mb-5 ">
+            <h3 class="text-[28px] flex items-center ">Hotels</h3>
+            <p class="text-[14px] flex items-center ">Explore more hotels</p>
         </div>
         <div class=" flex flex-wrap gap-10 justify-center ">
             <hotelsCard v-for="i in 6 " />
@@ -73,7 +73,7 @@
 
 
     <div class=" w-full h-full bg-white flex flex-col items-center justify-center gap-[77px] " >
-        <h1 class=" text-white font-[500] text-[28px] bg-custom-gradient text-center px-3 rounded-[12spx] " >DISCOVER UNIQUE PLACES AND EXPERIENCES</h1>
+        <h1 class=" text-white font-[500] text-[28px] bg-custom-gradient text-center px-3 rounded-[12px] " >DISCOVER UNIQUE PLACES AND EXPERIENCES</h1>
       
       
         <div class="relative w-[688px] h-[160px] bg-[#2E3C40] rounded-[50px] flex  items-center  " >

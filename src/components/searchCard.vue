@@ -1,4 +1,5 @@
 <template>
+    <router-link to="/HotelDetails" >
     <div class=" flex items-center relative  mb-5" >
         <div class=" w-[220px] h-[230px] absolute bg-black rounded-[20px] overflow-hidden shadow-search " >
             <img src="../assets/searchCard.jpeg" class=" w-full h-full object-cover " alt="">
@@ -11,6 +12,7 @@
             <div class=" w-full flex justify-end  text-[#4796A9] font-[500] text-[8px]"  > see more </div>
         </div>
 </div>
+</router-link>
 </template>
 <script>
 export default {

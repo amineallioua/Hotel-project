@@ -1,4 +1,5 @@
 <template>
+    
     <div class=" w-full   mt-5 bg-[#e2e2e280]  p-[25px] rounded-[20px] flex flex-col gap-10  ">
         <div class=" w-full h-[118px]  z-10 flex flex-col gap-2 ">
             <div class=" flex justify-between items-center ">
