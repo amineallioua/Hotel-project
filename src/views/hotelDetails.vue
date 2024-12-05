@@ -41,18 +41,88 @@
                 <img src="../assets/aboutusImg.jpeg" class=" w-full h-full object-cover " alt="">
             </div>
         </div>
-        <h3 class=" text-[22px] text-[#4796A9] font-[500] mt-[50px] " >Rooms</h3>
-        <DetailTable/>
+        <h3 class=" text-[22px] text-[#4796A9] font-[500] mt-[50px] ">Rooms</h3>
+        <DetailTable />
+        <h3 class=" text-[22px] text-[#4796A9] font-[500] mt-[50px] ">Opinions</h3>
+        <div class="  text-black flex justify-center  relative ">
+                <button @click="swiperMove(2)" class="flex justify-center items-center shadow-search w-[40px] h-[40px] rounded-[50%] bg-[#4796A9] absolute left-[-25px] z-10 top-[50%] ">
+                    <svg width="8" height="14" viewBox="0 0 12 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M10.971 1.62305L2.59418 9.99986L10.971 18.3767" stroke="#FFFFFF" stroke-width="2.79227"/>
+</svg>
+
+                </button>
+                <button @click="swiperMove(1)" class=" flex justify-center items-center shadow-search w-[40px] h-[40px] rounded-[50%] bg-[#4796A9] absolute right-[-10px] z-10 top-[50%] ">
+                    <svg width="8" height="14" viewBox="0 0 12 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M1.02901 1.62305L9.40582 9.99986L1.02901 18.3767" stroke="#FFFFFF" stroke-width="2.79227"/>
+</svg>
+
+                </button>
+
+            <swiper :slides-per-view="4" :space-between="10" @swiper="onSwiper"   :loop="true" >
+                <swiper-slide>
+                    <CommentsCard />
+                </swiper-slide>
+                <swiper-slide>
+                    <CommentsCard />
+                </swiper-slide>
+                <swiper-slide>
+                    <CommentsCard />
+                </swiper-slide>
+                <swiper-slide>
+                    <CommentsCard />
+                </swiper-slide>
+                <swiper-slide>
+                    <CommentsCard />
+                </swiper-slide>
+                <swiper-slide>
+                    <CommentsCard />
+                </swiper-slide>
+                <swiper-slide>
+                    <CommentsCard />
+                </swiper-slide>
+            </swiper>
+        </div>
+        <div class=" flex items-center gap-5 mt-5 " >
+            <input type="text" class=" border-[#ACDAE4] bg-[#F5F7F7]  text-[#4796A9] text-opacity-80 text-[12px] font-[400] pl-3 border-[2px] shadow-filter outline-none  w-[540px] h-[40px] rounded-[15px] " placeholder="Add your comment" id="">
+            <button class=" h-[40px] w-[90px]  bg-[#F4F6F6] border-[#ACDAE4] border-[2px] rounded-[15px] text-[#4796A9] font-[500] text-[14px] shadow-filter ">Send</button>
+        </div>
     </div>
 
 </template>
 <script>
+import CommentsCard from '../components/commentsCard.vue';
 import DetailTable from '../components/detailTable.vue';
-
+import { Swiper, SwiperSlide } from 'swiper/vue';
 
 export default {
-components:{
-    DetailTable
-}
+    components: {
+        DetailTable,
+        Swiper,
+        SwiperSlide,
+        CommentsCard,
+    },
+    data(){
+        return {
+            swiper:null,
+        }
+    },
+    methods:{
+        onSwiper(swiper)  {
+            this.swiper=swiper
+            console.log(this.swiper)
+      },
+      swiperMove(action){
+        if(action == 1 ){
+            this.swiper.slideNext()
+        }else{
+            this.swiper.slidePrev()
+        }
+      }
+    }
 }
 </script>
+<style scoped >
+.SwiperSlide{
+    width: fit-content;
+}
+</style>
