@@ -6,6 +6,7 @@
   import Explore from '../views/explore.vue'
   import searchPage from '../views/searchPage.vue'
 import HotelDetails from '../views/hotelDetails.vue'
+import BookPage from '../views/bookPage.vue'
   
 
 
@@ -17,8 +18,8 @@ import HotelDetails from '../views/hotelDetails.vue'
     { path:'/realsignUp' , component:realSignup,meta: { hideNavbar: true }  },
     {path:'/explore' , component:Explore  },
     {path:'/search' , component:searchPage  },
-    {path:'/HotelDetails' , component:HotelDetails }
-    
+    {path:'/HotelDetails' , component:HotelDetails },
+    {path:'/Book' , component:BookPage  }    
   ]
 
   const router = createRouter({

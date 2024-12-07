@@ -28,9 +28,10 @@
                         <div class=" bg-white w-[50px] h-[150px] rounded-[15px] opacity-85 "></div>
                     </div>
                     <div class=" flex flex-col justify-end ">
+                        <router-link to="/Book" >
                         <button
                             class=" w-[110px] h-[40px] bg-white rounded-[15px] opacity-90 font-[500] text-[18px] text-[#4796A9] ">Book
-                            now</button>
+                            now</button></router-link>
                     </div>
                 </div>
             </div>
