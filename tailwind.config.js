@@ -15,6 +15,7 @@ export default {
         form: "6px 6px 11.4px -10px rgba(0, 0, 0, 0.25)", // added missing 'px' for spread
         filter: "58px 44px 61.4px rgba(0, 0, 0, 0.15)", // completed rgba value
         search: "18px 10px 31.1px rgba(0, 0, 0, 0.10)", // completed rgba value
+        notifichationButton: "0px 4px 4px 0px rgba(0, 0, 0, 0.15)", // completed rgba value
       },
       
       backgroundImage: {

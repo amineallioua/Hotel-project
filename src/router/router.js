@@ -7,6 +7,7 @@
   import searchPage from '../views/searchPage.vue'
 import HotelDetails from '../views/hotelDetails.vue'
 import BookPage from '../views/bookPage.vue'
+import SettingsPage from '../views/settingsPage.vue'
   
 
 
@@ -19,7 +20,8 @@ import BookPage from '../views/bookPage.vue'
     {path:'/explore' , component:Explore  },
     {path:'/search' , component:searchPage  },
     {path:'/HotelDetails' , component:HotelDetails },
-    {path:'/Book' , component:BookPage  }    
+    {path:'/Book' , component:BookPage  },
+    {path:'/Settings', component:SettingsPage}   
   ]
 
   const router = createRouter({
