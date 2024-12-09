@@ -8,6 +8,8 @@
 import HotelDetails from '../views/hotelDetails.vue'
 import BookPage from '../views/bookPage.vue'
 import SettingsPage from '../views/settingsPage.vue'
+import ProfilePage from '../views/profilePage.vue'
+
   
 
 
@@ -21,7 +23,8 @@ import SettingsPage from '../views/settingsPage.vue'
     {path:'/search' , component:searchPage  },
     {path:'/HotelDetails' , component:HotelDetails },
     {path:'/Book' , component:BookPage  },
-    {path:'/Settings', component:SettingsPage}   
+    {path:'/Settings', component:SettingsPage},
+    {path:'/Profile' , component:ProfilePage }   
   ]
 
   const router = createRouter({
