@@ -12,9 +12,11 @@
                     <div class="w-full flex flex-col gap-1 pr-10 ">
                         <div class=" flex justify-between h-[20px]   ">
                             <h1 class=" font-[500] text-[18px] text-[#4796A9] ">User Name</h1>
+                            <router-link to="/newHotel">
                             <button
                                 class=" rounded-[20px] shadow-lg bg-custom-gradient text-white w-[92px] h-[30px] font-[500] text-[14px] ">Add
                                 hotel</button>
+                            </router-link>
                         </div>
                         <p class=" text-[#4796A9] text-[12px] font-[400] "> X user contry</p>
                         <p class=" text-[#729FAA] font-[400] text-[10px] mt-1  ">Lorem Ipsum is simply dummy text of the
@@ -47,9 +49,12 @@
             </div>
         </div>
         <div class=" flex justify-between my-5 ">
-            <h1 class=" font-[500] text-[22px] text-[#4796A9] ml-[36px] ">Your hotels</h1> <button
+            <h1 class=" font-[500] text-[22px] text-[#4796A9] ml-[36px] ">Your hotels</h1>
+            <router-link to="/newHotel">
+            <button
                 class=" rounded-[20px] shadow-lg bg-custom-gradient text-white w-[92px] h-[30px] font-[500] text-[14px] ">Add
                 hotel</button>
+            </router-link>
         </div>
 
 
