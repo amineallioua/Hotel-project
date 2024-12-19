@@ -1,5 +1,5 @@
 <template>
-    <div class= "  w-full h-full bg-white flex lg:flex-row flex-col pt-[51px] gap-10   lg:pl-[65px] pl-[30px] pr-3 " >
+    <div class= "  w-full h-full bg-white flex lg:flex-row flex-col pt-[51px] gap-10   lg:pl-[65px] pl-[10px] pr-3 " >
         <filTer/>
 
         <div class=" overflow-y-scroll pt-3  lg:w-[70%] w-full " >
