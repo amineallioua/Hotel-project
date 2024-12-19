@@ -1,7 +1,7 @@
 <template>
     <div
-        class=" flex flex-col p-[20px] min-w-[220px] max-w-[220px]  bg-[#CEE1E5] bg-opacity-30 h-[95%] mt-3 sticky rounded-[20px]  shadow-filter">
-        <div class=" flex gap-2 items-center "> <svg width="22" height="22" viewBox="0 0 22 22" fill="none"
+        class=" hidden md:flex  lg:flex-col flex-row gap-3 items-between p-[20px] h-fit lg:min-w-[220px] lg:max-w-[220px]  bg-[#CEE1E5] bg-opacity-30 lg:h-[95%] mt-3 sticky rounded-[20px]  shadow-filter">
+        <div class=" flex gap-2 lg:items-center "> <svg width="22" height="22" viewBox="0 0 22 22" fill="none"
                 xmlns="http://www.w3.org/2000/svg">
                 <path d="M11 4.5835L18.3333 4.5835" stroke="#4796A9" stroke-width="1.83333" stroke-linecap="round" />
                 <path d="M3.6665 17.4165L5.49984 17.4165" stroke="#4796A9" stroke-width="1.83333"
@@ -20,7 +20,7 @@
             </svg>
             <h1 class=" font-[500] text-[18px] text-[#4796A9] "> filters</h1>
         </div>
-        <div class=" h-[2px] w-full bg-[#2D555F17] my-4 "></div>
+        <div class=" lg:h-[2px] lg:w-full  bg-[#2D555F17] my-4 "></div>
 
 
 
@@ -42,7 +42,7 @@
 
 
 
-        <div class="flex flex-col  mt-5 ">
+        <div class="flex flex-col  lg:mt-5 ">
             <div class=" flex  justify-between items-center ">
                 <h3 class=" font-[500] text-[#4796A9] text-[12px]  ">Accommodation type</h3>
                 <svg width="6" height="8" viewBox="0 0 6 8" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -56,20 +56,12 @@
 
 
 
-        <div class="flex flex-col  mt-5 ">
-            <div class=" flex  justify-between items-center ">
-                <h3 class=" font-[500] text-[#4796A9] text-[12px]  ">Number of guets</h3>
-                <svg width="6" height="8" viewBox="0 0 6 8" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <path d="M1 1L4 4L1 7" stroke="#4796A9" stroke-width="1.5" />
-                </svg>
-            </div>
-            <div class=" font-[400] text-[#4796A9] text-[10px]  gap-5 flex " ><p >Adults</p> <p>Children</p></div> 
-        </div>
+     
 
 
 
 
-        <div class="flex flex-col  mt-5 ">
+        <div class="flex flex-col  lg:mt-5 ">
             <div class=" flex  justify-between items-center ">
                 <h3 class=" font-[500] text-[#4796A9] text-[12px]  ">Rooms number</h3>
                 <svg width="6" height="8" viewBox="0 0 6 8" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -80,7 +72,7 @@
         </div>
 
 
-        <div class="flex flex-col  mt-5 ">
+        <div class="flex flex-col  lg:mt-5 ">
             <div class=" flex  justify-between items-center ">
                 <h3 class=" font-[500] text-[#4796A9] text-[12px]  ">Amenities and facilities</h3>
                 <svg width="6" height="8" viewBox="0 0 6 8" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -96,7 +88,7 @@
 
 
 
-        <div class="flex flex-col  mt-5 ">
+        <div class="flex flex-col  lg:mt-5 ">
             <div class=" flex  justify-between items-center ">
                 <h3 class=" font-[500] text-[#4796A9] text-[12px]  ">Hotel rating</h3>
                 <svg width="6" height="8" viewBox="0 0 6 8" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -108,14 +100,14 @@
 
 
 
-        <div class="flex flex-col  mt-5 ">
+        <div class="flex flex-col  lg:mt-5 ">
             <div class=" flex  justify-between items-center ">
                 <h3 class=" font-[500] text-[#4796A9] text-[12px]  ">Price</h3>
                 <svg width="6" height="8" viewBox="0 0 6 8" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <path d="M1 1L4 4L1 7" stroke="#4796A9" stroke-width="1.5" />
                 </svg>
             </div>
-            <div class=" flex items-center justify-between " >
+            <div class=" flex lg:flex-row flex-col items-center justify-between " >
             <p class=" font-[400] text-[#4796A9] text-[12px] ">max</p><input type="text" class=" font-[400] text-[#4796A9] text-[12px] pl-1 outline-none w-[60px] h-[12px] border-[1px] border-solid border-[#4796A9] rounded-[10px] " >
             <p class=" font-[400] text-[#4796A9] text-[12px] ">min</p><input type="text" class=" font-[400] text-[#4796A9] text-[12px]  pl-1 outline-none w-[60px] h-[12px] border-[1px] border-solid border-[#4796A9] rounded-[10px] " >
 

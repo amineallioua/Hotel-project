@@ -1,14 +1,15 @@
 <template>
-    <div class= "  w-full h-full bg-white flex pt-[51px] gap-10   pl-[65px] pr-3 " >
+    <div class= "  w-full h-full bg-white flex lg:flex-row flex-col pt-[51px] gap-10   lg:pl-[65px] pl-[30px] pr-3 " >
         <filTer/>
 
-        <div class=" overflow-y-scroll pt-3  w-[70%] " >
-            <homeSearchbar/>
+        <div class=" overflow-y-scroll pt-3  lg:w-[70%] w-full " >
+            <div class=" w-full flex justify-center "><homeSearchbar/></div>
+            
             <div class="  h-full flex flex-col   items-center mt-5  " >
             <div class="h-fit w-full  " >
                 <searchCard v-for="(item, index) in 5" :key="index" />
              
-        </div>
+        </div> 
         </div>
         
         </div>
