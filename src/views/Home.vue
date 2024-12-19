@@ -1,6 +1,6 @@
 <template>
     <div class=" w-full h-full text-black flex pt-[51px] bg-opacity-10  bg-[#2D555F]">
-        <div class="   w-[92px] flex flex-col items-center justify-center gap-5 ">
+        <div class="  hidden w-[92px] md:flex flex-col items-center justify-center gap-5 ">
             <svg width="26" height="26" viewBox="0 0 33 33" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <path
                     d="M0.915833 32.1684L3.177 23.9078C1.7817 21.4898 1.04853 18.7488 1.04987 15.9381C1.05389 7.15077 8.20466 0 16.9907 0C21.2543 0.00134035 25.2566 1.66204 28.267 4.67514C31.2761 7.68825 32.9328 11.6932 32.9315 15.9529C32.9274 24.7415 25.7767 31.8923 16.9907 31.8923C14.3234 31.891 11.6949 31.2221 9.36674 29.9515L0.915833 32.1684ZM9.75813 27.0657C12.0046 28.3994 14.1491 29.1982 16.9853 29.1995C24.2875 29.1995 30.236 23.2564 30.24 15.9502C30.2427 8.62918 24.3224 2.69411 16.996 2.69142C9.68843 2.69142 3.74397 8.63454 3.74129 15.9395C3.73995 18.9217 4.61386 21.1548 6.08154 23.491L4.74253 28.3806L9.75813 27.0657ZM25.0207 19.742C24.9215 19.5758 24.6561 19.4766 24.2567 19.2769C23.8586 19.0772 21.9004 18.1135 21.5344 17.9808C21.1699 17.8481 20.9045 17.7811 20.6378 18.1805C20.3724 18.5786 19.6084 19.4766 19.3765 19.742C19.1446 20.0074 18.9114 20.0409 18.5133 19.8412C18.1152 19.6415 16.8312 19.222 15.3099 17.8642C14.1263 16.808 13.3261 15.5038 13.0943 15.1044C12.8624 14.7063 13.0701 14.4905 13.2685 14.2922C13.4481 14.1139 13.6666 13.8271 13.8663 13.5938C14.0687 13.3633 14.1344 13.1971 14.2684 12.9304C14.4011 12.665 14.3354 12.4318 14.2349 12.232C14.1344 12.0337 13.3382 10.0727 13.0071 9.27523C12.6828 8.49917 12.3544 8.60371 12.1104 8.59165L11.3464 8.57825C11.0811 8.57825 10.6495 8.67743 10.2849 9.07686C9.92031 9.47628 8.89092 10.4387 8.89092 12.3996C8.89092 14.3605 10.3184 16.2544 10.5168 16.5198C10.7165 16.7852 13.3248 20.809 17.3204 22.534C18.2707 22.9441 19.0132 23.1894 19.5909 23.373C20.5453 23.676 21.4138 23.6331 22.1001 23.5312C22.8654 23.4173 24.4564 22.5675 24.7888 21.6373C25.1212 20.7057 25.1212 19.9082 25.0207 19.742Z"
@@ -31,10 +31,10 @@
         <div class="  w-full bg-red-100 rounded-[19px]  overflow-hidden relative ">
             <div class=" absolute bg-[#2D555F] bg-opacity-50 w-full h-full "></div>
             <div class=" absolute w-full h-full  flex  flex-col justify-center items-center ">
-                <h1 class=" text-[36px] font-[500] text-white mb-[60px] "> Choose your next <span
+                <h1 class=" text-[36px] font-[500] text-white mb-[60px] text-center "> Choose your next <span
                         class=" text-[#4796A9] bg-white bg-opacity-90 rounded-[14px] "> destination</span> </h1>
                 <searchbar />
-                <div class=" flex justify-end font-[500] text-[14px] text-white w-[746px] mt-[60px] "> Explore more
+                <div class=" flex justify-end font-[500] text-[14px] text-white md:w-full pr-10 lg:w-[746px] mt-[60px] "> Explore more
                     hotels </div>
             </div>
             <img src="../assets/heroimg.jpeg" class=" object-cover h-full w-full " alt="">
@@ -43,12 +43,12 @@
 
 
 
-    <div class="  w-full pt-[64px] pb-10 px-[115px] bg-gray-100  ">
+    <div class="  w-full pt-[64px] pb-10 lg:px-[115px] md:px-[70px] px-[30px] bg-gray-100  ">
         <div class=" flex justify-between text-[#4796A9] font-[500] mb-5 ">
             <h3 class="text-[28px] flex items-center ">Hotels</h3>
             <p class="text-[14px] flex items-center ">Explore more hotels</p>
         </div>
-        <div class=" flex flex-wrap gap-10 justify-center ">
+        <div class=" flex md:flex-wrap md:flex-row flex-col md:items-start items-center gap-10 justify-center ">
             <hotelsCard v-for="i in 6 " />
         </div>
 
@@ -62,7 +62,7 @@
         <div class="bg-[#4796A9] opacity-20 absolute h-full w-full "></div>
         <div class=" absolute w-full h-full flex justify-center items-center ">
             <div
-                class=" w-[530px] h-[559px] rounded-[20px] backdrop-blur-[31px] flex justify-center items-center p-[80px] ">
+                class=" md:w-[530px] md:h-[559px] w-[620px] h-[650px]  rounded-[20px] backdrop-blur-[31px] flex justify-center items-center p-[80px] ">
                 <div
                     class=" w-full h-full bg-white rounded-[20px] shadow-custom flex flex-col items-center p-[28px] gap-[27px] ">
                     <h3 class=" font-[500] text-[28px] text-[#51747C] "> About us </h3>
@@ -85,11 +85,11 @@
             UNIQUE PLACES AND EXPERIENCES</h1>
 
 
-        <div class="relative w-[688px] h-[160px] bg-[#2E3C40] rounded-[50px] flex  items-center  ">
+        <div class="relative lg:w-[688px] md:w-[600px] w-[320px] md:h-[160px] h-[110px] bg-[#2E3C40] rounded-[20px] flex  items-center  ">
             <img src="../assets/heroimg.jpeg" class=" absolute opacity-30 w-full h-full object-cover rounded-[50px] "
                 alt="">
             <button
-                class=" flex justify-center items-center absolute w-[143px] h-[68px] bg-custom-gradient right-[-71px] rounded-[20px] shadow-custom ">
+                class=" flex justify-center items-center absolute lg:w-[143px] w-[143px] md:w-[80px] h-[68px] bg-custom-gradient lg:right-[-71px] md:right-[-60px] bottom-[-100px] md:top-[50px] rounded-[20px] shadow-custom ">
                 <svg width="44" height="44" viewBox="0 0 56 44" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <path
                         d="M52.4832 22L53.8974 23.4142L55.3116 22L53.8974 20.5858L52.4832 22ZM2.48315 20C1.37859 20 0.483154 20.8954 0.483154 22C0.483154 23.1046 1.37859 24 2.48315 24V20ZM33.8974 43.4142L53.8974 23.4142L51.0689 20.5858L31.0689 40.5858L33.8974 43.4142ZM53.8974 20.5858L33.8974 0.585785L31.0689 3.41422L51.0689 23.4142L53.8974 20.5858ZM52.4832 20H2.48315V24H52.4832V20Z"
@@ -98,7 +98,7 @@
 
             </button>
             <input type="text" placeholder="Enter your email"
-                class=" z-10 w-[536px] h-[68px] rounded-[20px] bg-white text-[15px] ml-[52px] font-[400]  pl-[50px] outline-none  ">
+                class=" z-10 md:w-[536px] w-[300px] h-[68px] rounded-[20px] bg-white text-[15px] lg:ml-[52px] md:ml-[32px] ml-[10px]  font-[400]  pl-[50px] outline-none  ">
 
         </div>
     </div>
