@@ -1,5 +1,5 @@
 <template>
-    <div class=" relative flex flex-col justify-between items-center md:flex-row lg:w-[746px] md:w-[546px] w-1/2 h-1/2  md:h-[100px] p-4 gap-4 rounded-[19px] bg-white shadow-custom ">
+    <div class=" relative flex flex-col justify-between items-center md:flex-row lg:w-[746px] md:w-[546px] w-2/3   md:h-[100px] p-4 gap-4 rounded-[19px] bg-white shadow-custom ">
         <div
             class=" w-full md:w-[210px] md:h-full bg-custom-gradient1  rounded-[14px] shadow-custom border-[1px] border-opacity-10 border-[#4796A91A]  px-[15px] justify-center flex flex-col  gap-[10px]  ">
             <h3 class=" text-[#4B4B4B] font-[500] text-[14px] ">Location</h3>
@@ -11,7 +11,7 @@
             <h3 class=" text-[#4B4B4B] font-[500] text-[14px] ">Check <span class=" opacity-50 "> (in/out) </span>date
             </h3>
 
-            <div class="flex gap-10 ">
+            <div class="flex md:flex-row flex-col md:gap-10 ">
                 <div class=" flex flex-col ">
                     <span class="text-[#4B4B4B] font-[500] text-[10px] opacity-50 "> check in </span>
                     <VueDatePicker :enable-time-picker="false" time-picker-inline />

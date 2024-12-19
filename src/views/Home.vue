@@ -62,11 +62,11 @@
         <div class="bg-[#4796A9] opacity-20 absolute h-full w-full "></div>
         <div class=" absolute w-full h-full flex justify-center items-center ">
             <div
-                class=" md:w-[530px] md:h-[559px] w-[620px] h-[650px]  rounded-[20px] backdrop-blur-[31px] flex justify-center items-center p-[80px] ">
+                class=" md:w-[530px] md:h-[559px] w-[620px] h-[650px]  rounded-[20px] backdrop-blur-[31px] flex justify-center items-center px-[20px] md:p-[80px] ">
                 <div
-                    class=" w-full h-full bg-white rounded-[20px] shadow-custom flex flex-col items-center p-[28px] gap-[27px] ">
+                    class=" w-full  bg-white rounded-[20px] shadow-custom flex flex-col items-center p-[28px] gap-[27px] ">
                     <h3 class=" font-[500] text-[28px] text-[#51747C] "> About us </h3>
-                    <p class=" font-[400] text-[#729FAA] text-[14px] ">Lorem Ipsum is simply dummy text of the printing
+                    <p class=" font-[400] text-[#729FAA] md:text-[14px] text-[12px] ">Lorem Ipsum is simply dummy text of the printing
                         and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the
                         1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen
                         book. It has survived not only five centuries, but also the leap into electronic typesetting,
