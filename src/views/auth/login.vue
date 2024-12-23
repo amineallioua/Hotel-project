@@ -1,9 +1,9 @@
 <template>
-    <div class="  w-full h-full flex  gap-[90px] bg-[#CDCDCD1F] bg-opacity-10 " >
+    <div class="  w-full h-full flex   bg-[#CDCDCD1F] bg-opacity-10 " >
 
 
 
-        <div class=" relative w-1/2 h-full flex justify-center items-center " >
+        <div class=" md:flex hidden relative w-1/2 h-full  justify-center items-center " >
             <img src="../../assets/login.jpeg" class=" absolute w-full h-full object-cover " alt="">
             <div class=" absolute w-full h-full opacity-[79%] bg-[#161C1E] " ></div>
             <h1 class=" font-[500] text-[50px] z-20 text-white " > Welcom <br>
@@ -11,7 +11,7 @@
         </div>
 
 
-        <div class=" flex flex-col gap-6 items-center w-1/2 justify-center " >
+        <div class=" flex flex-col gap-6 items-center md:w-1/2 w-full justify-center " >
             <h1 class=" text-[40px] font-[500] text-[#4796A9] " >Log in</h1>
             <form class=" flex flex-col gap-4 " >
                 <input  placeholder="Email" type="email" class=" w-[247px] h-[41px] rounded-[10px] outline-none px-5 text-[13px] shadow-form" >

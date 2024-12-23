@@ -30,8 +30,8 @@
         </div>
         <div class="  w-full bg-red-100 rounded-[19px]  overflow-hidden relative ">
             <div class=" absolute bg-[#2D555F] bg-opacity-50 w-full h-full "></div>
-            <div class=" absolute w-full h-full  flex  flex-col justify-center items-center ">
-                <h1 class=" text-[36px] font-[500] text-white mb-[60px] text-center "> Choose your next <span
+            <div class=" pt-[51px] absolute w-full h-full  flex  flex-col justify-center items-center ">
+                <h1 class=" text-[36px] font-[500] text-white md:mb-[60px] mb-[30px] text-center "> Choose your next <span
                         class=" text-[#4796A9] bg-white bg-opacity-90 rounded-[14px] "> destination</span> </h1>
                 <searchbar />
                 <div class=" flex justify-end font-[500] text-[14px] text-white md:w-full pr-10 lg:w-[746px] mt-[60px] "> Explore more
