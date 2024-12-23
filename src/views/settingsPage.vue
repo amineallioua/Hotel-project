@@ -1,5 +1,5 @@
 <template>
-    <div class=" w-full   px-[65px] pt-[51px] text-white pb-5 ">
+    <div class=" w-full   md:px-[65px] px-[30px] pt-[51px] text-white pb-5 ">
         <div class=" flex justify-between items-center mt-[20px] ">
             <h1 class=" text-[#4796A9] text-[22px] font-[500]  ">Settings</h1>
             <div class="flex flex-col   ">

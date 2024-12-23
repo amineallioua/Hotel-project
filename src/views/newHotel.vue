@@ -1,5 +1,5 @@
 <template>
-    <div class=" w-full   px-[65px] pt-[51px] text-white pb-10 ">
+    <div class=" w-full   md:px-[65px] px-[30px] pt-[51px] text-white pb-10 ">
         <h1 class=" text-[#4796A9] text-[22px] font-[500] mt-[20px] ">Post your hotel now !</h1>
         <form class=" flex flex-col gap-[22px] mt-[22px] ">
             <div>
@@ -26,7 +26,7 @@
 
 
 
-            <div class=" w-full flex gap-5 justify-between ">
+            <div class=" w-full flex gap-5 justify-between md:flex-row flex-col ">
                 <div>
                     <h1 class=" text-[#4796A9]  text-[14px] font-[500] ">Photo galery</h1>
                     <div class=" flex flex-wrap gap-3 items-center ">
@@ -39,7 +39,7 @@
 
 
 
-                <div class=" w-[1px] h-[300px] bg-[#4796A9] bg-opacity-30 "></div>
+                <div class=" md:w-[1px] w-full  md:h-[300px] h-[1px] bg-[#4796A9] bg-opacity-30 "></div>
 
 
 
@@ -53,7 +53,7 @@
 
 
 
-                <div class=" w-[1px] h-[300px] bg-[#4796A9] bg-opacity-30 "></div>
+                <div class=" md:w-[1px] w-full  md:h-[300px] h-[1px] bg-[#4796A9] bg-opacity-30 "></div>
 
 
 
