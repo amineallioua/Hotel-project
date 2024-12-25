@@ -25,7 +25,8 @@
                                 publishing software like Aldus PageMaker including versions of Lorem Ipsum.
                             </p>
                         </div>
-                        <div class=" bg-white md:w-[50px] h-[50px]  w-[200px] md:h-[150px] rounded-[15px] opacity-85 "></div>
+                        <div class=" bg-white md:w-[50px] h-[50px]  w-[200px] md:h-[150px] rounded-[15px] opacity-85 ">
+                        </div>
                     </div>
 
 
@@ -43,8 +44,8 @@
             </div>
         </div>
         <div class=" flex justify-center w-full gap-[1%]   ">
-            <div class=" bg-black   w-[24%] aspect-square md:rounded-[20px] rounded-[10px] overflow-hidden " v-for="(item, index) in 4"
-                :key="index">
+            <div class=" bg-black   w-[24%] aspect-square md:rounded-[20px] rounded-[10px] overflow-hidden "
+                v-for="(item, index) in 4" :key="index">
                 <img src="../assets/aboutusImg.jpeg" class=" w-full h-full object-cover " alt="">
             </div>
         </div>
@@ -68,7 +69,7 @@
 
             </button>
 
-            <swiper  :space-between="10" @swiper="onSwiper" :loop="true" :breakpoints="{
+            <swiper :space-between="10" @swiper="onSwiper" :loop="true" :breakpoints="{
                 '0': {
                     slidesPerView: 1,
                     spaceBetween: 20,
@@ -77,18 +78,17 @@
                     slidesPerView: 2,
                     spaceBetween: 20,
                 },
-                
+
                 '927': {
                     slidesPerView: 3,
                     spaceBetween: 20,
                 },
-              
+
                 '1236': {
                     slidesPerView: 4,
                     spaceBetween: 50,
                 },
-            }"
-              >
+            }">
                 <swiper-slide>
                     <CommentsCard />
                 </swiper-slide>
@@ -112,10 +112,14 @@
                 </swiper-slide>
             </swiper>
         </div>
-        <div class=" flex items-center gap-5 mt-5 ">
-            <input type="text"
-                class=" border-[#ACDAE4] bg-[#F5F7F7]  text-[#4796A9] text-opacity-80 text-[12px] font-[400] pl-3 border-[2px] shadow-filter outline-none  w-[540px] h-[40px] rounded-[15px] "
-                placeholder="Add your comment" id="">
+        <div class=" flex md:flex-row flex-col items-center gap-5 mt-5 relative ">
+            <div class="relative  md:w-auto w-full ">
+                <input type="text"
+                    class=" border-[#ACDAE4] bg-[#F5F7F7]  text-[#4796A9] text-opacity-80 text-[12px] font-[400] pl-3 md:pr-[85px] pr-[80px] border-[2px] shadow-filter outline-none  md:w-[540px]  w-full h-[40px] rounded-[15px] "
+                    placeholder="Add your comment" id="">
+                <div class=" absolute md:left-[460px] right-[10px] top-[-3px] w-auto h-[40px] flex items-center "><star-rating
+                        :rating="0" :star-size="13"  :show-rating="false"/></div>
+            </div>
             <button
                 class=" h-[40px] w-[90px]  bg-[#F4F6F6] border-[#ACDAE4] border-[2px] rounded-[15px] text-[#4796A9] font-[500] text-[14px] shadow-filter ">Send</button>
         </div>
@@ -126,6 +130,7 @@
 import CommentsCard from '../components/commentsCard.vue';
 import DetailTable from '../components/detailTable.vue';
 import { Swiper, SwiperSlide } from 'swiper/vue';
+import StarRating from 'vue-star-rating';
 
 export default {
     components: {
@@ -133,6 +138,7 @@ export default {
         Swiper,
         SwiperSlide,
         CommentsCard,
+        StarRating
     },
     data() {
         return {
@@ -155,7 +161,7 @@ export default {
 }
 </script>
 <style scoped>
-.swiper-slide  {
+.swiper-slide {
     display: flex;
     justify-content: center
 }
