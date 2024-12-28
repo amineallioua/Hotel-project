@@ -5,9 +5,9 @@
             <img src="../assets/details.jpeg" class=" w-full h-full object-cover absolute " alt="">
             <div class=" absolute w-full h-full bg-deatils-gradient md:p-[50px] p-[25px] flex flex-col  ">
                 <div class=" flex gap-5 items-center ">
-                    <h1 class="text-[22px] font-[500] ">Hohtel name</h1> XXXXX <div
+                    <h1 class="text-[22px] font-[500] ">Hohtel name</h1> XXXXX <button
                         class=" flex justify-center items-center w-[50px] h-[25px] rounded-[20px] bg-white text-[#4796A9] font-[400] text-[14px] ">
-                        100$</div>
+                        map</button>
                 </div>
                 <div class=" flex gap-3 items-center ">
                     <h1 class="text-[12px] font-[400] ">Algeria - Batna</h1>
@@ -35,7 +35,7 @@
                         <router-link to="/Book">
                             <button
                                 class=" w-[110px] h-[40px] bg-white rounded-[15px] opacity-90 font-[500] text-[18px] text-[#4796A9] ">Book
-                                now</button></router-link>
+                                any</button></router-link>
                     </div>
 
 
@@ -50,7 +50,45 @@
             </div>
         </div>
         <h3 class=" text-[22px] text-[#4796A9] font-[500] mt-[50px] ">Rooms</h3>
-        <DetailTable />
+        <div class=" w-full md:pl-[32px] flex flex-wrap gap-5 md:justifuy-normal    justify-center  ">
+
+
+
+
+
+
+
+
+            
+            <div class=" w-[198px] h-[198px] rounded-[20px] bg-black overflow-hidden relative"
+                v-for="(item, index) in 5" :key="index">
+                <router-link to="/Book">
+                <img src="../assets/aboutusImg.jpeg" class=" w-full h-full object-cover absolute " alt="">
+                <div class=" w-full h-full absolute bg-profileCard-gradient px-5 py-5 flex flex-col justify-end ">
+                    <div>
+                        <h1 class="font-[500] text-[16px] text-white" > duel room</h1>
+                        <div class=" flex font-[500] text-[14px] text-white  justify-between ">
+                            <p class="text-white font-[500] text-[14px]" >1000DA</p>
+                            
+                            <button
+                                class=" w-[70px] h-[20px] bg-white rounded-[15px] opacity-90 font-[500] text-[12px] text-[#4796A9] ">Book
+                                now</button>
+                        </div>
+                        
+                    </div>
+                </div>
+            </router-link>
+
+            </div>
+
+
+
+
+
+
+
+
+        </div>
         <h3 class=" text-[22px] text-[#4796A9] font-[500] mt-[50px] ">Opinions</h3>
         <div class="  text-black flex justify-center  relative ">
             <button @click="swiperMove(2)"
@@ -117,8 +155,8 @@
                 <input type="text"
                     class=" border-[#ACDAE4] bg-[#F5F7F7]  text-[#4796A9] text-opacity-80 text-[12px] font-[400] pl-3 md:pr-[85px] pr-[80px] border-[2px] shadow-filter outline-none  md:w-[540px]  w-full h-[40px] rounded-[15px] "
                     placeholder="Add your comment" id="">
-                <div class=" absolute md:left-[460px] right-[10px] top-[-3px] w-auto h-[40px] flex items-center "><star-rating
-                        :rating="0" :star-size="13"  :show-rating="false"/></div>
+                <div class=" absolute md:left-[460px] right-[10px] top-[-3px] w-auto h-[40px] flex items-center ">
+                    <star-rating :rating="0" :star-size="13" :show-rating="false" /></div>
             </div>
             <button
                 class=" h-[40px] w-[90px]  bg-[#F4F6F6] border-[#ACDAE4] border-[2px] rounded-[15px] text-[#4796A9] font-[500] text-[14px] shadow-filter ">Send</button>

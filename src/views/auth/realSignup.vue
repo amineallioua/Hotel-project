@@ -15,6 +15,7 @@
             <h1 class=" text-[40px] font-[500] text-[#4796A9] " >Sign up</h1>
             <form class=" flex flex-col gap-4 " >
                 <input placeholder="username" type="text" class=" w-[247px] h-[41px] rounded-[10px] outline-none px-5 text-[13px] shadow-form " >
+                <input placeholder="phone" type="text" class=" w-[247px] h-[41px] rounded-[10px] outline-none px-5 text-[13px] shadow-form " >
                 <input  placeholder="Email" type="email" class=" w-[247px] h-[41px] rounded-[10px] outline-none px-5 text-[13px] shadow-form" >
                 <input  placeholder="Password" type="password" class=" w-[247px] h-[41px] rounded-[10px] outline-none px-5 text-[13px] shadow-form" >
                 <input  placeholder="Confirm password" type="password" class=" w-[247px] h-[41px] rounded-[10px] outline-none px-5 text-[13px] shadow-form" >
