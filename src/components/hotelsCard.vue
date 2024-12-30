@@ -1,5 +1,5 @@
 <template>
-    <div class=" md:w-[300px] md:h-[300px] w-full h-[400px] rounded-[20px] bg-black overflow-hidden relative  ">
+    <div class=" md:w-[300px] md:h-[300px] w-full h-[400px] hover:scale-110 duration-300 ease-in-out rounded-[20px] bg-black overflow-hidden relative  ">
         <div class=" absolute w-full h-full bg-card-gradient "></div>
         <div
             class=" px-4 py-1 gap-1 text-white flex flex-col justify-between h-[150px] w-[94%] left-[3%] bottom-[8%] bg-card-gradient2 rounded-[20px] shadow-custom2 absolute ">

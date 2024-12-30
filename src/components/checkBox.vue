@@ -1,5 +1,5 @@
 <template>
- <button @click="click" class=" text-[#4796A9] font-[400] text-[10px] border-solid border-[1px] w-fit p-1 border-[#4796A9] rounded-[15px] duration-700  "
+ <button @click="click" class=" text-[#4796A9] hover:bg-[#c0d9df] font-[400] text-[10px] border-solid border-[1px] w-fit p-1 border-[#4796A9] rounded-[15px] duration-700  "
          :class="{ 'text-white bg-[#4796A9]   ':this.isClicked }   "    
  >{{item}}</button>
 

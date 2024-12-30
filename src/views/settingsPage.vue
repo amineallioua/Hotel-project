@@ -44,7 +44,7 @@
 
 
             <div class=" w-full flex justify-end "> <button
-                    class=" w-[112px] h-[55px] rounded-[20px] bg-custom-gradient  ">Save</button> </div>
+                    class=" w-[112px] h-[55px] rounded-[20px] bg-custom-gradient hover:scale-105 active:scale-100 ">Save</button> </div>
         </form>
     </div>
 

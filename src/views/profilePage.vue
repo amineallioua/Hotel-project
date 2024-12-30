@@ -15,7 +15,7 @@
                             <h1 class=" font-[500] text-[18px] text-[#4796A9] ">User Name</h1>
                             <router-link to="/settings">
                                 <button
-                                    class=" rounded-[20px] shadow-lg bg-custom-gradient text-white w-[102px] h-[30px] font-[500] text-[14px] ">update
+                                    class="duration-100 ease-in-out hover:scale-105 hover:opacity-90 active:opacity-100 active:scale-100 rounded-[20px] shadow-lg bg-custom-gradient text-white w-[102px] h-[30px] font-[500] text-[14px] ">update
                                     profile</button>
                             </router-link>
                         </div>
@@ -51,10 +51,10 @@
             </div>
         </div>
         <div class=" flex justify-between my-5 ">
-            <h1 class=" font-[500] text-[22px] text-[#4796A9] ml-[36px] ">Your rooms</h1>
+            <h1 class=" font-[500] text-[22px] text-[#4796A9]   ml-[36px] ">Your rooms</h1>
             <router-link to="/newHotel">
                 <button
-                    class=" rounded-[20px] shadow-lg bg-custom-gradient text-white w-[102px] h-[30px] font-[500] text-[14px] ">add
+                    class=" duration-100 ease-in-out hover:scale-105 hover:opacity-90 active:opacity-100 active:scale-100 rounded-[20px] shadow-lg bg-custom-gradient text-white w-[102px] h-[30px] font-[500] text-[14px] ">add
                     hotel</button>
             </router-link>
         </div>
@@ -65,7 +65,7 @@
 
 
 
-            <div class=" w-[198px] h-[198px] rounded-[20px] bg-black overflow-hidden relative"
+            <div class=" w-[198px] h-[198px] rounded-[20px] bg-black overflow-hidden relative hover:scale-110 active:scale-100 duration-200 ease-in-out "
                 v-for="(item, index) in 10" :key="index">
                 <img src="../assets/aboutusImg.jpeg" class=" w-full h-full object-cover absolute " alt="">
                 <div class=" w-full h-full absolute bg-profileCard-gradient px-5 py-5 flex flex-col justify-end ">

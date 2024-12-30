@@ -6,7 +6,7 @@
             <div class=" absolute w-full h-full bg-deatils-gradient md:p-[50px] p-[25px] flex flex-col  ">
                 <div class=" flex gap-5 items-center ">
                     <h1 class="text-[22px] font-[500] ">Hohtel name</h1> XXXXX <button
-                        class=" flex justify-center items-center w-[50px] h-[25px] rounded-[20px] bg-white text-[#4796A9] font-[400] text-[14px] ">
+                        class=" flex justify-center items-center w-[50px] h-[25px] rounded-[20px] bg-white active:bg-white text-[#4796A9] active:text-[#4796A9] hover:text-white hover:bg-[#4796A9] duration-200 ease-in-out hover:scale-105 active:scale-100 font-[400] text-[14px] ">
                         map</button>
                 </div>
                 <div class=" flex gap-3 items-center ">
@@ -34,7 +34,7 @@
                     <div class=" flex flex-col justify-end  md:h-full h-fit ">
                         <router-link to="/Book">
                             <button
-                                class=" w-[110px] h-[40px] bg-white rounded-[15px] opacity-90 font-[500] text-[18px] text-[#4796A9] ">Book
+                                class=" hover:scale-110 active:scale-100 duration-200 ease-in-out w-[110px] h-[40px] bg-white rounded-[15px] opacity-90 font-[500] text-[18px] text-[#4796A9] hover:text-white hover:bg-[#4796A9] ">Book
                                 any</button></router-link>
                     </div>
 
@@ -60,7 +60,7 @@
 
 
             
-            <div class=" w-[198px] h-[198px] rounded-[20px] bg-black overflow-hidden relative"
+            <div class=" w-[198px] h-[198px] rounded-[20px] bg-black overflow-hidden relative hover:scale-105 active:scale-100 duration-200 ease-in-out "
                 v-for="(item, index) in 5" :key="index">
                 <router-link to="/Book">
                 <img src="../assets/aboutusImg.jpeg" class=" w-full h-full object-cover absolute " alt="">
@@ -92,14 +92,14 @@
         <h3 class=" text-[22px] text-[#4796A9] font-[500] mt-[50px] ">Opinions</h3>
         <div class="  text-black flex justify-center  relative ">
             <button @click="swiperMove(2)"
-                class="flex justify-center items-center shadow-search w-[40px] h-[40px] rounded-[50%] bg-[#4796A9] absolute left-[-25px] z-10 top-[50%] ">
+                class="flex justify-center items-center shadow-search w-[40px] h-[40px] rounded-[50%] bg-[#4796A9] hover:scale-105 active:scale-100 duration-100  absolute left-[-25px] z-10 top-[50%] ">
                 <svg width="8" height="14" viewBox="0 0 12 20" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <path d="M10.971 1.62305L2.59418 9.99986L10.971 18.3767" stroke="#FFFFFF" stroke-width="2.79227" />
                 </svg>
 
             </button>
             <button @click="swiperMove(1)"
-                class=" flex justify-center items-center shadow-search w-[40px] h-[40px] rounded-[50%] bg-[#4796A9] absolute right-[-10px] z-10 top-[50%] ">
+                class=" flex justify-center items-center shadow-search w-[40px] h-[40px] rounded-[50%] bg-[#4796A9] hover:scale-105 active:scale-100 duration-100  absolute right-[-10px] z-10 top-[50%] ">
                 <svg width="8" height="14" viewBox="0 0 12 20" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <path d="M1.02901 1.62305L9.40582 9.99986L1.02901 18.3767" stroke="#FFFFFF"
                         stroke-width="2.79227" />

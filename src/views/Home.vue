@@ -80,7 +80,8 @@
     </div>
 
 
-    <div class=" w-full h-full bg-white flex flex-col items-center justify-center gap-[77px] ">
+    <div class=" w-full h-full bg-white  flex-col items-center justify-center gap-[77px] "
+    :class="{ 'hidden' : logged , 'flex' : !logged }">
         <h1 class=" text-white font-[500] text-[28px] bg-custom-gradient text-center px-3 rounded-[12px] ">DISCOVER
             UNIQUE PLACES AND EXPERIENCES</h1>
 
@@ -107,7 +108,13 @@
 <script>
 import searchbar from '../components/homeSearchbar.vue'
 import hotelsCard from '../components/hotelsCard.vue'
+import { authStore } from '../stores/authStore';
 export default {
+    data(){
+        return{
+            logged:authStore().User
+        }
+    },
     components: {
         searchbar,
         hotelsCard

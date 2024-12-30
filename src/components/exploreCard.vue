@@ -1,7 +1,7 @@
 <template>
 
     <div class=" w-full   mt-5 bg-[#e2e2e280]  md:p-[25px] p-[10px] rounded-[20px] flex flex-col gap-3  ">
-        <div class=" w-full   z-10 flex flex-col gap-2 ">
+        <div class=" w-full    flex flex-col gap-2 ">
             <div class=" flex justify-between items-center ">
                 <div class=" flex items-center gap-3 ">
                     <div class=" h-7 w-7 rounded-[50%] bg-[#3A7988] "></div>

@@ -37,7 +37,7 @@
 
 
 
-            <div class=" w-full flex justify-end " > <button class=" w-[172px] h-[55px] rounded-[20px] bg-custom-gradient  " >Book now</button> </div>
+            <div class=" w-full flex justify-end " > <button class=" hover:scale-110 active:scale-100 duration-200 ease-in-out  w-[172px] h-[55px] rounded-[20px] bg-custom-gradient  " >Book now</button> </div>
         </form>
     </div>
 
