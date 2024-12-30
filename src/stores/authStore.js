@@ -102,6 +102,11 @@ export const authStore = defineStore("user", {
         console.log(error);
       }
     },
+    async googleauth(){
+      const response = await axios.get('auth/google' , {   withCredentials: true,} )
+      const result = response.data
+      console.log(result)
+    }
   },
   getters: {},
 

@@ -1,5 +1,5 @@
 <template>
-    <div class=" w-full h-[40px] bg-[#ec4141] fixed top-[51px] z-10 flex items-center py-[5px] px-[62px] justify-between gap-5  "
+    <div class=" w-full h-[40px] bg-[#ec4141] fixed top-[51px] z-10 flex items-center py-[5px] md:px-[62px] px-5 justify-between gap-5  "
         :class="{
            'hidden': auth.User == null || auth.User.verify  ,   
         }">
@@ -10,7 +10,7 @@
 
             Activate now to avoid losing access!
         </div>
-        <button @click="More" class=" relative text-white text-[12px] font-[400]"> why active my account ? </button>
+        <button @click="More" class=" relative text-white md:text-[12px] text-[10px] font-[400]"> why active my account ? </button>
         <div class=" flex gap-5 items-center ">
             <h2 class=" text-white text-[16px] font-[500] "> active your account </h2>
             <button @click="send"

@@ -25,7 +25,11 @@
             <router-link to="/forget">
                 <p class="text-[#3A7A89] text-opacity-100 text-[10px]  font-[400] ">Forget Password </p>
             </router-link>
-            <div class=" w-[35px] h-[35px] rounded-full bg-[#EDEDED] shadow-filter flex items-center justify-center  ">
+
+
+
+
+            <button @click="logingoogle" class=" w-[35px] h-[35px] rounded-full bg-[#EDEDED] shadow-filter flex items-center justify-center  ">
                 <svg width="29" height="18" viewBox="0 0 29 29" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <path
                         d="M14.7012 12.1293V17.6075H22.3141C21.9798 19.3693 20.9766 20.8611 19.4721 21.8641L24.0629 25.4263C26.7377 22.9573 28.2809 19.3308 28.2809 15.0228C28.2809 14.0198 28.1909 13.0552 28.0237 12.1294L14.7012 12.1293Z"
@@ -40,7 +44,13 @@
                         d="M14.7004 6.18808C16.7836 6.18808 18.6354 6.9082 20.1143 8.29706L24.165 4.24632C21.7088 1.95733 18.5197 0.555542 14.7004 0.555542C9.17074 0.555542 4.39986 3.73188 2.07227 8.36137L6.77884 12.0135C7.89757 8.66998 11.0225 6.18808 14.7004 6.18808Z"
                         fill="#EA4335" />
                 </svg>
-            </div>
+            </button>
+
+
+
+
+
+
             <p class="text-[#4796A9D6] text-opacity-85 text-[10px] font-[400] ">Dont have account? <router-link
                     to="/realsignUp"> <span class=" text-[#3A7A89] text-opacity-100 ">Sign up</span></router-link> </p>
         </div>
@@ -72,7 +82,9 @@ export default {
     methods: {
         login() {
             this.auth.login(this.email, this.password)
-        }
+        },
+        logingoogle(){
+            window.location.href = 'http://localhost:5000/api/auth/google';        }
     }
 }
 </script>
