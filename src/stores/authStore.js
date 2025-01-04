@@ -6,6 +6,7 @@ export const authStore = defineStore("user", {
     User: null,
     token: null,
     registerRole: null,
+   
   }),
 
   actions: {
@@ -52,7 +53,7 @@ export const authStore = defineStore("user", {
         const response = await axios.post("auth/logout", { email, password });
         const result = response.data;
         localStorage.clear();
-        router.push("/");
+       await router.push("/explore");
         window.location.reload();
         console.log(result);
       } catch (error) {
@@ -102,10 +103,16 @@ export const authStore = defineStore("user", {
         console.log(error);
       }
     },
-    async googleauth(){
-      const response = await axios.get('auth/google' , {   withCredentials: true,} )
-      const result = response.data
-      console.log(result)
+    async googleRole(role , phone , token){
+      try{
+        const response = await axios.post("auth/google-auth" , {role , phone  } , {headers:{ Authorization:`Bearer ${token}` }} )
+        const result = response.data 
+        this.token = result.token
+        this.User = result.user
+        console.log(result)
+      }catch(error){
+        console.log(error)
+      }
     }
   },
   getters: {},

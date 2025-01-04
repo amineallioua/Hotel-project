@@ -15,23 +15,28 @@
                     id="Add description"></textarea>
 
             </div>
-            <h1 class=" text-[#4796A9]  text-[14px] font-[500] ">Add location</h1>
-            <div class=" flex gap-3 items-center ">
-                <button class=" bg-custom-gradient h-[43px] w-[81px] rounded-[15px] text-white text-[14px] font-[500] ">
-                    map </button>
-                <button
-                    class=" bg-[#4796A9] bg-opacity-25 h-[25px] w-[61px] rounded-[10px] text-[#4796A9] text-[12px] font-[500] ">
-                    location </button>
+         
+            <div class=" flex  md:flex-row flex-col gap-3 items-center w-full ">
+                <div class=" md:w-1/2 w-full " >
+                <label for="map" class="block text-[#4796A9] mb-1 text-[14px] font-[500] ">map</label>
+                <input type="text" id="map"
+                    class="  border-[1px] border-[#3A7988] border-opacity-20 w-full text-[14px] text-[#1e4e5a] pl-4 bg-[#4796A9] bg-opacity-5 h-[40px] outline-none rounded-[15px] " />
+            </div>
+                    <div class=" md:w-1/2 w-full " >
+                <label for="locaion" class="block text-[#4796A9] mb-1 text-[14px] font-[500] ">location</label>
+                <input type="text" id="location"
+                    class="  border-[1px] border-[#3A7988] border-opacity-20 w-full text-[14px] text-[#1e4e5a] pl-4 bg-[#4796A9] bg-opacity-5 h-[40px] outline-none rounded-[15px] " />
+            </div>
             </div>
 
 
 
             <div class=" w-full flex gap-5 justify-between md:flex-row flex-col ">
-                <div>
+                <div class=" md:w-[40%] w-full " >
                     <h1 class=" text-[#4796A9]  text-[14px] font-[500] ">Photo galery</h1>
-                    <div class=" flex flex-wrap gap-3 items-center ">
+                    <div class=" flex flex-wrap  gap-3 items-center ">
                         <div class=" mt-5 w-[151px] h-[151px] flex justify-center items-center rounded-[20px] bg-[#3A798838] bg-opacity-20 border-[1px] border-[#3A798838]  "
-                            v-for="(item, index) in 3" :key="index">
+                            v-for="(item, index) in 5" :key="index">
                             <svg width="25" height="25" viewBox="0 0 25 25" fill="none"
                                 xmlns="http://www.w3.org/2000/svg">
                                 <line x1="12.5" y1="1.09278e-07" x2="12.5" y2="25" stroke="#3A7988" stroke-width="5" />

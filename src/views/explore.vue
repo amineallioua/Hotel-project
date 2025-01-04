@@ -6,8 +6,8 @@
             <div class=" w-full flex justify-center "><homeSearchbar/></div>
             <div class="  h-full flex flex-col   items-center   " >
             <div class="h-fit w-full " >
-                <exploreCard/>
-                <exploreCard/>
+                <exploreCard v-for="(hotel, index) in hotels" :key="index" :hotel="hotel" />
+
         </div>
         </div>
         
@@ -19,11 +19,25 @@
 import homeSearchbar from '../components/homeSearchbar.vue'
 import exploreCard from '../components/exploreCard.vue'
 import filTer from '../components/filter.vue'
+import { hotelStore } from '../stores/hotelsStore';
 export default {
+    data(){
+        return {
+            hotel:hotelStore(),
+            hotels:[]
+        }
+    },
+    methods:{
+
+    },
 components:{
     homeSearchbar,
     exploreCard,
     filTer
+},
+ async mounted(){
+  this.hotels = await this.hotel.getAllHotels()
+  console.log(this.hotels)
 }
 }
 </script>

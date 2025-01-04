@@ -4,15 +4,33 @@
             <h1 class=" text-[#4796A9] text-[22px] font-[500]  ">Settings</h1>
             <div class="flex flex-col   ">
                 <h1 class="text-[#3A7988] text-[14px] font-[500] ">Notification</h1>
-                <div
-                @click="changeNotifichation"
+                <div @click="changeNotifichation"
                     class=" w-[46px] h-[21px] border-[1px] border-[#4796A9] rounded-[10px] flex items-center px-[2px] relative ">
-                    <div class="  w-[15px]  h-[15px] rounded-[50%] bg-custom-gradient  transition-all duration-500 ease-in-out transform shadow-notifichationButton "   :class="NotificationOn ? 'translate-x-[25px]' : 'translate-x-0'" ></div>
+                    <div class="  w-[15px]  h-[15px] rounded-[50%] bg-custom-gradient  transition-all duration-500 ease-in-out transform shadow-notifichationButton "
+                        :class="NotificationOn ? 'translate-x-[25px]' : 'translate-x-0'"></div>
                 </div>
             </div>
         </div>
 
         <form class=" flex flex-col gap-[22px] mt-[22px] ">
+            <div class=" flex w-full gap-10 " >
+                <div
+                class=" mt-5 min-w-[151px] h-[151px] flex justify-center items-center rounded-[20px] bg-[#3A798838] bg-opacity-20 border-[1px] border-[#3A798838]  ">
+                <svg width="25" height="25" viewBox="0 0 25 25" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <line x1="12.5" y1="1.09278e-07" x2="12.5" y2="25" stroke="#3A7988" stroke-width="5" />
+                    <line y1="12.5" x2="25" y2="12.5" stroke="#3A7988" stroke-width="5" />
+                </svg>
+            </div>
+            <div class=" w-full " >
+                <label for="Add description" class="block text-[#4796A9] mb-1 text-[14px] font-[500]">Add
+                    description</label>
+                <textarea name=""
+                    class="border-[1px] border-[#3A7988] border-opacity-20 w-full text-[14px] text-[#1e4e5a] px-4 py-3 bg-[#4796A9] bg-opacity-5 h-[150px] outline-none rounded-[15px] "
+                    id="Add description"></textarea>
+
+            </div>
+            </div>
+   
             <div>
                 <label for="Email" class="block text-[#4796A9] mb-1 text-[14px] font-[500] ">Email</label>
                 <input type="text" id="Email" placeholder="myemail@gmail.com"
@@ -44,7 +62,8 @@
 
 
             <div class=" w-full flex justify-end "> <button
-                    class=" w-[112px] h-[55px] rounded-[20px] bg-custom-gradient hover:scale-105 active:scale-100 ">Save</button> </div>
+                    class=" w-[112px] h-[55px] rounded-[20px] bg-custom-gradient hover:scale-105 active:scale-100 ">Save</button>
+            </div>
         </form>
     </div>
 

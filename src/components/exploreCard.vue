@@ -6,7 +6,7 @@
                 <div class=" flex items-center gap-3 ">
                     <div class=" h-7 w-7 rounded-[50%] bg-[#3A7988] "></div>
                     <div class=" flex flex-col  gap-0 ">
-                        <h1 class=" font-[500] text-[15px] text-[#3A7988] m-0 ">Username</h1>
+                        <h1 class=" font-[500] text-[15px] text-[#3A7988] m-0 ">{{hotel.name}}</h1>
                         <p class=" font-[400] text-[10px] text-[#3A7988] m-0">Hotelname</p>
                     </div>
                 </div>
@@ -87,5 +87,8 @@ export default {
     components: {
     StarRating,
   },
+  props:{
+    hotel:Object
+  }
 }
 </script>

@@ -109,15 +109,48 @@
 import searchbar from '../components/homeSearchbar.vue'
 import hotelsCard from '../components/hotelsCard.vue'
 import { authStore } from '../stores/authStore';
+import { useRoute } from 'vue-router';
 export default {
     data(){
         return{
-            logged:authStore().User
+            logged:authStore().User , 
+            route:useRoute() ,
+            user:{
+                userId:'',
+            email:'',
+            name:'',
+            verify:'',
+            },
+            
+            token:'',
+            auth:authStore()
+            
         }
     },
     components: {
         searchbar,
         hotelsCard
+    },
+    mounted(){
+
+            if(Object.keys(this.$route.query).length > 0) {
+            this.user.name = this.route.query.name
+            this.user.email = this.route.query.email
+            this.user.userId = this.route.query.userId
+            this.user.verify = this.route.query.verify
+            this.token = this.route.query.token
+
+                this.auth.User = this.user
+                this.auth.token = this.token
+                
+            console.log( 'user:' , this.auth.User , 'token:' , this.auth.token )
+        }
+      
+
+
+
+
+  
     }
 }
 </script>

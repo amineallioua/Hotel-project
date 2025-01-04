@@ -15,7 +15,7 @@ import chatRoom from  '../views/chatRoom.vue'
 import forgetPassword from '../views/forgetPassword.vue';
 import resetPassword from '../views/resetPassword.vue';
 import verifyEmail from '../views/verifyEmail.vue'
-
+import completeProfile from '../views/complete-profile.vue'
 
   const routes = [
     { path: '/', name:'Home' ,  component: HOME },
@@ -32,7 +32,8 @@ import verifyEmail from '../views/verifyEmail.vue'
     {path:'/chatRoom' ,  name:'chatroom' , component:chatRoom },
     {path:'/forget' , name:'forgetPassword' , component:forgetPassword ,meta: { hideNavbar: true } }, 
     {path:'/reset-password/:token', name:'reset-password' , component:resetPassword , meta: { hideNavbar: true } },
-    {path:'/verify-email/:token',name:'verify-email',component:verifyEmail ,   meta: { hideNavbar: true  , hideActive:true }   }
+    {path:'/verify-email/:token',name:'verify-email',component:verifyEmail ,   meta: { hideNavbar: true  , hideActive:true }   },
+    {path:'/complete-profile/:token'  , name:'completeProfile' , component:completeProfile  , meta: { hideNavbar: true   } }
   ]
  
   const router = createRouter({
@@ -41,7 +42,7 @@ import verifyEmail from '../views/verifyEmail.vue'
   })
 
 
-  const publicRoutes = ['Home', 'login', 'signup' , 'real','forgetPassword','reset-password' , 'verify-email' ];
+  const publicRoutes = ['Home', 'login', 'signup' , 'real','forgetPassword','reset-password' , 'verify-email' ,'completeProfile'];
   
   router.beforeEach((to, from, next) => {
     const auth = authStore();
