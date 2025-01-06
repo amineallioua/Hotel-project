@@ -1,28 +1,26 @@
 <template>
-    <div class=" bg-white pt-[51px] flex flex-col gap-3 pb-5  md:px-[65px] px-[30px] w-full  text-white text-[20px] ">
+    <div v-if="hotelObject"
+        class=" bg-white pt-[51px] flex flex-col gap-3 pb-5  md:px-[65px] px-[30px] w-full  text-white text-[20px] ">
 
         <div class=" bg-black relative overflow-hidden  w-full  h-[450px] rounded-[20px] ">
             <img src="../assets/details.jpeg" class=" w-full h-full object-cover absolute " alt="">
             <div class=" absolute w-full h-full bg-deatils-gradient md:p-[50px] p-[25px] flex flex-col  ">
                 <div class=" flex gap-5 items-center ">
-                    <h1 class="text-[22px] font-[500] ">Hohtel name</h1> XXXXX <button
+                    <h1 class="text-[22px] font-[500] ">{{ hotelObject.name }}</h1> <span v-for="(item, index) in 2"
+                        :key="index"> <font-awesome-icon :icon="['fas', 'star']" style="color: #FFD43B;" /></span>
+                    <button
                         class=" flex justify-center items-center w-[50px] h-[25px] rounded-[20px] bg-white active:bg-white text-[#4796A9] active:text-[#4796A9] hover:text-white hover:bg-[#4796A9] duration-200 ease-in-out hover:scale-105 active:scale-100 font-[400] text-[14px] ">
-                        map</button>
+                        map <a :href="hotelObject.map"></a> </button>
                 </div>
                 <div class=" flex gap-3 items-center ">
-                    <h1 class="text-[12px] font-[400] ">Algeria - Batna</h1>
+                    <h1 class="text-[12px] font-[400] ">{{ hotelObject.location }} </h1>
                 </div>
                 <div class=" flex justify-between md:flex-row flex-col  items-between ">
                     <div class=" md:flex gap-3 mt-6 mb-2 md:mb-0 ">
-                        <div class=" bg-white md:w-[63%] mb-2 md:mb-0  rounded-[20px] lg:p-[30px] p-[25px] opacity-85 ">
+                        <div
+                            class=" bg-white md:w-[630px] mb-2 md:mb-0  rounded-[20px] lg:p-[30px] p-[25px] opacity-85 ">
                             <p class="lg:text-[14px] sm:text-[10px] text-[8px] text-[#729FAA] font-[400]  ">
-                                Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum
-                                has been the industry's standard dummy text ever since the 1500s, when an unknown
-                                printer took a galley of type and scrambled it to make a type specimen book. It has
-                                survived not only five centuries, but also the leap into electronic typesetting,
-                                remaining essentially unchanged. It was popularised in the 1960s with the release of
-                                Letraset sheets containing Lorem Ipsum passages, and more recently with desktop
-                                publishing software like Aldus PageMaker including versions of Lorem Ipsum.
+                                {{ hotelObject.description }}
                             </p>
                         </div>
                         <div class=" bg-white md:w-[50px] h-[50px]  w-[200px] md:h-[150px] rounded-[15px] opacity-85 ">
@@ -59,25 +57,25 @@
 
 
 
-            
+
             <div class=" w-[198px] h-[198px] rounded-[20px] bg-black overflow-hidden relative hover:scale-105 active:scale-100 duration-200 ease-in-out "
-                v-for="(item, index) in 5" :key="index">
+                v-for="(room, index) in hotelObject.rooms" :key="index">
                 <router-link to="/Book">
-                <img src="../assets/aboutusImg.jpeg" class=" w-full h-full object-cover absolute " alt="">
-                <div class=" w-full h-full absolute bg-profileCard-gradient px-5 py-5 flex flex-col justify-end ">
-                    <div>
-                        <h1 class="font-[500] text-[16px] text-white" > duel room</h1>
-                        <div class=" flex font-[500] text-[14px] text-white  justify-between ">
-                            <p class="text-white font-[500] text-[14px]" >1000DA</p>
-                            
-                            <button
-                                class=" w-[70px] h-[20px] bg-white rounded-[15px] opacity-90 font-[500] text-[12px] text-[#4796A9] ">Book
-                                now</button>
+                    <img :src="`http://localhost:5000/${room.images[0]}`" class="w-full h-full object-cover absolute" alt="Room Image">
+                    <div class=" w-full h-full absolute bg-profileCard-gradient px-5 py-5 flex flex-col justify-end ">
+                        <div>
+                            <h1 class="font-[500] text-[16px] text-white"> {{ room.roomType }}</h1>
+                            <div class=" flex font-[500] text-[14px] text-white  justify-between ">
+                                <p class="text-white font-[500] text-[14px]">{{ room.price }}DA</p>
+
+                                <button
+                                    class=" w-[70px] h-[20px] bg-white rounded-[15px] opacity-90 font-[500] text-[12px] text-[#4796A9] ">Book
+                                    now</button>
+                            </div>
+
                         </div>
-                        
                     </div>
-                </div>
-            </router-link>
+                </router-link>
 
             </div>
 
@@ -107,7 +105,7 @@
 
             </button>
 
-            <swiper :space-between="10" @swiper="onSwiper" :loop="true" :breakpoints="{
+            <swiper :space-between="10" @swiper="onSwiper" :loop="true" class="w-full" :breakpoints="{
                 '0': {
                     slidesPerView: 1,
                     spaceBetween: 20,
@@ -127,27 +125,10 @@
                     spaceBetween: 50,
                 },
             }">
-                <swiper-slide>
-                    <CommentsCard />
+                <swiper-slide v-for="(comment, index) in hotelObject.comments" :key="index" >
+                    <CommentsCard  :comment="comment" />
                 </swiper-slide>
-                <swiper-slide>
-                    <CommentsCard />
-                </swiper-slide>
-                <swiper-slide>
-                    <CommentsCard />
-                </swiper-slide>
-                <swiper-slide>
-                    <CommentsCard />
-                </swiper-slide>
-                <swiper-slide>
-                    <CommentsCard />
-                </swiper-slide>
-                <swiper-slide>
-                    <CommentsCard />
-                </swiper-slide>
-                <swiper-slide>
-                    <CommentsCard />
-                </swiper-slide>
+               
             </swiper>
         </div>
         <div class=" flex md:flex-row flex-col items-center gap-5 mt-5 relative ">
@@ -156,7 +137,8 @@
                     class=" border-[#ACDAE4] bg-[#F5F7F7]  text-[#4796A9] text-opacity-80 text-[12px] font-[400] pl-3 md:pr-[85px] pr-[80px] border-[2px] shadow-filter outline-none  md:w-[540px]  w-full h-[40px] rounded-[15px] "
                     placeholder="Add your comment" id="">
                 <div class=" absolute md:left-[460px] right-[10px] top-[-3px] w-auto h-[40px] flex items-center ">
-                    <star-rating :rating="0" :star-size="13" :show-rating="false" /></div>
+                    <star-rating :rating="0" :star-size="13" :show-rating="false" />
+                </div>
             </div>
             <button
                 class=" h-[40px] w-[90px]  bg-[#F4F6F6] border-[#ACDAE4] border-[2px] rounded-[15px] text-[#4796A9] font-[500] text-[14px] shadow-filter ">Send</button>
@@ -169,7 +151,9 @@ import CommentsCard from '../components/commentsCard.vue';
 import DetailTable from '../components/detailTable.vue';
 import { Swiper, SwiperSlide } from 'swiper/vue';
 import StarRating from 'vue-star-rating';
-
+import { useRoute } from 'vue-router';
+import { hotelStore } from '../stores/hotelsStore';
+import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
 export default {
     components: {
         DetailTable,
@@ -178,15 +162,22 @@ export default {
         CommentsCard,
         StarRating
     },
+
+
     data() {
         return {
             swiper: null,
+            route: useRoute(),
+            hotel: hotelStore(),
+            hotelObject: null,
+            totalReviews: '',
         }
     },
+
+
     methods: {
         onSwiper(swiper) {
             this.swiper = swiper
-            console.log(this.swiper)
         },
         swiperMove(action) {
             if (action == 1) {
@@ -195,6 +186,11 @@ export default {
                 this.swiper.slidePrev()
             }
         }
+    },
+    async mounted() {
+        this.hotelObject = await this.hotel.getHotelbyId(this.route.params.id)
+        this.totalReviews = this.hotelObject.totalReviews
+        console.log(this.hotelObject)
     }
 }
 </script>
@@ -202,5 +198,8 @@ export default {
 .swiper-slide {
     display: flex;
     justify-content: center
+}
+.swiper-wrapper{
+    width: 100%;
 }
 </style>

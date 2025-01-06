@@ -138,6 +138,8 @@ export default {
             this.user.email = this.route.query.email
             this.user.userId = this.route.query.userId
             this.user.verify = this.route.query.verify
+            this.user.role = this.route.query.role
+            this.user.phone = this.route.query.phone
             this.token = this.route.query.token
 
                 this.auth.User = this.user

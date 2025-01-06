@@ -24,7 +24,7 @@ import completeProfile from '../views/complete-profile.vue'
     { path:'/realsignUp' , name:'real' , component:realSignup,meta: { hideNavbar: true }  },
     {path:'/explore' , name:'explore' , component:Explore  },
     {path:'/search' , name:'search' , component:searchPage  },
-    {path:'/HotelDetails' , name:'details' , component:HotelDetails },
+    {path:'/HotelDetails/:id' , name:'details' , component:HotelDetails },
     {path:'/Book' , name:'book' , component:BookPage  },
     {path:'/Settings', name:'settings' , component:SettingsPage},
     {path:'/Profile' , name:'profile' , component:ProfilePage },

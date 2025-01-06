@@ -4,21 +4,16 @@
         <div class=" w-full    flex flex-col gap-2 ">
             <div class=" flex justify-between items-center ">
                 <div class=" flex items-center gap-3 ">
-                    <div class=" h-7 w-7 rounded-[50%] bg-[#3A7988] "></div>
+                    <div class=" h-7 w-7 rounded-[50%] bg-[#3A7988] " @click="goHotel" ></div>
                     <div class=" flex flex-col  gap-0 ">
                         <h1 class=" font-[500] text-[15px] text-[#3A7988] m-0 ">{{hotel.name}}</h1>
-                        <p class=" font-[400] text-[10px] text-[#3A7988] m-0">Hotelname</p>
+                        <p class=" font-[400] text-[10px] text-[#3A7988] m-0">{{ hotel.location }}</p>
                     </div>
                 </div>
-                <div>XXXXX</div>
+                <div  > <span v-if="hotel.averageRating == 0 " > XXX</span> <span v-else >BBB</span> </div>
             </div>
             <p class=" ml-8 md:text-[12px] text-[10px] font-[400] text-[#729FAA] ">Lorem Ipsum is simply dummy text of
-                the printing and
-                typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when
-                an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived
-                not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged.
-                It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and
-                more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
+              {{ hotel.desciprion }}
             </p>
         </div>
 
@@ -60,19 +55,19 @@
 
 
 
-        <div class="flex flex-col w-full bg-white rounded-[20px] p-5 md:gap-5 gap-2 mb-5" v-for="(item ) in 3">
-            <div class=" flex items-center gap-2 ">
+        <div class="flex flex-col w-full bg-white rounded-[20px] p-5 md:gap-5 gap-2 mb-5" v-for="(comment ) in  hotel.comments ">
+            <div class=" flex items-center justify-between ">
+                <div class=" flex items-center gap-2 " >
                 <div class=" rounded-full w-7 h-7 bg-[#4796A9] "></div>
                 <div class=" flex flex-col gap-1 ">
                     <h1 class=" font-[400] text-[16px] text-[#4796A9] leading-none "> Fullname</h1>
                     <p class=" font-[400] text-[10px] text-[#4796A9] leading-none ">user contry</p>
                 </div>
             </div>
+            <div> <span v-for="(item) in comment.rating"  >X</span>  </div>
+            </div>
             <div class=" w-full text-[#4796A9] md:text-[14px] text-[10px] font-[400] ">
-                The Panoramic Hotel is a modern, elegant 4-star hotel overlooking the sea, perfect for a romantic,
-                charming vacation, in the enchanting setting of Taormina and the Ionian Sea The Panoramic Hotel is a
-                modern, elegant 4-star hotel overlooking the sea, perfect for a romantic, charming vacation, in the
-                .....
+              {{ comment.comment }}
             </div>
         </div>
 
@@ -83,12 +78,24 @@
 </template>
 <script>
 import StarRating from 'vue-star-rating';
+import { useRouter } from 'vue-router';
 export default {
+    data(){
+        return {
+            router:useRouter(),
+        }
+    },
     components: {
     StarRating,
   },
   props:{
     hotel:Object
-  }
+  },
+  methods:{
+    goHotel(){
+        this.router.push(`/HotelDetails/${this.hotel._id}`)
+    }
+  },
+  
 }
 </script>
