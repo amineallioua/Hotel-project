@@ -38,10 +38,11 @@
         class="  w-full h-[60px] bg-[#e2e2e280] rounded-[20px] mt-3 md:px-[25px] px-[10px] py-3  flex items-center justify-between gap-3 ">
         <div class=" w-full h-full relative rounded-[10px] ">
             <input type="text"
+            v-model="comment"
                 class=" rounded-[10px] w-full h-full  bg-[#F5F7F7] outline-none pl-5 pr-[140px] text-[10px] "
                 placeholder="Add your comment">
-            <div class=" absolute right-[42px] top-[0px] w-auto h-full flex items-center "><star-rating :rating="0" :star-size="15"  :show-rating="false" /></div>
-            <button class=" absolute right-[8px] top-[10px]  text-[#4796A9] font-[500] text-[11px] ">Send</button>
+            <div class=" absolute right-[42px] top-[0px] w-auto h-full flex items-center "><star-rating :rating="0" :star-size="15"  v-model:rating="rating" :show-rating="false" /></div>
+            <button @click="addcomment" class=" absolute right-[8px] top-[10px]  text-[#4796A9] font-[500] text-[11px] ">Send</button>
         </div>
 
     </div>
@@ -79,10 +80,14 @@
 <script>
 import StarRating from 'vue-star-rating';
 import { useRouter } from 'vue-router';
+import { hotelStore } from '../stores/hotelsStore';
 export default {
     data(){
         return {
             router:useRouter(),
+            hotell:hotelStore(),
+            comment:'',
+            rating:"",
         }
     },
     components: {
@@ -94,7 +99,11 @@ export default {
   methods:{
     goHotel(){
         this.router.push(`/HotelDetails/${this.hotel._id}`)
-    }
+    },
+    addcomment(){
+          this.hotell.addcomment(this.hotel._id , this.comment , this.rating)
+          
+        }
   },
   
 }

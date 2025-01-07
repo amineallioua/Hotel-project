@@ -3,7 +3,7 @@
         class=" bg-white pt-[51px] flex flex-col gap-3 pb-5  md:px-[65px] px-[30px] w-full  text-white text-[20px] ">
 
         <div class=" bg-black relative overflow-hidden  w-full  h-[450px] rounded-[20px] ">
-            <img src="../assets/details.jpeg" class=" w-full h-full object-cover absolute " alt="">
+            <img :src="`http://localhost:5000/${hotelObject.images[0]}`" class=" w-full h-full object-cover absolute " alt="">
             <div class=" absolute w-full h-full bg-deatils-gradient md:p-[50px] p-[25px] flex flex-col  ">
                 <div class=" flex gap-5 items-center ">
                     <h1 class="text-[22px] font-[500] ">{{ hotelObject.name }}</h1> <span v-for="(item, index) in 2"
@@ -47,7 +47,7 @@
                 <img src="../assets/aboutusImg.jpeg" class=" w-full h-full object-cover " alt="">
             </div>
         </div>
-        <h3 class=" text-[22px] text-[#4796A9] font-[500] mt-[50px] ">Rooms</h3>
+        <h3 class=" text-[22px] text-[#4796A9] font-[500] mt-[50px] ">Services</h3>
         <div class=" w-full md:pl-[32px] flex flex-wrap gap-5 md:justifuy-normal    justify-center  ">
 
 
@@ -131,18 +131,26 @@
                
             </swiper>
         </div>
+
+
+
         <div class=" flex md:flex-row flex-col items-center gap-5 mt-5 relative ">
             <div class="relative  md:w-auto w-full ">
-                <input type="text"
+                <input type="text" v-model="comment"
                     class=" border-[#ACDAE4] bg-[#F5F7F7]  text-[#4796A9] text-opacity-80 text-[12px] font-[400] pl-3 md:pr-[85px] pr-[80px] border-[2px] shadow-filter outline-none  md:w-[540px]  w-full h-[40px] rounded-[15px] "
                     placeholder="Add your comment" id="">
                 <div class=" absolute md:left-[460px] right-[10px] top-[-3px] w-auto h-[40px] flex items-center ">
-                    <star-rating :rating="0" :star-size="13" :show-rating="false" />
+                    <star-rating :rating="0" :star-size="13" v-model:rating="rating" :show-rating="false" />
                 </div>
             </div>
-            <button
+            <button @click="addcomment"
                 class=" h-[40px] w-[90px]  bg-[#F4F6F6] border-[#ACDAE4] border-[2px] rounded-[15px] text-[#4796A9] font-[500] text-[14px] shadow-filter ">Send</button>
         </div>
+
+
+
+
+
     </div>
 
 </template>
@@ -171,6 +179,8 @@ export default {
             hotel: hotelStore(),
             hotelObject: null,
             totalReviews: '',
+            comment:'',
+            rating:"",
         }
     },
 
@@ -185,6 +195,9 @@ export default {
             } else {
                 this.swiper.slidePrev()
             }
+        },
+        addcomment(){
+            this.hotel.addcomment(this.hotelObject._id , this.comment , this.rating)
         }
     },
     async mounted() {

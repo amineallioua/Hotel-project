@@ -2,7 +2,7 @@
  
     <div class=" flex items-center relative  mb-5  " @click="goTo" >
         <div class=" md:w-[220px] md:h-[230px] w-[130px] h-[130px] absolute bg-black rounded-[20px] overflow-hidden shadow-search " >
-            <img src="../assets/searchCard.jpeg" class=" w-full h-full object-cover " alt="">
+            <img :src="`http://localhost:5000/${item.images[0]}`" class=" w-full h-full object-cover " alt="">
         </div>
 
 
