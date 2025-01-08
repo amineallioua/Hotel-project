@@ -16,6 +16,7 @@ import forgetPassword from '../views/forgetPassword.vue';
 import resetPassword from '../views/resetPassword.vue';
 import verifyEmail from '../views/verifyEmail.vue'
 import completeProfile from '../views/complete-profile.vue'
+import updateHotel from '../views/updateHotel.vue';
 
   const routes = [
     { path: '/', name:'Home' ,  component: HOME },
@@ -33,7 +34,8 @@ import completeProfile from '../views/complete-profile.vue'
     {path:'/forget' , name:'forgetPassword' , component:forgetPassword ,meta: { hideNavbar: true } }, 
     {path:'/reset-password/:token', name:'reset-password' , component:resetPassword , meta: { hideNavbar: true } },
     {path:'/verify-email/:token',name:'verify-email',component:verifyEmail ,   meta: { hideNavbar: true  , hideActive:true }   },
-    {path:'/complete-profile/:token'  , name:'completeProfile' , component:completeProfile  , meta: { hideNavbar: true   } }
+    {path:'/complete-profile/:token'  , name:'completeProfile' , component:completeProfile  , meta: { hideNavbar: true   } },
+    {path:'/updateHotel/:id'  ,  name:'updateHotel'  , component:updateHotel  ,   meta: { hideNavbar: true   }   }
   ]
  
   const router = createRouter({

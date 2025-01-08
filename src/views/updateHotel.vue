@@ -100,11 +100,13 @@
             <button 
             @click="createHotel"
                 class=" duration-100 ease-in-out hover:scale-105 hover:opacity-90 active:opacity-100 active:scale-100 rounded-[20px] shadow-lg bg-custom-gradient text-white w-[122px] h-[40px] font-[500] text-[14px] "
-                >create
+                >update
                 hotel</button>
  
     </div>
-            
+            <h1 class=" text-[#4796A9]  text-[14px] font-[500] ">Add rooms</h1>
+            <addRoom :id="this.route.params.id" />
+          
 
         </div>
     </div>
@@ -113,13 +115,18 @@
 <script>
 import NewHotelBox from '../components/newHotelBox.vue';
 import { hotelStore } from '../stores/hotelsStore';
+import { useRoute } from 'vue-router';
+import addRoom from '../components/addRoom.vue';
 
 export default {
     components: {
-        NewHotelBox
+        NewHotelBox,
+        addRoom
     },
     data() {
         return {
+            hotel:hotelStore(),
+            route:useRoute(),
             advantages: ['Wi-Fi', 'Parking', 'Lundry services', 'Gym', 'On-site restaurant'],
             name: '',
             description: '',
@@ -127,7 +134,7 @@ export default {
             location: '',
             imagess: [null ,null , null , null , null ], 
             images:[],
-            hotel:hotelStore()
+            modifiedIndexes: [], 
         }
     },
 
@@ -137,28 +144,45 @@ export default {
             input.click();
         },
         handleFileChange(event, index) {
-            const file = event.target.files[0];
-            if (file && file.type.startsWith("image/")) {
-                const reader = new FileReader();
-                reader.onload = (e) => {
-                    this.imagess[index] = e.target.result; // Directly update the array
-                    this.images[index] = file
-                    console.log(this.images)
-                };
-                
-                reader.readAsDataURL(file);
+    const file = event.target.files[0];
+    if (file && file.type.startsWith("image/")) {
+        const reader = new FileReader();
+        reader.onload = (e) => {
+            this.imagess[index] = e.target.result; // Directly update the array
+            this.images[index] = file;
 
-            } else {
-                alert("Please upload a valid image file.");
+            // Track the index of modified images
+            if (!this.modifiedIndexes.includes(index)) {
+                this.modifiedIndexes.push(index);
             }
-        },
+
+
+        };
+
+        reader.readAsDataURL(file);
+    } else {
+        alert("Please upload a valid image file.");
+    }
+},
+
         createHotel(){
           
-             this.hotel.createHotel(this.name , this.description , this.location , this.map , this.images)
-             console.log(this.images)
+             this.hotel.update(  this.route.params.id  , this.name , this.description , this.location , this.map , this.images , this.modifiedIndexes )
+             console.log(this.map)
             
-        }
+        },
+
 
     },
+   async mounted(){
+         const id =  this.route.params.id
+        await this.hotel.getbyId(id)
+        this.name = this.hotel.updateData.name
+        this.description = this.hotel.updateData.description
+        this.map = this.hotel.updateData.map
+        this.location = this.hotel.updateData.location
+        this.imagess = this.hotel.updateData.images.map(image => `http://localhost:5000/${image}`);
+
+    }
 }
 </script>

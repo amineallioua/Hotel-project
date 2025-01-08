@@ -21,12 +21,12 @@
         <div class=" w-full md:h-[380px]  flex sm:justify-between justify-center gap-5 ">
             <div
                 class=" sm:min-w-[70%] sm:max-w-[70%] max-w-[200px] rounded-[20px] overflow-hidden sm:h-full h-[280px] bg-white shadow-filter ">
-                <img src="../assets/aboutusImg.jpeg" class=" h-full w-full object-cover " alt="">
+                <img :src="`http://localhost:5000/${hotel.images[0]}`" class=" h-full w-full object-cover " alt="">
             </div>
             <div class=" h-full  flex flex-col gap-2 itels-center justify-center ">
                 <div class=" sm:w-[120px] sm:h-[120px] w-[88px] h-[88px] rounded-[20px] overflow-hidden  bg-black "
                     v-for=" i in 3  ">
-                    <img src="../assets/aboutusImg.jpeg" class=" h-full w-full object-cover " alt="">
+                    <img :src="`http://localhost:5000/${hotel.images[i]}`" class=" h-full w-full object-cover " alt="">
                 </div>
             </div>
         </div>
