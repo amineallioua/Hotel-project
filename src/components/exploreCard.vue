@@ -12,8 +12,8 @@
                 </div>
                 <div  > <span v-if="hotel.averageRating == 0 " > XXX</span> <span v-else >BBB</span> </div>
             </div>
-            <p class=" ml-8 md:text-[12px] text-[10px] font-[400] text-[#729FAA] ">Lorem Ipsum is simply dummy text of
-              {{ hotel.desciprion }}
+            <p class=" ml-8 md:text-[12px] text-[10px] font-[400] text-[#729FAA] ">
+              {{ hotel.description }}
             </p>
         </div>
 

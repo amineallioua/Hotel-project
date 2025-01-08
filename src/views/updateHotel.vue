@@ -104,7 +104,9 @@
                 hotel</button>
  
     </div>
-            <h1 class=" text-[#4796A9]  text-[14px] font-[500] ">Add rooms</h1>
+            <h1 class=" text-[#4796A9]  text-[14px] font-[500] ">your rooms</h1>
+            <updateRoom v-for="(room, index) in this.Rooms" :key="index" :room="room" :id="this.route.params.id" />
+            <h1 class=" text-[#4796A9]  text-[14px] font-[500] ">add rooms</h1>
             <addRoom :id="this.route.params.id" />
           
 
@@ -117,11 +119,14 @@ import NewHotelBox from '../components/newHotelBox.vue';
 import { hotelStore } from '../stores/hotelsStore';
 import { useRoute } from 'vue-router';
 import addRoom from '../components/addRoom.vue';
+import updateRoom from '../components/updateRoom.vue';
+import UpdateRoom from '../components/updateRoom.vue';
 
 export default {
     components: {
         NewHotelBox,
-        addRoom
+        addRoom,
+        updateRoom
     },
     data() {
         return {
@@ -135,6 +140,7 @@ export default {
             imagess: [null ,null , null , null , null ], 
             images:[],
             modifiedIndexes: [], 
+            Rooms:[],
         }
     },
 
@@ -168,7 +174,7 @@ export default {
         createHotel(){
           
              this.hotel.update(  this.route.params.id  , this.name , this.description , this.location , this.map , this.images , this.modifiedIndexes )
-             console.log(this.map)
+      
             
         },
 
@@ -182,7 +188,8 @@ export default {
         this.map = this.hotel.updateData.map
         this.location = this.hotel.updateData.location
         this.imagess = this.hotel.updateData.images.map(image => `http://localhost:5000/${image}`);
-
+        this.Rooms = this.hotel.updateData.rooms
+        console.log(this.Rooms)
     }
 }
 </script>

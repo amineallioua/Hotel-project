@@ -133,6 +133,28 @@ export const hotelStore = defineStore("hotel", {
       }
     },
 
+
+    async updateRoom(id, roomType, price, images , roomId ) {
+      const data = new FormData();
+      data.append("roomType", roomType);
+      data.append("price", price);
+      for (let i = 0; i < images.length; i++) {
+        data.append("images", images[i]);
+      }
+
+      try {
+        const response = await axios.put(`hotel/${id}/rooms/${roomId}`, data, {
+          headers: {
+            "Content-Type": "multipart/form-data",
+          },
+        });
+        const result = response.data;
+        console.log(result);
+      } catch (error) {
+        console.log(error);
+      }
+    },
+
     setname(name) {
       this.name = name;
     },
