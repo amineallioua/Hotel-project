@@ -94,9 +94,15 @@
            
 
             </div>
-            <div class=" flex justify-end my-5 ">
+            <div class=" flex justify-end my-5 gap-5 ">
             
-          
+
+
+               <button 
+            @click="toggleDeleteAction"
+                class=" duration-100 ease-in-out hover:scale-105 hover:opacity-90 active:opacity-100 active:scale-100 rounded-[20px] shadow-lg bg-[#fc4848] text-white w-[122px] h-[40px] font-[500] text-[14px] "
+                >delete
+                hotel</button>
             <button 
             @click="createHotel"
                 class=" duration-100 ease-in-out hover:scale-105 hover:opacity-90 active:opacity-100 active:scale-100 rounded-[20px] shadow-lg bg-custom-gradient text-white w-[122px] h-[40px] font-[500] text-[14px] "
@@ -112,7 +118,7 @@
 
         </div>
     </div>
-
+    <confermDelete :toggleDelete="toggleDelete" :toggleDeleteAction="toggleDeleteAction" :id="this.route.params.id" />
 </template>
 <script>
 import NewHotelBox from '../components/newHotelBox.vue';
@@ -121,12 +127,14 @@ import { useRoute } from 'vue-router';
 import addRoom from '../components/addRoom.vue';
 import updateRoom from '../components/updateRoom.vue';
 import UpdateRoom from '../components/updateRoom.vue';
+import confermDelete from '../components/confermDelete.vue';
 
 export default {
     components: {
         NewHotelBox,
         addRoom,
-        updateRoom
+        updateRoom,
+        confermDelete
     },
     data() {
         return {
@@ -141,10 +149,15 @@ export default {
             images:[],
             modifiedIndexes: [], 
             Rooms:[],
+            toggleDelete:false
         }
     },
 
     methods: {
+        toggleDeleteAction(){
+            this.toggleDelete = !this.toggleDelete
+            
+        },
         triggerFileInput(index) {
             const input = document.getElementById(`file-input-${index}`);
             input.click();

@@ -3,11 +3,13 @@
         class=" relative flex gap-3 justify-between lg:w-[800px] items-center sm:h-[100px] md:w-[600px]  sm:flex-row flex-col bg-[#4796A9] bg-opacity-5 rounded-[20px] md:py-[20px] md:px-5 py-[10px] px-2 border-[1px] mt-2 border-[#3A7988] border-opacity-20 ">
         <div
             class="sm:h-full sm:w-[48%] h-[60px] w-full bg-white shadow-custom rounded-[15px] flex items-center justify-center  ">
-            <input v-model="roomType" type="text" placeholder="Rooms type" class=" text-gray-500 outline-none w-full px-2 ">
+            <input v-model="roomType" type="text" placeholder="Rooms type"
+                class=" text-gray-500 outline-none w-full px-2 ">
         </div>
         <div
             class="sm:h-full sm:w-[48%] h-[60px] w-full bg-white shadow-custom rounded-[15px] flex items-center justify-center  ">
-            <input v-model="price" type="text" placeholder="Rooms price" class=" text-gray-500 outline-none  w-full px-2 ">
+            <input v-model="price" type="text" placeholder="Rooms price"
+                class=" text-gray-500 outline-none  w-full px-2 ">
         </div>
 
 
@@ -25,16 +27,28 @@
 
 
 
+        <div class=" flex flex-col gap-2 absolute top-[15px]  right-[-30px] ">
+            <button @click="updateRoom"
+                class=" md:flex hover:scale-105 active:scale-100 hidden  w-[45px]  h-[30px] rounded-[10px] bg-custom-gradient    justify-center items-center ">
+                <svg width="44" height="15" viewBox="0 0 56 44" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path
+                        d="M52.4832 22L53.8974 23.4142L55.3116 22L53.8974 20.5858L52.4832 22ZM2.48315 20C1.37859 20 0.483154 20.8954 0.483154 22C0.483154 23.1046 1.37859 24 2.48315 24V20ZM33.8974 43.4142L53.8974 23.4142L51.0689 20.5858L31.0689 40.5858L33.8974 43.4142ZM53.8974 20.5858L33.8974 0.585785L31.0689 3.41422L51.0689 23.4142L53.8974 20.5858ZM52.4832 20H2.48315V24H52.4832V20Z"
+                        fill="white" />
+                </svg>
+            </button>
+
+            <button @click="toggleDeleteAction"
+                class=" md:flex hover:scale-105 active:scale-100 hidden  w-[45px]  h-[30px] rounded-[10px] bg-[#fc4848]    justify-center items-center ">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <line x1="2" y1="2" x2="22" y2="22" stroke="white" stroke-width="2" stroke-linecap="round" />
+                    <line x1="2" y1="22" x2="22" y2="2" stroke="white" stroke-width="2" stroke-linecap="round" />
+                </svg>
+
+            </button>
+
+        </div>
 
 
-        <button @click="updateRoom"
-            class=" md:flex hover:scale-105 active:scale-100 hidden absolute w-[45px]  h-[30px] rounded-[10px] bg-custom-gradient  right-[-30px]  top-[35px]  justify-center items-center ">
-            <svg width="44" height="15" viewBox="0 0 56 44" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <path
-                    d="M52.4832 22L53.8974 23.4142L55.3116 22L53.8974 20.5858L52.4832 22ZM2.48315 20C1.37859 20 0.483154 20.8954 0.483154 22C0.483154 23.1046 1.37859 24 2.48315 24V20ZM33.8974 43.4142L53.8974 23.4142L51.0689 20.5858L31.0689 40.5858L33.8974 43.4142ZM53.8974 20.5858L33.8974 0.585785L31.0689 3.41422L51.0689 23.4142L53.8974 20.5858ZM52.4832 20H2.48315V24H52.4832V20Z"
-                    fill="white" />
-            </svg>
-        </button>
 
 
 
@@ -48,17 +62,23 @@
             </svg>
         </button>
     </div>
+    <confermDelete :toggleDelete="toggleDelete" :toggleDeleteAction="toggleDeleteAction" :id="this.id" :roomId="this.room._id" />
 </template>
 <script>
 import { hotelStore } from '../stores/hotelsStore';
+import confermDelete from './confermDelete.vue';
 export default {
+    components:{
+        confermDelete
+    },
     data() {
         return {
             hotel: hotelStore(),
             imagess: [],
             images: [],
-            roomType:'',
-            price:'',
+            roomType: '',
+            price: '',
+            toggleDelete:false
 
         }
     },
@@ -66,6 +86,10 @@ export default {
         triggerFileInput(index) {
             const input = document.getElementById(`file-input-${index}`);
             input.click();
+        },
+        toggleDeleteAction(){
+            this.toggleDelete = !this.toggleDelete
+            
         },
         handleFileChange(event) {
             const file = event.target.files[0]; // Handle only the first file
@@ -84,19 +108,19 @@ export default {
                 alert("Please upload a valid image file.");
             }
         },
-        updateRoom(){
-            this.hotel.updateRoom(this.id , this.roomType , this.price , this.images ,this.room._id)
+        updateRoom() {
+            this.hotel.updateRoom(this.id, this.roomType, this.price, this.images, this.room._id)
         }
 
     },
-    props:{
-        id:String,
-        room:Object
+    props: {
+        id: String,
+        room: Object
     },
-    mounted(){
+    mounted() {
         this.roomType = this.room.roomType
         this.price = this.room.price
-        this.imagess[0]  =  `http://localhost:5000/${this.room.images[0]}` 
+        this.imagess[0] = `http://localhost:5000/${this.room.images[0]}`
     }
 
 

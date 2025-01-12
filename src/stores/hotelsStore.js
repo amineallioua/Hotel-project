@@ -154,6 +154,31 @@ export const hotelStore = defineStore("hotel", {
         console.log(error);
       }
     },
+    async deleteHotel(id){
+      try {
+        const response = await axios.delete( `hotel/${id}` )
+        const result = response.data
+        console.log(result)
+        router.push('/profile')
+      }catch(error){
+        console.log(error)
+      }
+    },
+
+
+    async deleteRoom(idd , RoomId ){
+      try {
+        const response = await axios.delete( `hotel/${idd}/rooms/${RoomId}` )
+        const result = response.data
+        console.log(result)
+        const id = router.params.id
+        console.log(id)
+        router.push(`/HotelDetails/${id} `)
+
+      }catch(error){
+
+      }
+    },
 
     setname(name) {
       this.name = name;
