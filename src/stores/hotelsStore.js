@@ -179,6 +179,16 @@ export const hotelStore = defineStore("hotel", {
 
       }
     },
+    async getHotelOwner(id){
+      try{
+        const response = await axios.get(`hotel/owner/${id} `, {})
+        const result = response.data
+        console.log(result) 
+        return result
+      }catch(error){
+        console.log(error)
+      }
+    },
 
     setname(name) {
       this.name = name;

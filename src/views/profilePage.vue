@@ -67,16 +67,16 @@
 
 
 
-            <div class=" w-[198px] h-[198px] rounded-[20px] bg-black overflow-hidden relative hover:scale-110 active:scale-100 duration-200 ease-in-out "
-                v-for="(item, index) in 10" :key="index">
-                <img src="../assets/aboutusImg.jpeg" class=" w-full h-full object-cover absolute " alt="">
+            <div  class=" w-[198px] h-[198px] rounded-[20px] bg-black overflow-hidden relative hover:scale-110 active:scale-100 duration-200 ease-in-out "
+                v-for="(hotel, index) in this.myHotels" :key="index" @click="toDetail(hotel._id)" >
+                <img :src="`http://localhost:5000/${hotel.images[0]}`" class=" w-full h-full object-cover absolute " alt="">
                 <div class=" w-full h-full absolute bg-profileCard-gradient px-5 py-5 flex flex-col justify-end ">
                     <div>
                         <div class=" flex font-[500] text-[14px] text-white  gap-3 ">
-                            <h1>Hotel name</h1>
+                            <h1>{{ hotel.name }}</h1>
                             <p>XXXXX</p>
                         </div>
-                        <p class="font-[500] text-[7px] text-white">X Location</p>
+                        <p class="font-[500] text-[7px] text-white">{{ hotel.location }}</p>
                     </div>
                 </div>
             </div>
@@ -95,12 +95,26 @@
 </template>
 <script>
 import { authStore } from '../stores/authStore';
+import { hotelStore } from '../stores/hotelsStore';
+import { useRouter } from 'vue-router';
 export default {
 data(){
     return {
         auth:authStore(),
-        role:authStore().User.role
+        role:authStore().User.role,
+        hotel:hotelStore(),
+        myHotels:[],
+        router:useRouter()
     }
 },
+methods:{
+  toDetail(id){
+    this.router.push(`/HotelDetails/${id} `)
+  }
+},
+async mounted(){
+   this.myHotels = await this.hotel.getHotelOwner(this.auth.User._id)
+   console.log(this.myHotels)
+}
 }
 </script>

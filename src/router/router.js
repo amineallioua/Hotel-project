@@ -26,7 +26,7 @@ import updateHotel from '../views/updateHotel.vue';
     {path:'/explore' , name:'explore' , component:Explore  },
     {path:'/search' , name:'search' , component:searchPage  },
     {path:'/HotelDetails/:id' , name:'details' , component:HotelDetails },
-    {path:'/Book' , name:'book' , component:BookPage  },
+    {path:'/Book/:id/:RoomId?' , name:'book' , component:BookPage  },
     {path:'/Settings', name:'settings' , component:SettingsPage},
     {path:'/Profile' , name:'profile' , component:ProfilePage },
     {path:'/NewHotel' , name:'new' , component:NewHotel},

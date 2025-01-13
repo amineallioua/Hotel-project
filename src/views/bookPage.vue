@@ -1,7 +1,7 @@
 <template>
     <div class=" w-full   md:px-[65px] px-[30px] pt-[51px] text-white  ">
         <h1 class=" text-[#4796A9] text-[22px] font-[500] mt-[20px] ">Book now !</h1>
-        <form class=" flex flex-col gap-[22px] mt-[22px] ">
+        <div class=" flex flex-col gap-[22px] mt-[22px] ">
             <div>
                 <label for="name" class="block text-[#4796A9] mb-1 text-[14px] font-[500] ">Full name</label>
                 <input type="text" id="name"
@@ -27,23 +27,43 @@
             <div class="flex gap-10 ">
                 <div class=" flex flex-col w-1/2 ">
                     <span class="text-[#4796A9] mb-1 text-[14px] font-[500] "> check in </span>
-                    <VueDatePicker :enable-time-picker="false" time-picker-inline />
+                    <VueDatePicker :enable-time-picker="false"  v-model="startDate" />
                 </div>
                 <div class=" flex flex-col w-1/2 ">
                     <span class="text-[#4796A9] mb-1 text-[14px] font-[500] "> check out </span>
-                    <VueDatePicker :enable-time-picker="false" time-picker-inline />
+                    <VueDatePicker :enable-time-picker="false"  v-model="endDate" />
                 </div>
             </div>
 
 
 
-            <div class=" w-full flex justify-end " > <button class=" hover:scale-110 active:scale-100 duration-200 ease-in-out  w-[172px] h-[55px] rounded-[20px] bg-custom-gradient  " >Book now</button> </div>
-        </form>
+            <div class=" w-full flex justify-end " > <button @click="makeBook" class=" hover:scale-110 active:scale-100 duration-200 ease-in-out  w-[172px] h-[55px] rounded-[20px] bg-custom-gradient  " >Book now</button> </div>
+        </div>
     </div>
 
 </template>
 <script>
+import { bookStore } from '../stores/bookStore';
+import { useRoute } from 'vue-router';
 export default {
-
+data(){
+    return {
+        book:bookStore(),
+        route:useRoute(),
+        hotelId:'',
+        RoomId:'',
+        endDate:null,
+        startDate:null
+    }
+},
+methods:{
+makeBook(){
+    this.book.makeBook( this.hotelId , this.RoomId , this.startDate , this.endDate )
+}
+},
+mounted(){
+    this.hotelId =  this.route.params.id
+   this.RoomId =  this.route.params.RoomId
+}
 }
 </script>

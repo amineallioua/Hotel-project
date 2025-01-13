@@ -35,5 +35,17 @@
 
 </template>
 <script>
+import { chatStore } from '../stores/chatStore';
+
+export default {
+    data(){
+        return{
+            chat:chatStore()
+        }
+    },
+    mounted(){
+        this.chat.connectSocket()
+    }
+}
 
 </script>
