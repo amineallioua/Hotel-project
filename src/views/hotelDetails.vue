@@ -19,6 +19,8 @@
                     </div>
                     <button v-if="auth.User.role == 'owner'" @click="gotoUpdate"
                         class=" bg-white bg-opacity-50 w-[73px] rounded-[20px] h-[34px] text-[15px] font-[500] text-[#4796A9] hover:scale-105 hover:bg-opacity-100 active:bg-opacity-50 active:scale-100 ">Edit</button>
+                        <button v-if="auth.User.role == 'customer'" @click="createRoom"
+                        class=" bg-white bg-opacity-50 p-2 rounded-[20px] text-[15px] font-[500] text-[#4796A9] hover:scale-105 hover:bg-opacity-100 active:bg-opacity-50 active:scale-100 ">ask manager</button>
                 </div>
 
 
@@ -235,6 +237,7 @@ import { useRoute, useRouter } from 'vue-router';
 import { hotelStore } from '../stores/hotelsStore';
 import { authStore } from '../stores/authStore';
 import { bookStore } from '../stores/bookStore';
+import { chatStore } from '../stores/chatStore';
 
 export default {
     components: {
@@ -260,6 +263,7 @@ export default {
             auth: authStore(),
             book:bookStore(),
             myBooks:[],
+            chat:chatStore()
         }
     },
 
@@ -296,13 +300,15 @@ export default {
         },
         gotoUpdate() {
             this.router.push(`/updateHotel/${this.hotelObject._id}`)
+        },
+        createRoom(){
+            this.chat.createRoom( this.auth.User._id , this.hotelObject.ownerId )
         }
     },
     async mounted() {
         this.hotelObject = await this.hotel.getHotelbyId(this.route.params.id)
         this.totalReviews = this.hotelObject.totalReviews
        this.myBooks = await this.book.getbooks(this.hotelObject._id)
-       console.log(this.myBooks)
     }
 }
 </script>

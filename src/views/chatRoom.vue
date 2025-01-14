@@ -1,19 +1,26 @@
 <template>
 
-    <div class=" w-full h-full relative  pt-[51px] ">
-        <img src="../assets/chatroom.jpeg" class=" w-full h-full object-cover opacity-20 " alt="">
+    <div class=" w-full h-full relative justify-between  px-[50px] pt-[51px] flex  ">
         <div
-            class=" absolute overflow-hidden  lg:w-[80%] lg:left-[10%] md:w-[90%] md:left-[5%] w-[95%] left-[2%] bg-white h-[87%] top-5 mt-[51px] rounded-[28px] shadow-chatRoom border-[1px] border-[#CDE2E7] ">
-            <div class=" w-full h-[90%]  "></div>
+            class="  overflow-scroll px-1 py-4 min-w-[20%] h-[86%] bg-[#FDFDFD] border-[1px] border-[#CDE2E7] mt-[51px] rounded-[29px] ">
+            <div class="flex flex-col gap-2" > <button @click="selectroom(room._id , room)" class=" h-[38px] w-full rounded-[13px]  bg-[#4796A9] bg-opacity-10 " v-for="(room, index) in  this.chat.chats.chats "
+                    :key="index"> {{ room._id }} </button>
+            </div>
+        </div>
+
+        <div
+            class="  overflow-hidden  lg:w-[75%]  md:w-[90%]  w-[95%] left-[2%] bg-white h-[87%] top-5 mt-[51px] rounded-[28px] shadow-chatRoom border-[1px] border-[#CDE2E7] ">
+            <div class=" w-full h-[90%] p-3 ">
+                <message v-for="(message, index) in this.chat.messages" :key="index" :message="message"  />
+
+            </div>
 
 
-
-            <div class=" w-full h-[10%]  bottom-5 absolute  flex justify-center ">
-
-                <div class=" relative md:w-[526px]  w-[80%] "> <input type="text"
+            <div class=" w-full h-[10%]  bottom-5 relative  flex justify-center ">
+                <div class=" relative md:w-[60%]  w-[80%] "> <input v-model="messageText" type="text"
                         class=" text-[16px] text-[#4796A9] pl-3 pr-5 outline-none border-[1px] border-[#4796A94F] border-opacity-30  w-full rounded-[15px] h-full  "
                         placeholder="Type a message here">
-                    <button
+                    <button @click="sendMessage"
                         class=" absolute flex justify-center items-center h-[70%] right-[-23px] top-[15%] w-10 bg-custom-gradient rounded-[20px] "><svg
                             width="13" height="13" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
                             <path fill-rule="evenodd" clip-rule="evenodd"
@@ -36,15 +43,32 @@
 </template>
 <script>
 import { chatStore } from '../stores/chatStore';
+import message from '../components/message.vue';
 
 export default {
-    data(){
-        return{
-            chat:chatStore()
+    data() {
+        return {
+            chat: chatStore(),
+            messageText:'',
         }
     },
-    mounted(){
+    methods:{
+        selectroom(id , room ){
+            this.chat.getmessages(id)
+            this.chat.currentRoom = room
+            console.log(this.chat.currentRoom)
+        },
+      async  sendMessage(){
+            this.chat.sendMessage(this.messageText)
+            await   this.chat.getChats()
+        }
+    },
+    components:{
+        message
+    },
+  async  mounted() {
         this.chat.connectSocket()
+     await   this.chat.getChats()
     }
 }
 
