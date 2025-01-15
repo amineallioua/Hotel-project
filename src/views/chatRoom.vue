@@ -10,8 +10,11 @@
 
         <div
             class="  overflow-hidden  lg:w-[75%]  md:w-[90%]  w-[95%] left-[2%] bg-white h-[87%] top-5 mt-[51px] rounded-[28px] shadow-chatRoom border-[1px] border-[#CDE2E7] ">
-            <div class=" w-full h-[90%] p-3 ">
+            <div class=" w-full h-[87%] mb-[3%] overflow-scroll relative bottom-0 p-3 ">
+            <div class=" w-full  " >
                 <message v-for="(message, index) in this.chat.messages" :key="index" :message="message"  />
+
+            </div>
 
             </div>
 
@@ -60,7 +63,6 @@ export default {
         },
       async  sendMessage(){
             this.chat.sendMessage(this.messageText)
-            await   this.chat.getChats()
         }
     },
     components:{

@@ -98,7 +98,7 @@ export const chatStore = defineStore("chat", {
       try{
         const response = await axios.post('chat/send' , { chatId , receiverId , message } )
         const result = response.data
-        this.messages.push({ 'content':message , 'senderId':this.auth.User._id })
+        this.messages.push({ 'content':message , 'senderId':this.auth.User._id ? this.auth.User._id : this.auth.User.userId   })
         console.log(result)
       }catch(error){
         console.log(error)
