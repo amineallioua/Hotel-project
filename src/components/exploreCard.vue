@@ -4,7 +4,7 @@
         <div class=" w-full    flex flex-col gap-2 ">
             <div class=" flex justify-between items-center ">
                 <div class=" flex items-center gap-3 ">
-                    <div class=" h-7 w-7 rounded-[50%] bg-[#3A7988] " @click="goHotel" ></div>
+                    <div class=" h-7 w-7 rounded-[50%] bg-[#3A7988] overflow-hidden " @click="goHotel" > <img :src="`http://localhost:5000/${hotel.images[0]}`" class=" w-full h-full  " alt=""> </div>
                     <div class=" flex flex-col  gap-0 ">
                         <h1 class=" font-[500] text-[15px] text-[#3A7988] m-0 ">{{hotel.name}}</h1>
                         <p class=" font-[400] text-[10px] text-[#3A7988] m-0">{{ hotel.location }}</p>
@@ -21,7 +21,7 @@
         <div class=" w-full md:h-[380px]  flex sm:justify-between justify-center gap-5 ">
             <div
                 class=" sm:min-w-[70%] sm:max-w-[70%] max-w-[200px] rounded-[20px] overflow-hidden sm:h-full h-[280px] bg-white shadow-filter ">
-                <img :src="`http://localhost:5000/${hotel.images[0]}`" class=" h-full w-full object-cover " alt="">
+                <img :src="`http://localhost:5000/${hotel.images[1]}`" class=" h-full w-full object-cover " alt="">
             </div>
             <div class=" h-full  flex flex-col gap-2 itels-center justify-center ">
                 <div class=" sm:w-[120px] sm:h-[120px] w-[88px] h-[88px] rounded-[20px] overflow-hidden  bg-black "

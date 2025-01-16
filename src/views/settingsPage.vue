@@ -31,25 +31,13 @@
             </div>
             </div>
    
-            <div>
-                <label for="Email" class="block text-[#4796A9] mb-1 text-[14px] font-[500] ">Email</label>
-                <input type="text" id="Email" placeholder="myemail@gmail.com"
-                    class=" mb-2  border-[1px] border-[#3A7988] border-opacity-20 w-full text-[14px] text-[#1e4e5a] pl-4 bg-[#4796A9] bg-opacity-5 h-[40px] outline-none rounded-[15px] " />
-                <input type="text" id="name" placeholder="Confirm email"
-                    class="  border-[1px] border-[#3A7988] border-opacity-20 w-full text-[14px] text-[#1e4e5a] pl-4 bg-[#4796A9] bg-opacity-5 h-[40px] outline-none rounded-[15px] " />
-            </div>
+           
             <div>
                 <label for="Username" class="block text-[#4796A9] mb-1 text-[14px] font-[500]">Username</label>
                 <input type="tel" id="Username" placeholder="Username"
                     class=" border-[1px] border-[#3A7988] border-opacity-20 w-full text-[14px] text-[#1e4e5a] pl-4 bg-[#4796A9] bg-opacity-5 h-[40px] outline-none rounded-[15px] " />
             </div>
-            <div>
-                <label for="Password" class="block text-[#4796A9] mb-1 text-[14px] font-[500]">Password</label>
-                <input type="text" id="Password" placeholder=" New password "
-                    class=" mb-2 border-[1px] border-[#3A7988] border-opacity-20 w-full text-[14px] text-[#1e4e5a] h-[40px] pl-4 bg-[#4796A9] bg-opacity-5 outline-none rounded-[15px] " />
-                <input type="text" id="Password" placeholder=" Confirm password "
-                    class=" border-[1px] border-[#3A7988] border-opacity-20 w-full text-[14px] text-[#1e4e5a] h-[40px] pl-4 bg-[#4796A9] bg-opacity-5 outline-none rounded-[15px] " />
-            </div>
+         
             <div>
                 <label for="Phone number" class="block text-[#4796A9] mb-1 text-[14px] font-[500]">Phone number</label>
                 <input type="text" id="Phone number" placeholder="07 78 65 52 11"

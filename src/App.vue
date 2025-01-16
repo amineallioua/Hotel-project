@@ -2,6 +2,7 @@
   <div class="w-full h-screen">
     <navbar v-if="!$route.meta.hideNavbar" />
     <activeAccount v-if="!$route.meta.hideActive" />
+    <notifications />
  <router-view/>
 </div>
 

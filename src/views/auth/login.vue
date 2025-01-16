@@ -18,6 +18,7 @@
                     class=" w-[247px] h-[41px] rounded-[10px] outline-none px-5 text-[13px] shadow-form">
                 <input v-model="password" placeholder="Password" type="password"
                     class=" w-[247px] h-[41px] rounded-[10px] outline-none px-5 text-[13px] shadow-form">
+                <p v-if="this.error" class=" text-[12px] text-red-400 " > {{ this.error }} </p>
                 <button @click="login"
                     class="w-[247px] h-[41px] rounded-[10px] bg-custom-gradient font-[500] text-white text-[20px] shadow-form ">Log
                     in</button>
@@ -29,7 +30,8 @@
 
 
 
-            <button @click="logingoogle" class=" w-[35px] h-[35px] rounded-full bg-[#EDEDED] shadow-filter flex items-center justify-center  ">
+            <button @click="logingoogle"
+                class=" w-[35px] h-[35px] rounded-full bg-[#EDEDED] shadow-filter flex items-center justify-center  ">
                 <svg width="29" height="18" viewBox="0 0 29 29" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <path
                         d="M14.7012 12.1293V17.6075H22.3141C21.9798 19.3693 20.9766 20.8611 19.4721 21.8641L24.0629 25.4263C26.7377 22.9573 28.2809 19.3308 28.2809 15.0228C28.2809 14.0198 28.1909 13.0552 28.0237 12.1294L14.7012 12.1293Z"
@@ -77,14 +79,22 @@ export default {
             email: '',
             password: '',
             auth: authStore(),
+            error: null,
         }
     },
     methods: {
         login() {
-            this.auth.login(this.email, this.password)
+            const isValidEmail = email => /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+            const isValidPassword = password => password.trim().length > 6;
+            if (isValidEmail(this.email) && isValidPassword(this.password)) {
+                this.auth.login(this.email, this.password)
+            } else {
+                this.error = 'invalid email or password'
+            }
         },
-        logingoogle(){
-            window.location.href = 'http://localhost:5000/api/auth/google';        }
+        logingoogle() {
+            window.location.href = 'http://localhost:5000/api/auth/google';
+        }
     }
 }
 </script>

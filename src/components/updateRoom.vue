@@ -5,11 +5,15 @@
             class="sm:h-full sm:w-[48%] h-[60px] w-full bg-white shadow-custom rounded-[15px] flex items-center justify-center  ">
             <input v-model="roomType" type="text" placeholder="Rooms type"
                 class=" text-gray-500 outline-none w-full px-2 ">
+                <span v-if="errors.roomType" class="text-red-500 text-xs">{{ errors.roomType }}</span>
+
         </div>
         <div
             class="sm:h-full sm:w-[48%] h-[60px] w-full bg-white shadow-custom rounded-[15px] flex items-center justify-center  ">
             <input v-model="price" type="text" placeholder="Rooms price"
                 class=" text-gray-500 outline-none  w-full px-2 ">
+                <span v-if="errors.price" class="text-red-500 text-xs">{{ errors.price }}</span>
+
         </div>
 
 
@@ -21,8 +25,10 @@
                 <line y1="12.5" x2="25" y2="12.5" stroke="#3A7988" stroke-width="5" />
             </svg>
             <img :src="imagess[0]" v-else class=" inset-0 w-full h-full object-cover rounded-[10px]" />
-            <input type="file" :id="`file-input-${index}`" accept="image/*" class="hidden"
+            <input type="file" :id="`file-inputt-${index}`" accept="image/*" class="hidden"
                 @change="handleFileChange($event, index)" />
+                <span v-if="errors.image" class="text-red-500 text-xs">{{ errors.image }}</span>
+
         </div>
 
 
@@ -78,13 +84,18 @@ export default {
             images: [],
             roomType: '',
             price: '',
-            toggleDelete:false
+            toggleDelete:false,
+            errors: {
+                roomType: '',
+                price: '',
+                image: ''
+            }
 
         }
     },
     methods: {
         triggerFileInput(index) {
-            const input = document.getElementById(`file-input-${index}`);
+            const input = document.getElementById(`file-inputt-${index}`);
             input.click();
         },
         toggleDeleteAction(){
@@ -109,13 +120,37 @@ export default {
             }
         },
         updateRoom() {
+
+            this.errors = {
+                roomType: '',
+                price: '',
+                image: '',
+                
+            };
+
+            // Validate roomType, price, and image
+            if (!this.roomType) {
+                this.errors.roomType = "Room type is required.";
+            }
+
+            if (!this.price || isNaN(this.price)) {
+                this.errors.price = "Price is required and must be a number.";
+            }
+
+           
+
+            // If there are validation errors, don't proceed
+            if (this.errors.roomType || this.errors.price || this.errors.image) {
+                return;
+            }
             this.hotel.updateRoom(this.id, this.roomType, this.price, this.images, this.room._id)
         }
 
     },
     props: {
         id: String,
-        room: Object
+        room: Object,
+        index:String
     },
     mounted() {
         this.roomType = this.room.roomType

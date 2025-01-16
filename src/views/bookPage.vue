@@ -1,69 +1,74 @@
 <template>
-    <div class=" w-full   md:px-[65px] px-[30px] pt-[51px] text-white  ">
-        <h1 class=" text-[#4796A9] text-[22px] font-[500] mt-[20px] ">Book now !</h1>
-        <div class=" flex flex-col gap-[22px] mt-[22px] ">
-            <div>
-                <label for="name" class="block text-[#4796A9] mb-1 text-[14px] font-[500] ">Full name</label>
-                <input type="text" id="name"
-                    class="  border-[1px] border-[#3A7988] border-opacity-20 w-full text-[14px] text-[#1e4e5a] pl-4 bg-[#4796A9] bg-opacity-5 h-[40px] outline-none rounded-[15px] " />
-            </div>
-            <div>
-                <label for="phone" class="block text-[#4796A9] mb-1 text-[14px] font-[500]">Email</label>
-                <input type="tel" id="phone"
-                    class=" border-[1px] border-[#3A7988] border-opacity-20 w-full text-[14px] text-[#1e4e5a] pl-4 bg-[#4796A9] bg-opacity-5 h-[40px] outline-none rounded-[15px] " />
-            </div>
-            <div>
-                <label for="room" class="block text-[#4796A9] mb-1 text-[14px] font-[500]">Phone number</label>
-                <input type="text" id="room"
-                    class=" border-[1px] border-[#3A7988] border-opacity-20 w-full text-[14px] text-[#1e4e5a] h-[40px] pl-4 bg-[#4796A9] bg-opacity-5 outline-none rounded-[15px] " />
-            </div>
-            <div>
-                <label for="Number of guests" class="block text-[#4796A9] mb-1 text-[14px] font-[500]">Number of guests</label>
-                <input type="text" id="Number of guests"
-                    class=" border-[1px] border-[#3A7988] border-opacity-20 w-full text-[14px] text-[#1e4e5a] h-[40px] pl-4 bg-[#4796A9] bg-opacity-5 outline-none rounded-[15px] " />
-            </div>
+    <div class="w-full md:px-[65px] px-[30px] pt-[51px] text-white">
+        <h1 class="text-[#4796A9] text-[22px] font-[500] mt-[20px]">Book now!</h1>
+        <div class="flex flex-col gap-[22px] mt-[22px]">
 
-
-            <div class="flex gap-10 ">
-                <div class=" flex flex-col w-1/2 ">
-                    <span class="text-[#4796A9] mb-1 text-[14px] font-[500] "> check in </span>
-                    <VueDatePicker :enable-time-picker="false"  v-model="startDate" />
+            <!-- Check In / Check Out -->
+            <div class="flex gap-10">
+                <div class="flex flex-col w-1/2">
+                    <span class="text-[#4796A9] mb-1 text-[14px] font-[500]">Check in</span>
+                    <VueDatePicker :enable-time-picker="false" v-model="startDate" />
+                    <p v-if="errors.startDate" class="text-red-500 text-xs mt-1">{{ errors.startDate }}</p>
                 </div>
-                <div class=" flex flex-col w-1/2 ">
-                    <span class="text-[#4796A9] mb-1 text-[14px] font-[500] "> check out </span>
-                    <VueDatePicker :enable-time-picker="false"  v-model="endDate" />
+                <div class="flex flex-col w-1/2">
+                    <span class="text-[#4796A9] mb-1 text-[14px] font-[500]">Check out</span>
+                    <VueDatePicker :enable-time-picker="false" v-model="endDate" />
+                    <p v-if="errors.endDate" class="text-red-500 text-xs mt-1">{{ errors.endDate }}</p>
                 </div>
             </div>
 
+            <!-- Booking Button -->
+            <div class="w-full flex justify-end">
+                <button @click="makeBook" class="hover:scale-110 active:scale-100 duration-200 ease-in-out w-[172px] h-[55px] rounded-[20px] bg-custom-gradient">
+                    Book now
+                </button>
+            </div>
 
-
-            <div class=" w-full flex justify-end " > <button @click="makeBook" class=" hover:scale-110 active:scale-100 duration-200 ease-in-out  w-[172px] h-[55px] rounded-[20px] bg-custom-gradient  " >Book now</button> </div>
         </div>
     </div>
-
 </template>
+
 <script>
 import { bookStore } from '../stores/bookStore';
 import { useRoute } from 'vue-router';
+
 export default {
-data(){
-    return {
-        book:bookStore(),
-        route:useRoute(),
-        hotelId:'',
-        RoomId:'',
-        endDate:null,
-        startDate:null
+    data() {
+        return {
+            book: bookStore(),
+            route: useRoute(),
+            hotelId: '',
+            RoomId: '',
+            endDate: null,
+            startDate: null,
+            errors: {} // To store validation errors
+        };
+    },
+    methods: {
+        makeBook() {
+            // Reset errors
+            this.errors = {};
+
+            // Validation for required dates
+            if (!this.startDate) {
+                this.errors.startDate = "Check-in date is required.";
+            }
+            if (!this.endDate) {
+                this.errors.endDate = "Check-out date is required.";
+            }
+
+            // If there are validation errors, stop the booking process
+            if (Object.keys(this.errors).length > 0) {
+                return;
+            }
+
+            // Proceed with booking
+            this.book.makeBook(this.hotelId, this.RoomId, this.startDate, this.endDate);
+        }
+    },
+    mounted() {
+        this.hotelId = this.route.params.id;
+        this.RoomId = this.route.params.RoomId;
     }
-},
-methods:{
-makeBook(){
-    this.book.makeBook( this.hotelId , this.RoomId , this.startDate , this.endDate )
-}
-},
-mounted(){
-    this.hotelId =  this.route.params.id
-   this.RoomId =  this.route.params.RoomId
-}
-}
+};
 </script>
