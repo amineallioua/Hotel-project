@@ -2,6 +2,8 @@ import { defineStore } from "pinia";
 import { io } from "socket.io-client";
 import { authStore } from "./authStore";
 import axios from "../services/axios";
+import router from "../router/router";
+
 
 
 export const chatStore = defineStore("chat", {
@@ -28,6 +30,20 @@ export const chatStore = defineStore("chat", {
         this.isConnected = true;
         console.log("Connected to the socket server.");
       });
+
+      this.socket.on("blockEvent" , async ()=>{
+       
+           localStorage.clear();
+       await router.push("/explore");
+        window.location.reload();
+      } )
+
+
+      this.socket.on("newNotify" , async ()=>{
+       
+    console.log(" new notification ")
+   } )
+
 
       this.socket.on("newMessage" , (message)=>{
         this.messages = [...this.messages, message];
