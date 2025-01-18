@@ -3,6 +3,8 @@ import { io } from "socket.io-client";
 import { authStore } from "./authStore";
 import axios from "../services/axios";
 import router from "../router/router";
+import { notify } from '@kyvg/vue3-notification'; 
+
 
 
 
@@ -39,8 +41,11 @@ export const chatStore = defineStore("chat", {
       } )
 
 
-      this.socket.on("newNotify" , async ()=>{
-       
+      this.socket.on("newNotify" , async (username , hotelName)=>{
+        notify({
+          title: `new book `, // Optional: Include the status code in the title
+          text:  'you have new customer ' + username  + ' check hotel ' + hotelName  , // Display the server-provided message
+      });
     console.log(" new notification ")
    } )
 

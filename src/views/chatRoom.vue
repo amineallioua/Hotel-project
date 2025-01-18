@@ -69,7 +69,6 @@ export default {
         message
     },
   async  mounted() {
-        this.chat.connectSocket()
      await   this.chat.getChats()
     }
 }

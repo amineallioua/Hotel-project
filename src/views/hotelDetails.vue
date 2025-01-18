@@ -16,6 +16,15 @@
                             class=" flex justify-center items-center w-[50px] h-[25px] rounded-[20px] bg-white active:bg-white text-[#4796A9] active:text-[#4796A9] hover:text-white hover:bg-[#4796A9] duration-200 ease-in-out hover:scale-105 active:scale-100 font-[400] text-[14px] ">
                             map <a :href="hotelObject.map"></a> </button>
 
+                            
+                            <button @click="addtoVaf" v-if=" !this.auth.User.favoriteHotels.includes(this.hotelObject._id) "
+                            class=" flex justify-center items-center p-2 rounded-[20px] bg-white active:bg-white text-[#4796A9] active:text-[#4796A9] hover:text-white hover:bg-[#4796A9] duration-200 ease-in-out hover:scale-105 active:scale-100 font-[400] text-[14px] ">
+                            add to favorite  </button>
+                            <button @click="removeVaf" v-if=" this.auth.User.favoriteHotels.includes(this.hotelObject._id) "
+                            class=" flex justify-center items-center p-2 rounded-[20px] bg-white active:bg-white text-[#4796A9] active:text-[#4796A9] hover:text-white hover:bg-[#4796A9] duration-200 ease-in-out hover:scale-105 active:scale-100 font-[400] text-[14px] ">
+                            remove favorite  </button>
+                            
+
                     </div>
                     <button v-if="auth.User.role == 'owner'" @click="gotoUpdate"
                         class=" bg-white bg-opacity-50 w-[73px] rounded-[20px] h-[34px] text-[15px] font-[500] text-[#4796A9] hover:scale-105 hover:bg-opacity-100 active:bg-opacity-50 active:scale-100 ">Edit</button>
@@ -303,12 +312,20 @@ export default {
         },
         createRoom(){
             this.chat.createRoom( this.auth.User._id , this.hotelObject.ownerId )
+        },
+        addtoVaf(){
+            this.auth.addVaf( this.hotelObject._id )
+        },
+        removeVaf(){
+            const index = this.auth.User.favoriteHotels.indexOf(this.hotelObject._id)
+            this.auth.removeVaf( index )
         }
     },
     async mounted() {
         this.hotelObject = await this.hotel.getHotelbyId(this.route.params.id)
         this.totalReviews = this.hotelObject.totalReviews
        this.myBooks = await this.book.getbooks(this.hotelObject._id)
+
     }
 }
 </script>

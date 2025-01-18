@@ -11,10 +11,20 @@
 <script>
 import navbar from './components/navbar.vue'
 import activeAccount from './components/activeAccount.vue';
+import { chatStore } from './stores/chatStore';
 export default {
     components:{
         navbar,
         activeAccount
+    },
+    data(){
+      return {
+        chat:chatStore()
+      }
+    },
+    mounted(){
+      this.chat.connectSocket()
+
     }
 }
 </script>

@@ -91,6 +91,27 @@ export const authStore = defineStore("user", {
       }
     },
     
+    async addVaf(hotelId){
+      try {
+        const response = await axios.put(`user/add/hotel/${hotelId}` , {});
+        const result = response.data;
+        this.User = result.user
+      } catch (error) {
+        console.log(error);
+      }
+    },
+
+    async removeVaf(index){
+      try {
+        const response = await axios.put(`user/delete/hotel/` , {index});
+        const result = response.data;
+        console.log(result.user);
+        this.User = result.user
+      } catch (error) {
+        console.log(error);
+      }
+    },
+
 
     async forget(email) {
       try {
