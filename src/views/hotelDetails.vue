@@ -17,16 +17,16 @@
                             map <a :href="hotelObject.map"></a> </button>
 
                             
-                            <button @click="addtoVaf" v-if=" !this.auth.User.favoriteHotels.includes(this.hotelObject._id) "
+                            <button @click="addtoVaf" v-if=" !this.auth.User.favoriteHotels.includes(this.hotelObject._id) && this.auth.User.role == 'customer' "
                             class=" flex justify-center items-center p-2 rounded-[20px] bg-white active:bg-white text-[#4796A9] active:text-[#4796A9] hover:text-white hover:bg-[#4796A9] duration-200 ease-in-out hover:scale-105 active:scale-100 font-[400] text-[14px] ">
                             add to favorite  </button>
-                            <button @click="removeVaf" v-if=" this.auth.User.favoriteHotels.includes(this.hotelObject._id) "
+                            <button @click="removeVaf" v-if=" this.auth.User.favoriteHotels.includes(this.hotelObject._id) && this.auth.User.role == 'customer' "
                             class=" flex justify-center items-center p-2 rounded-[20px] bg-white active:bg-white text-[#4796A9] active:text-[#4796A9] hover:text-white hover:bg-[#4796A9] duration-200 ease-in-out hover:scale-105 active:scale-100 font-[400] text-[14px] ">
                             remove favorite  </button>
                             
 
                     </div>
-                    <button v-if="auth.User.role == 'owner'" @click="gotoUpdate"
+                    <button v-if="this.auth.User.role == 'owner' && this.auth.User._id == this.hotelObject.ownerId || this.auth.User.userId == this.hotelObject.ownerId  " @click="gotoUpdate"
                         class=" bg-white bg-opacity-50 w-[73px] rounded-[20px] h-[34px] text-[15px] font-[500] text-[#4796A9] hover:scale-105 hover:bg-opacity-100 active:bg-opacity-50 active:scale-100 ">Edit</button>
                         <button v-if="auth.User.role == 'customer'" @click="createRoom"
                         class=" bg-white bg-opacity-50 p-2 rounded-[20px] text-[15px] font-[500] text-[#4796A9] hover:scale-105 hover:bg-opacity-100 active:bg-opacity-50 active:scale-100 ">ask manager</button>
@@ -57,7 +57,7 @@
 
                     <div class=" flex flex-col justify-end  md:h-full h-fit ">
 
-                        <button @click="toBook(null)"
+                        <button v-if="this.auth.User.role == 'customer'" @click="toBook(null)"
                             class=" hover:scale-110 active:scale-100 duration-200 ease-in-out w-[110px] h-[40px] bg-white rounded-[15px] opacity-90 font-[500] text-[18px] text-[#4796A9] hover:text-white hover:bg-[#4796A9] ">Book
                             any</button>
                     </div>
@@ -116,8 +116,8 @@
 
 
         </div>
-        <h3 class=" text-[22px] text-[#4796A9] font-[500] mt-[50px] ">Requests</h3>
-        <div class="  h-[280px] overflow-scroll ">
+        <h3 v-if="this.auth.User.role == 'owner' && this.auth.User._id == this.hotelObject.ownerId || this.auth.User.userId == this.hotelObject.ownerId  " class=" text-[22px] text-[#4796A9] font-[500] mt-[50px] ">Requests</h3>
+        <div v-if="this.auth.User.role == 'owner' && this.auth.User._id == this.hotelObject.ownerId || this.auth.User.userId == this.hotelObject.ownerId  " class="  h-[280px] overflow-scroll ">
             <div class="flex flex-col gap-2  ">
                 <div v-for="(book, index) in myBooks.books" :key="index"
                     class=" flex justify-between items-center px-5 text-[#4796A9] w-full h-[40px] bg-[#4796A9] bg-opacity-10 rounded-[10px] ">
@@ -324,8 +324,9 @@ export default {
     async mounted() {
         this.hotelObject = await this.hotel.getHotelbyId(this.route.params.id)
         this.totalReviews = this.hotelObject.totalReviews
+        if(this.auth.User.role == 'owner'){
        this.myBooks = await this.book.getbooks(this.hotelObject._id)
-
+    }
     }
 }
 </script>

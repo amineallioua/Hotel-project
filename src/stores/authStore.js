@@ -74,9 +74,9 @@ export const authStore = defineStore("user", {
         if (name) {
           formData.append('name', name); // Append the name
         }
-    
+        const id = this.User._id ? this.User._id : this.User.id
         // Send the FormData object in the request
-        const response = await axios.put(`user/${this.User._id}`, formData, {
+        const response = await axios.put(`user/${id}`, formData, {
           headers: {
             'Content-Type': 'multipart/form-data', // Set the Content-Type
           },

@@ -24,7 +24,9 @@ export const chatStore = defineStore("chat", {
         console.warn("Already connected to the socket server.");
         return;
       }
+      if(this.auth.User){
       const userId = this.auth.User._id || this.auth.User.userId;
+      
       this.socket = io("http://localhost:5000" , {query:{ userId }});
 
       // Listen for connection events
@@ -55,11 +57,17 @@ export const chatStore = defineStore("chat", {
         console.log(message)
       } )
 
+      this.socket.on("newChat" , (newChatRoom)=>{
+        this.messages = [...this.chats, newChatRoom];
+        console.log(message)
+      } )
+
       // Listen for disconnection events
       this.socket.on("disconnect", () => {
         this.isConnected = false;
         console.log("Disconnected from the socket server.");
       });
+    }
 
     },
 

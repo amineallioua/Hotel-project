@@ -61,6 +61,7 @@
    mounted(){
     this.token = this.route.params.token
     this.token = this.token.replace(/:/g, '');
+    console.log(this.token , "kjnkjnkjnkjkjn")
 
    }
    }
