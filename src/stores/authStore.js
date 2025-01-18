@@ -60,6 +60,38 @@ export const authStore = defineStore("user", {
         console.log(error);
       }
     },
+    async updateProfile(imagee, phone, name) {
+      try {
+        const formData = new FormData(); // Create a FormData instance
+    
+        // Append fields to the FormData object
+        if (imagee && imagee[0]) {
+          formData.append('image', imagee[0]); // Append the image file
+        }
+        if (phone) {
+          formData.append('phone', phone); // Append the phone
+        }
+        if (name) {
+          formData.append('name', name); // Append the name
+        }
+    
+        // Send the FormData object in the request
+        const response = await axios.put(`user/${this.User._id}`, formData, {
+          headers: {
+            'Content-Type': 'multipart/form-data', // Set the Content-Type
+          },
+        });
+    
+        const result = response.data;
+        const user = result.user;
+        console.log(user);
+        this.User = user; // Update the local User data
+      } catch (error) {
+        console.log(error);
+      }
+    },
+    
+
     async forget(email) {
       try {
         const response = await axios.post("auth/forgot-password", { email });

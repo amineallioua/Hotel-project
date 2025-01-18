@@ -4,12 +4,20 @@
             <div
                 class=" relative md:w-[70%] w-full md:h-[260px] bg-[#CEE1E5] bg-opacity-5 md:px-[36px] px-[10px] p-[10px] shadow-custom rounded-[20px] ">
                 <p class=" absolute text-[#4796A9] font-[400] text-[10px] md:bottom-5 bottom-1 right-5 "> X Send message
-                </p>
+                </p> 
                 <h1 class=" font-[500] text-[22px] text-[#4796A9] mb-6 ">Profile</h1>
                 <div class="  flex md:flex-row flex-col  gap-8 ">
-                    <div class=" min-w-[147px] max-w-[147px] h-[147px] bg-black rounded-[20px] overflow-hidden ">
-                        <img src="../assets/personal.jpeg" class=" w-full h-full object-cover " alt="">
+                   
+                   
+                   
+                    <div  class=" min-w-[147px] max-w-[147px] h-[147px] bg-black rounded-[20px] overflow-hidden ">
+                        <img :src="`http://localhost:5000/${this.auth.User.image}`" class=" w-full h-full object-cover " alt="">
+                        
                     </div>
+
+
+
+
                     <div class="w-full flex flex-col gap-5 lg:pr-10 ">
                         <div class=" flex justify-between h-[20px]   ">
                             <h1 class=" font-[500] text-[18px] text-[#4796A9] ">{{auth.User.name}}</h1>
