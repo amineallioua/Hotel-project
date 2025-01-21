@@ -1,5 +1,5 @@
 <template>
-    <div class=" w-full h-[51px] bg-[#f7fdff]  md:px-[65px] px-5 flex justify-between items-center fixed z-10 ">
+    <div class=" w-full h-[51px] bg-[#f7fdff]  md:px-[65px] px-5 flex justify-between items-center fixed z-20 ">
         <h2 class="md:w-[194px]  w-[100px] text-[#4796A9] text-[16px] font-[500] "> <router-link to="/">
                 Booking</router-link> </h2>
         <router-link class=" p-0 m-0 h-full " to="/explore">
@@ -18,10 +18,10 @@
 
 
         <div
-            class=" md:w-[194px] w-[100px] h-full  rounded-[19px]  text-[#4796A9] font-[500]  items-center text-[12px] justify-between md:justify-end md:gap-5"
+            class=" md:w-[194px] w-[100px] h-full  rounded-[19px]  text-[#4796A9] font-[500]  items-center text-[12px] justify-end md:gap-5"
             :class="{ 'hidden' : !loggedin , 'flex' : loggedin }">
             
-            <div class=" flex items-center h-full relative  ">
+            <div class=" flex items-center h-full relative   ">
                 <profileBar :toggle="toggle" />
                 <button @click="toggleBar" >
                 <svg width="30" height="30" viewBox="0 0 40 39" fill="none" class="hover:opacity-75 active:opacity-100" xmlns="http://www.w3.org/2000/svg">

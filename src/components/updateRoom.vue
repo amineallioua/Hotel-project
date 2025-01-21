@@ -67,6 +67,14 @@
                     fill="white" />
             </svg>
         </button>
+        <button @click="toggleDeleteAction"
+                class=" md:hidden hover:scale-105 active:scale-100 flex  w-[45px]  h-[30px] rounded-[10px] bg-[#fc4848]    justify-center items-center ">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <line x1="2" y1="2" x2="22" y2="22" stroke="white" stroke-width="2" stroke-linecap="round" />
+                    <line x1="2" y1="22" x2="22" y2="2" stroke="white" stroke-width="2" stroke-linecap="round" />
+                </svg>
+
+            </button>
     </div>
     <confermDelete :toggleDelete="toggleDelete" :toggleDeleteAction="toggleDeleteAction" :id="this.id" :roomId="this.room._id" />
 </template>

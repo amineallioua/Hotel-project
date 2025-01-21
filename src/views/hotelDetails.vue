@@ -10,26 +10,32 @@
                 <div class=" flex md:flex-row flex-col  justify-between items-center ">
 
                     <div class=" flex gap-5 items-center ">
-                        <h1 class="text-[22px] font-[500] ">{{ hotelObject.name }}</h1> <span v-for="(item, index) in 2"
-                            :key="index"> <font-awesome-icon :icon="['fas', 'star']" style="color: #FFD43B;" /></span>
-                        <button
+                        <h1 class="text-[22px] font-[500] ">{{ hotelObject.name }}</h1> <star-rating
+                            :rating="hotelObject.averageRating" :show-rating="false" :read-only="true"
+                            :star-size="15" />
+                            <a :href="hotelObject.map">  <button
                             class=" flex justify-center items-center w-[50px] h-[25px] rounded-[20px] bg-white active:bg-white text-[#4796A9] active:text-[#4796A9] hover:text-white hover:bg-[#4796A9] duration-200 ease-in-out hover:scale-105 active:scale-100 font-[400] text-[14px] ">
-                            map <a :href="hotelObject.map"></a> </button>
+                            map  </button> </a>
 
-                            
-                            <button @click="addtoVaf" v-if=" !this.auth.User.favoriteHotels.includes(this.hotelObject._id) && this.auth.User.role == 'customer' "
+
+                        <button @click="addtoVaf"
+                            v-if="!this.auth.User.favoriteHotels.includes(this.hotelObject._id) && this.auth.User.role == 'customer'"
                             class=" flex justify-center items-center p-2 rounded-[20px] bg-white active:bg-white text-[#4796A9] active:text-[#4796A9] hover:text-white hover:bg-[#4796A9] duration-200 ease-in-out hover:scale-105 active:scale-100 font-[400] text-[14px] ">
-                            add to favorite  </button>
-                            <button @click="removeVaf" v-if=" this.auth.User.favoriteHotels.includes(this.hotelObject._id) && this.auth.User.role == 'customer' "
+                            add to favorite </button>
+                        <button @click="removeVaf"
+                            v-if="this.auth.User.favoriteHotels.includes(this.hotelObject._id) && this.auth.User.role == 'customer'"
                             class=" flex justify-center items-center p-2 rounded-[20px] bg-white active:bg-white text-[#4796A9] active:text-[#4796A9] hover:text-white hover:bg-[#4796A9] duration-200 ease-in-out hover:scale-105 active:scale-100 font-[400] text-[14px] ">
-                            remove favorite  </button>
-                            
+                            remove favorite </button>
+
 
                     </div>
-                    <button v-if="this.auth.User.role == 'owner' && this.auth.User._id == this.hotelObject.ownerId || this.auth.User.userId == this.hotelObject.ownerId  " @click="gotoUpdate"
+                    <button
+                        v-if="this.auth.User.role == 'owner' && this.auth.User._id == this.hotelObject.ownerId || this.auth.User.userId == this.hotelObject.ownerId"
+                        @click="gotoUpdate"
                         class=" bg-white bg-opacity-50 w-[73px] rounded-[20px] h-[34px] text-[15px] font-[500] text-[#4796A9] hover:scale-105 hover:bg-opacity-100 active:bg-opacity-50 active:scale-100 ">Edit</button>
-                        <button v-if="auth.User.role == 'customer'" @click="createRoom"
-                        class=" bg-white bg-opacity-50 p-2 rounded-[20px] text-[15px] font-[500] text-[#4796A9] hover:scale-105 hover:bg-opacity-100 active:bg-opacity-50 active:scale-100 ">ask manager</button>
+                    <button v-if="auth.User.role == 'customer'" @click="createRoom"
+                        class=" bg-white bg-opacity-50 p-2 rounded-[20px] text-[15px] font-[500] text-[#4796A9] hover:scale-105 hover:bg-opacity-100 active:bg-opacity-50 active:scale-100 ">ask
+                        manager</button>
                 </div>
 
 
@@ -116,18 +122,21 @@
 
 
         </div>
-        <h3 v-if="this.auth.User.role == 'owner' && this.auth.User._id == this.hotelObject.ownerId || this.auth.User.userId == this.hotelObject.ownerId  " class=" text-[22px] text-[#4796A9] font-[500] mt-[50px] ">Requests</h3>
-        <div v-if="this.auth.User.role == 'owner' && this.auth.User._id == this.hotelObject.ownerId || this.auth.User.userId == this.hotelObject.ownerId  " class="  h-[280px] overflow-scroll ">
+        <h3 v-if="this.auth.User.role == 'owner' && this.auth.User._id == this.hotelObject.ownerId || this.auth.User.userId == this.hotelObject.ownerId"
+            class=" text-[22px] text-[#4796A9] font-[500] mt-[50px] ">Requests</h3>
+        <div v-if="this.auth.User.role == 'owner' && this.auth.User._id == this.hotelObject.ownerId || this.auth.User.userId == this.hotelObject.ownerId"
+            class="  h-[280px] overflow-scroll ">
             <div class="flex flex-col gap-2  ">
                 <div v-for="(book, index) in myBooks.books" :key="index"
                     class=" flex justify-between items-center px-5 text-[#4796A9] w-full h-[40px] bg-[#4796A9] bg-opacity-10 rounded-[10px] ">
-                    <p class=" text-[13px] font-[500] ">{{book.user.name}}</p>
-                    <p class=" text-[11px] ">{{book.user.email}}</p>
+                    <p class=" text-[13px] font-[500] ">{{ book.user.name }}</p>
+                    <p class=" text-[11px] ">{{ book.user.email }}</p>
                     <p class=" text-[11px] ">{{ book.user.phone }}</p>
-                    <p class=" text-[11px] ">{{book.room}}</p>
-                    <p class=" text-[11px] ">{{book.endDate}}</p>
-                    <p class=" text-[11px] " 
-                    :class="{ 'text-orange-500' : book.status == 'pending' , 'text-red-500' : book.status == 'cancelled' ,'text-green-500' : book.status == 'confirmed'   }">{{book.status}}</p>
+                    <p class=" text-[11px] ">{{ book.room }}</p>
+                    <p class=" text-[11px] ">{{ book.endDate }}</p>
+                    <p class=" text-[11px] "
+                        :class="{ 'text-orange-500': book.status == 'pending', 'text-red-500': book.status == 'cancelled', 'text-green-500': book.status == 'confirmed' }">
+                        {{ book.status }}</p>
 
                     <div class=" flex gap-2 ">
                         <button @click="cancelBook(book._id)"
@@ -155,7 +164,8 @@
                         </button>
 
 
-                        <button @click="confermBook(book._id)" class=" flex justify-center items-center w-[36px] h-[27px] bg-[#4796A9] rounded-[10px] ">
+                        <button @click="confermBook(book._id)"
+                            class=" flex justify-center items-center w-[36px] h-[27px] bg-[#4796A9] rounded-[10px] ">
                             <svg width="20" height="20" viewBox="0 0 24 24" fill="none"
                                 xmlns="http://www.w3.org/2000/svg">
                                 <path d="M7 14L10.2331 16.4248C10.6618 16.7463 11.2677 16.6728 11.607 16.2581L20 6"
@@ -270,18 +280,18 @@ export default {
             comment: '',
             rating: "",
             auth: authStore(),
-            book:bookStore(),
-            myBooks:[],
-            chat:chatStore()
+            book: bookStore(),
+            myBooks: [],
+            chat: chatStore()
         }
     },
 
 
     methods: {
-        cancelBook(id){
+        cancelBook(id) {
             this.book.cancelBook(id)
         },
-        confermBook(id){
+        confermBook(id) {
             this.book.confermBook(id)
         },
         onSwiper(swiper) {
@@ -310,23 +320,23 @@ export default {
         gotoUpdate() {
             this.router.push(`/updateHotel/${this.hotelObject._id}`)
         },
-        createRoom(){
-            this.chat.createRoom( this.auth.User._id , this.hotelObject.ownerId )
+        createRoom() {
+            this.chat.createRoom(this.auth.User._id, this.hotelObject.ownerId)
         },
-        addtoVaf(){
-            this.auth.addVaf( this.hotelObject._id )
+        addtoVaf() {
+            this.auth.addVaf(this.hotelObject._id)
         },
-        removeVaf(){
+        removeVaf() {
             const index = this.auth.User.favoriteHotels.indexOf(this.hotelObject._id)
-            this.auth.removeVaf( index )
+            this.auth.removeVaf(index)
         }
     },
     async mounted() {
         this.hotelObject = await this.hotel.getHotelbyId(this.route.params.id)
-        this.totalReviews = this.hotelObject.totalReviews
-        if(this.auth.User.role == 'owner'){
-       this.myBooks = await this.book.getbooks(this.hotelObject._id)
-    }
+        console.log(this.hotelObject)
+        if (this.auth.User.role == 'owner') {
+            this.myBooks = await this.book.getbooks(this.hotelObject._id)
+        }
     }
 }
 </script>

@@ -3,8 +3,11 @@
     <div class=" w-full h-full relative justify-between  px-[50px] pt-[51px] flex  ">
         <div
             class="  overflow-scroll px-1 py-4 min-w-[20%] h-[86%] bg-[#FDFDFD] border-[1px] border-[#CDE2E7] mt-[51px] rounded-[29px] ">
-            <div class="flex flex-col gap-2" > <button @click="selectroom(room._id , room)" class=" h-[38px] w-full rounded-[13px]  bg-[#4796A9] bg-opacity-10 " v-for="(room, index) in  this.chat.chats.chats "
-                    :key="index"> {{ room._id }} </button>
+            <div class="flex flex-col gap-2" > <button v-if="this.auth.User.role == 'owner'" @click="selectroom(room._id , room)" class=" h-[38px] w-full rounded-[13px]  bg-[#4796A9] bg-opacity-10 " v-for="(room, index) in  this.chat.chats.chats "
+                    :key="index"> {{ room.customerName	 }} </button>
+                    <button v-else @click="selectroom(room._id , room)" class=" h-[38px] w-full rounded-[13px]  bg-[#4796A9] bg-opacity-10 " v-for="(room, index) in  this.chat.chats.chats "
+                    > {{ room.ownerName		 }} </button>
+
             </div>
         </div>
 
@@ -47,12 +50,13 @@
 <script>
 import { chatStore } from '../stores/chatStore';
 import message from '../components/message.vue';
-
+import { authStore } from '../stores/authStore';
 export default {
     data() {
         return {
             chat: chatStore(),
             messageText:'',
+            auth:authStore()
         }
     },
     methods:{

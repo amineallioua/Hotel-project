@@ -19,7 +19,7 @@
                 </svg>
             </button>
             <div class=" w-full flex justify-center " >
-                <button
+                <button @click="search"
                 class=" hover:scale-105 active:scale-100 md:hidden  w-[80px]  h-[40px] rounded-[19px] bg-custom-gradient   flex justify-center items-center ">
                 <svg width="44" height="25" viewBox="0 0 56 44" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <path

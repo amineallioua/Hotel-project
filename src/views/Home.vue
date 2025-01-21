@@ -116,10 +116,15 @@ export default {
             logged:authStore().User , 
             route:useRoute() ,
             user:{
-                userId:'',
+                _id:'',
             email:'',
             name:'',
             verify:'',
+            role:'',
+            phone:'',
+            image:'',
+            favoriteHotels :[] 
+
             },
             
             token:'',
@@ -136,16 +141,18 @@ export default {
             if(Object.keys(this.$route.query).length > 0) {
             this.user.name = this.route.query.name
             this.user.email = this.route.query.email
-            this.user.userId = this.route.query.userId
+            this.user._id = this.route.query.userId
             this.user.verify = this.route.query.verify
             this.user.role = this.route.query.role
             this.user.phone = this.route.query.phone
+            this.user.image = this.route.query.image
+            this.user.favoriteHotels = this.route.query.favoriteHotels.split(',');
             this.token = this.route.query.token
 
                 this.auth.User = this.user
                 this.auth.token = this.token
                 
-            console.log( 'user:' , this.auth.User , 'token:' , this.auth.token )
+            console.log( 'user:' , this.auth.User , 'token:' , this.user )
         }
       
 

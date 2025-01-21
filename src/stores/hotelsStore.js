@@ -82,7 +82,7 @@ export const hotelStore = defineStore("hotel", {
           `hotel/search/?name=${this.name}&location=${this.location}&hotelRating=${this.rating} `
         );
         const result = response.data;
-        this.searched = result;
+        result.length == 0 ? this.searched[0] = 'no items found' : this.searched = result;  
         router.push("/search");
       } catch (error) {
         console.log(error);

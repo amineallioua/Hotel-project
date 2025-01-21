@@ -11,7 +11,7 @@
                         <p class=" font-[400] text-[10px] text-[#3A7988] m-0">user contry</p>
                     </div>
                 </div>
-                <h2 class="font-[400]  text-[#3A7988]" > <span v-for="(item, index) in comment.rating" :key="index" >X</span></h2>
+                <h2 class="font-[400]  text-[#3A7988]" >  <star-rating :rating="comment.rating" :show-rating="false" :read-only="true" :star-size="15" /></h2>
                 <p class=" font-[400] text-[10px] text-[#3A7988] " v-if="this.comment" >
                             {{ comment.comment }}       </p>
 
@@ -19,12 +19,17 @@
 
 </template>
 <script>
+import StarRating from 'vue-star-rating';
 export default {
     props: {
     comment: {
       type: Object, 
     },
+  
   },
+  components:{
+      StarRating
+    }
 
 
 

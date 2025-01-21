@@ -1,6 +1,6 @@
 <template>
 
-    <div class=" w-full   mt-5 bg-[#e2e2e280]  md:p-[25px] p-[10px] rounded-[20px] flex flex-col gap-3  ">
+    <div  class=" w-full   mt-5 bg-[#e2e2e280]  md:p-[25px] p-[10px] rounded-[20px] flex flex-col gap-3  ">
         <div class=" w-full    flex flex-col gap-2 ">
             <div class=" flex justify-between items-center ">
                 <div class=" flex items-center gap-3 ">
@@ -10,7 +10,7 @@
                         <p class=" font-[400] text-[10px] text-[#3A7988] m-0">{{ hotel.location }}</p>
                     </div>
                 </div>
-                <div  > <span v-if="hotel.averageRating == 0 " > XXX</span> <span v-else >BBB</span> </div>
+                <div  > <star-rating :rating="hotel.averageRating" :show-rating="false" :read-only="true" :star-size="15" /></div>
             </div>
             <p class=" ml-8 md:text-[12px] text-[10px] font-[400] text-[#729FAA] ">
               {{ hotel.description }}
@@ -33,6 +33,13 @@
     </div>
 
 
+
+
+
+
+
+
+   
 
     <div
         class="  w-full h-[60px] bg-[#e2e2e280] rounded-[20px] mt-3 md:px-[25px] px-[10px] py-3  flex items-center justify-between gap-3 ">
@@ -65,7 +72,8 @@
                     <p class=" font-[400] text-[10px] text-[#4796A9] leading-none ">user contry</p>
                 </div>
             </div>
-            <div> <span v-for="(item) in comment.rating"  >X</span>  </div>
+            <div> 
+                <star-rating :rating="comment.rating" :show-rating="false" :read-only="true" :star-size="15"  /> </div>
             </div>
             <div class=" w-full text-[#4796A9] md:text-[14px] text-[10px] font-[400] ">
               {{ comment.comment }}

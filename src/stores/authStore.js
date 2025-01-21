@@ -74,7 +74,7 @@ export const authStore = defineStore("user", {
         if (name) {
           formData.append('name', name); // Append the name
         }
-        const id = this.User._id ? this.User._id : this.User.id
+        const id = this.User._id ? this.User._id : this.User.userId
         // Send the FormData object in the request
         const response = await axios.put(`user/${id}`, formData, {
           headers: {

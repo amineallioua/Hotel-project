@@ -7,7 +7,7 @@
 
 
         <div class=" flex flex-col justify-between md:gap-3 gap-1 w-[90%] bg-[#e2e2e280] duration-300 ease-in-out hover:bg-[#ccc8c880] ml-[100px] md:pl-[160px] pl-[40px] md:pr-[25px] pr-[10px] md:py-[25px] py-[10px] rounded-[20px] md:h-[260px] h-[200px] " >
-            <div class=" flex justify-between w-full  text-[#4796A9] font-[500] md:text-[20px] text-[16px] " > <h1>{{item.name}}</h1>  <p v-for="(item, index) in item.avrageRating" :key="index" >X</p> </div>
+            <div class=" flex justify-between w-full  text-[#4796A9] font-[500] md:text-[20px] text-[16px] " > <h1>{{item.name}}</h1>    <star-rating :rating="item.averageRating" :show-rating="false" :read-only="true" :star-size="15"  />   </div>
             <div class="text-[#4796A9] font-[400] md:text-[12px] text-[8px]">{{ item.description }}</div>
             <div class=" w-full flex justify-end  text-[#4796A9] font-[500] text-[8px]"  > see more </div>
         </div>
@@ -16,6 +16,8 @@
 </template>
 <script>
 import { useRouter } from 'vue-router';
+import StarRating from 'vue-star-rating';
+
 export default {
     data(){
         return {
@@ -30,6 +32,10 @@ export default {
 
  props:{
     item:Object
- }
+ },
+ components:{
+    StarRating,
+ },
+
 }
 </script>
