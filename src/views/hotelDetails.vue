@@ -13,17 +13,16 @@
                         <h1 class="text-[22px] font-[500] ">{{ hotelObject.name }}</h1> <star-rating
                             :rating="hotelObject.averageRating" :show-rating="false" :read-only="true"
                             :star-size="15" />
-                            <a :href="hotelObject.map">  <button
-                            class=" flex justify-center items-center w-[50px] h-[25px] rounded-[20px] bg-white active:bg-white text-[#4796A9] active:text-[#4796A9] hover:text-white hover:bg-[#4796A9] duration-200 ease-in-out hover:scale-105 active:scale-100 font-[400] text-[14px] ">
-                            map  </button> </a>
+                        <a :href="hotelObject.map"> <button
+                                class=" flex justify-center items-center w-[50px] h-[25px] rounded-[20px] bg-white active:bg-white text-[#4796A9] active:text-[#4796A9] hover:text-white hover:bg-[#4796A9] duration-200 ease-in-out hover:scale-105 active:scale-100 font-[400] text-[14px] ">
+                                map </button> </a>
 
 
-                        <button @click="addtoVaf"
-                            v-if="!this.auth.User.favoriteHotels.includes(this.hotelObject._id) && this.auth.User.role == 'customer'"
+                        <button @click="addtoVaf" v-if="!this.auth.User.favoriteHotels.map(hotel => hotel._id).includes(this.hotelObject._id) && this.auth.User.role == 'customer'"
                             class=" flex justify-center items-center p-2 rounded-[20px] bg-white active:bg-white text-[#4796A9] active:text-[#4796A9] hover:text-white hover:bg-[#4796A9] duration-200 ease-in-out hover:scale-105 active:scale-100 font-[400] text-[14px] ">
                             add to favorite </button>
                         <button @click="removeVaf"
-                            v-if="this.auth.User.favoriteHotels.includes(this.hotelObject._id) && this.auth.User.role == 'customer'"
+                            v-if="this.auth.User.favoriteHotels.map(hotel => hotel._id).includes(this.hotelObject._id) && this.auth.User.role == 'customer'"
                             class=" flex justify-center items-center p-2 rounded-[20px] bg-white active:bg-white text-[#4796A9] active:text-[#4796A9] hover:text-white hover:bg-[#4796A9] duration-200 ease-in-out hover:scale-105 active:scale-100 font-[400] text-[14px] ">
                             remove favorite </button>
 

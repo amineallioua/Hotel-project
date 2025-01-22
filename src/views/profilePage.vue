@@ -94,12 +94,12 @@
 
             <div v-else
                 class=" w-[198px] h-[198px] rounded-[20px] bg-black overflow-hidden relative hover:scale-110 active:scale-100 duration-200 ease-in-out "
-                v-for="(hotel ) in this.auth.User.favoriteHotels" @click="toDetail(hotel)">
+                v-for="(hotel ) in this.auth.User.favoriteHotels" @click="toDetail(hotel._id)">
                 <img src="../assets/cardPhoto.jpeg" class=" w-full h-full object-cover absolute " alt="">
                 <div class=" w-full h-full absolute bg-profileCard-gradient px-5 py-5 flex flex-col justify-end ">
                     <div>
                         <div class=" flex font-[500] text-[14px] text-white  gap-3 ">
-                            <h1> {{ hotel }} </h1>
+                            <h1> {{ hotel.name }} </h1>
                             <p>XXXXX</p>
                         </div>
                         <p class="font-[500] text-[7px] text-white"></p>
