@@ -50,7 +50,7 @@ export const chatStore = defineStore("chat", {
       });
     console.log(" new notification ")
    } )
-
+ 
 
       this.socket.on("newMessage" , (message)=>{
         this.messages = [...this.messages, message];
@@ -58,7 +58,7 @@ export const chatStore = defineStore("chat", {
       } )
 
       this.socket.on("newChat" , (newChatRoom)=>{
-        this.messages = [...this.chats, newChatRoom];
+        this.chats = [...this.chats, newChatRoom];
         console.log(message)
       } )
 
@@ -88,7 +88,10 @@ export const chatStore = defineStore("chat", {
       try{
         const response = await axios.post( 'chat/create' , { customer , owner  } )
         const result = response.data
-        console.log(result)
+        
+        this.currentRoom = result.Room
+        const id = this.currentRoom._id
+        router.push({ name: 'chatroom', params: { id } });
       }catch(error){
         console.log(error)
       }
@@ -138,5 +141,10 @@ export const chatStore = defineStore("chat", {
   
 
  
+  },
+  persist: {
+    key: 'chat',
+    storage: localStorage, // Default is localStorage, can also use sessionStorage
+    pick: ['currentRoom'], // Persist only this state
   },
 });

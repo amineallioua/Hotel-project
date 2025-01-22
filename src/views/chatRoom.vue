@@ -2,27 +2,48 @@
 
     <div class=" w-full h-full relative justify-between  px-[50px] pt-[51px] flex  ">
         <div
-            class="  overflow-scroll px-1 py-4 min-w-[20%] h-[86%] bg-[#FDFDFD] border-[1px] border-[#CDE2E7] mt-[51px] rounded-[29px] ">
-            <div class="flex flex-col gap-2" > <button v-if="this.auth.User.role == 'owner'" @click="selectroom(room._id , room)" class=" h-[38px] w-full rounded-[13px]  bg-[#4796A9] bg-opacity-10 " v-for="(room, index) in  this.chat.chats.chats "
-                    :key="index"> {{ room.customerName	 }} </button>
-                    <button v-else @click="selectroom(room._id , room)" class=" h-[38px] w-full rounded-[13px]  bg-[#4796A9] bg-opacity-10 " v-for="(room, index) in  this.chat.chats.chats "
-                    > {{ room.ownerName		 }} </button>
+            class="  overflow-scroll px-1 py-4 min-w-[20%] h-[86%]  border-[1px] border-[#CDE2E7] mt-[51px] rounded-[29px] ">
+            <div class="flex flex-col gap-2">
+                <button v-if="this.auth.User.role == 'owner'" @click="selectroom(room._id, room)"
+                    class=" h-[38px] w-full rounded-[13px]  bg-[#4796A9]  "
+                    :class="{ 'bg-[#4796A9] text-white ': room._id == this.route.params.id, 'bg-[#4796A9] text-[#4796A9] bg-opacity-10 ': room._id !== this.route.params.id }"
+                    v-for="(room, index) in this.chat.chats.chats " :key="index"> {{ room.customerName }} </button>
+
+
+                <button v-else @click="selectroom(room._id, room)"
+                    class=" h-[38px] w-full rounded-[13px]  bg-[#4796A9]  "
+                    :class="{ 'bg-[#4796A9] text-white ': room._id == this.route.params.id, 'bg-[#4796A9] text-[#4796A9] bg-opacity-10 ': room._id !== this.route.params.id }"
+                    v-for="(room, index) in this.chat.chats.chats "> {{ room.ownerName }} </button>
 
             </div>
         </div>
 
         <div
             class="  overflow-hidden  lg:w-[75%]  md:w-[90%]  w-[95%] left-[2%] bg-white h-[87%] top-5 mt-[51px] rounded-[28px] shadow-chatRoom border-[1px] border-[#CDE2E7] ">
-            <div class=" w-full h-[87%] mb-[3%] overflow-scroll relative bottom-0 p-3 ">
-            <div class=" w-full  " >
-                <message v-for="(message, index) in this.chat.messages" :key="index" :message="message"  />
+            <div v-if="!this.route.params.id"
+                class="w-full h-full flex justify-center items-center text-[#4796A9] text-[25px] "> no chat room
+                selected yet </div>
 
+            <div v-else class="w-full h-[87%] mb-[3%] overflow-scroll relative bottom-0 p-3" ref="messageContainer">
+                <div v-if="this.route.params.id && this.chat.messages.length == 0"
+                    class="w-full h-full flex flex-col gap-2">
+                    <!-- Skeleton loaders -->
+                    <div class="w-full h-[40px] flex justify-end">
+                        <div class="h-full w-[20%] bg-slate-400 animate-pulse rounded-[16px]"></div>
+                    </div>
+                    <div class="w-full h-[40px] flex justify-start">
+                        <div class="h-full w-[40%] bg-slate-400 animate-pulse rounded-[16px]"></div>
+                    </div>
+                </div>
+
+                <div v-else class="w-full">
+                    <message v-for="(message, index) in this.chat.messages" :key="index" :message="message" />
+                </div>
             </div>
 
-            </div>
 
 
-            <div class=" w-full h-[10%]  bottom-5 relative  flex justify-center ">
+            <div v-if="this.route.params.id" class=" w-full h-[10%]  bottom-5 relative  flex justify-center ">
                 <div class=" relative md:w-[60%]  w-[80%] "> <input v-model="messageText" type="text"
                         class=" text-[16px] text-[#4796A9] pl-3 pr-5 outline-none border-[1px] border-[#4796A94F] border-opacity-30  w-full rounded-[15px] h-full  "
                         placeholder="Type a message here">
@@ -51,30 +72,67 @@
 import { chatStore } from '../stores/chatStore';
 import message from '../components/message.vue';
 import { authStore } from '../stores/authStore';
+import { useRoute, useRouter } from 'vue-router';
 export default {
     data() {
         return {
             chat: chatStore(),
-            messageText:'',
-            auth:authStore()
+            messageText: '',
+            auth: authStore(),
+            route: useRoute(),
+            router: useRouter(),
         }
     },
-    methods:{
-        selectroom(id , room ){
-            this.chat.getmessages(id)
+    methods: {
+        selectroom(id, room) {
+            this.router.push({ name: 'chatroom', params: { id } });
             this.chat.currentRoom = room
             console.log(this.chat.currentRoom)
         },
-      async  sendMessage(){
+        async sendMessage() {
             this.chat.sendMessage(this.messageText)
-        }
+        },
+        scrollToBottom() {
+            const container = this.$refs.messageContainer;
+            if (container) {
+                container.scrollTop = container.scrollHeight;
+            }
+        },
     },
-    components:{
+    components: {
         message
     },
-  async  mounted() {
-     await   this.chat.getChats()
-    }
+    async mounted() {
+        await this.chat.getChats(),
+            this.scrollToBottom()
+
+
+    },
+    watch: {
+        // Watch for changes in the route parameter `id`
+        'route.params.id': {
+            handler(newId) {
+                if (newId) {
+                    this.chat.getmessages(newId);
+                }
+            },
+            immediate: true, // Execute immediately if `id` is already defined
+        },
+        'chat.messages': {
+            handler() {
+                setTimeout(() => {
+                    this.scrollToBottom();
+
+                }, 300);
+            },
+            deep: true,
+        },
+    },
 }
 
 </script>
+<style>
+.scrollable-container {
+    scroll-behavior: smooth;
+}
+</style>

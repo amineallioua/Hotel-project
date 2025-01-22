@@ -30,7 +30,7 @@ import updateHotel from '../views/updateHotel.vue';
     {path:'/Settings', name:'settings' , component:SettingsPage},
     {path:'/Profile' , name:'profile' , component:ProfilePage },
     {path:'/NewHotel' , name:'new' , component:NewHotel},
-    {path:'/chatRoom' ,  name:'chatroom' , component:chatRoom },
+    {path:'/chatRoom/:id?' ,  name:'chatroom' , component:chatRoom },
     {path:'/forget' , name:'forgetPassword' , component:forgetPassword ,meta: { hideNavbar: true } }, 
     {path:'/reset-password/:token', name:'reset-password' , component:resetPassword , meta: { hideNavbar: true } },
     {path:'/verify-email/:token',name:'verify-email',component:verifyEmail ,   meta: { hideNavbar: true  , hideActive:true }   },

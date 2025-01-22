@@ -21,7 +21,6 @@ export default {
         message:Object
     },
     mounted(){
-        console.log(this.message)
         this.userId = authStore().User._id ? authStore().User._id : authStore().User.userId
     }
 }
