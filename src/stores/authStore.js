@@ -84,6 +84,7 @@ export const authStore = defineStore("user", {
     
         const result = response.data;
         const user = result.user;
+        router.push('/profile')
         console.log(user);
         this.User = user; // Update the local User data
       } catch (error) {
@@ -151,6 +152,7 @@ export const authStore = defineStore("user", {
         const response = await axios.post("auth/verify-email", { token });
         const result = response.data;
         console.log(result);
+        this.User.verify = true
         return result
       } catch (error) {
         console.log(error);

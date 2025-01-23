@@ -31,10 +31,13 @@
         <div class="  w-full bg-red-100 rounded-[19px]  overflow-hidden relative ">
             <div class=" absolute bg-[#2D555F] bg-opacity-50 w-full h-full "></div>
             <div class=" pt-[51px] absolute w-full h-full  flex  flex-col justify-center items-center ">
-                <h1 class=" text-[36px] font-[500] text-white md:mb-[60px] mb-[30px] text-center "> Choose your next <span
-                        class=" text-[#4796A9] bg-white bg-opacity-90 rounded-[14px] "> destination</span> </h1>
+                <h1 class=" text-[36px] font-[500] text-white md:mb-[60px] mb-[30px] text-center "> Choose your next
+                    <span class=" text-[#4796A9] bg-white bg-opacity-90 rounded-[14px] "> destination</span>
+                </h1>
                 <searchbar />
-                <div class=" flex justify-end font-[500] text-[14px] text-white md:w-full pr-10 lg:w-[746px] mt-[60px] "> Explore more
+                <div
+                    class=" flex justify-end font-[500] text-[14px] text-white md:w-full pr-10 lg:w-[746px] mt-[60px] ">
+                    Explore more
                     hotels </div>
             </div>
             <img src="../assets/heroimg.jpeg" class=" object-cover h-full w-full " alt="">
@@ -66,7 +69,8 @@
                 <div
                     class=" w-full  bg-white rounded-[20px] shadow-custom flex flex-col items-center p-[28px] gap-[27px] ">
                     <h3 class=" font-[500] text-[28px] text-[#51747C] "> About us </h3>
-                    <p class=" font-[400] text-[#729FAA] md:text-[14px] text-[12px] ">Lorem Ipsum is simply dummy text of the printing
+                    <p class=" font-[400] text-[#729FAA] md:text-[14px] text-[12px] ">Lorem Ipsum is simply dummy text
+                        of the printing
                         and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the
                         1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen
                         book. It has survived not only five centuries, but also the leap into electronic typesetting,
@@ -81,12 +85,13 @@
 
 
     <div class=" w-full h-full bg-white  flex-col items-center justify-center gap-[77px] "
-    :class="{ 'hidden' : logged , 'flex' : !logged }">
+        :class="{ 'hidden': logged, 'flex': !logged }">
         <h1 class=" text-white font-[500] text-[28px] bg-custom-gradient text-center px-3 rounded-[12px] ">DISCOVER
             UNIQUE PLACES AND EXPERIENCES</h1>
 
 
-        <div class="relative lg:w-[688px] md:w-[600px] w-[320px] md:h-[160px] h-[110px] bg-[#2E3C40] rounded-[20px] flex  items-center  ">
+        <div
+            class="relative lg:w-[688px] md:w-[600px] w-[320px] md:h-[160px] h-[110px] bg-[#2E3C40] rounded-[20px] flex  items-center  ">
             <img src="../assets/heroimg.jpeg" class=" absolute opacity-30 w-full h-full object-cover rounded-[50px] "
                 alt="">
             <button
@@ -109,36 +114,37 @@
 import searchbar from '../components/homeSearchbar.vue'
 import hotelsCard from '../components/hotelsCard.vue'
 import { authStore } from '../stores/authStore';
-import { useRoute } from 'vue-router';
+import { useRoute , useRouter } from 'vue-router';
 export default {
-    data(){
-        return{
-            logged:authStore().User , 
-            route:useRoute() ,
-            user:{
-                _id:'',
-            email:'',
-            name:'',
-            verify:'',
-            role:'',
-            phone:'',
-            image:'',
-            favoriteHotels :[] 
+    data() {
+        return {
+            logged: authStore().User,
+            route: useRoute(),
+            user: {
+                _id: '',
+                email: '',
+                name: '',
+                verify: '',
+                role: '',
+                phone: '',
+                image: '',
+                favoriteHotels: [],
+                
 
             },
-            
-            token:'',
-            auth:authStore()
-            
+
+            token: '',
+            auth: authStore(),
+            router:useRouter()
         }
     },
     components: {
         searchbar,
         hotelsCard
     },
-    mounted(){
+    mounted() {
 
-            if(Object.keys(this.$route.query).length > 0) {
+        if (Object.keys(this.$route.query).length > 0) {
             this.user.name = this.route.query.name
             this.user.email = this.route.query.email
             this.user._id = this.route.query.userId
@@ -149,17 +155,20 @@ export default {
             this.user.favoriteHotels = this.route.query.favoriteHotels.split(',');
             this.token = this.route.query.token
 
-                this.auth.User = this.user
-                this.auth.token = this.token
-                
-            console.log( 'user:' , this.auth.User , 'token:' , this.user )
+            this.auth.User = this.user
+            this.auth.token = this.token
+            this.router.replace({ query: {} });
+            setTimeout(() => {
+                window.location.reload()
+            }, 300);
+            console.log('user:', this.auth.User, 'token:', this.user)
         }
-      
 
 
 
 
-  
+
+
     }
 }
 </script>

@@ -91,6 +91,7 @@ export default {
         },
         async sendMessage() {
             this.chat.sendMessage(this.messageText)
+            this.messageText = ''
         },
         scrollToBottom() {
             const container = this.$refs.messageContainer;

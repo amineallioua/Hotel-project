@@ -54,7 +54,7 @@
 
 
             <p class="text-[#4796A9D6] text-opacity-85 text-[10px] font-[400] ">Dont have account? <router-link
-                    to="/realsignUp"> <span class=" text-[#3A7A89] text-opacity-100 ">Sign up</span></router-link> </p>
+                    to="/signup"> <span class=" text-[#3A7A89] text-opacity-100 ">Sign up</span></router-link> </p>
         </div>
 
 

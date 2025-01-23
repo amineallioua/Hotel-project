@@ -28,6 +28,7 @@ export const hotelStore = defineStore("hotel", {
         });
         const result = response.data;
         console.log(result);
+        router.push("/profile");
       } catch (error) {
         console.log(error);
       }
@@ -54,6 +55,8 @@ export const hotelStore = defineStore("hotel", {
         });
         const result = response.data;
         console.log(result);
+        window.location.reload()
+
       } catch (error) {
         console.log(error);
       }
@@ -128,6 +131,7 @@ export const hotelStore = defineStore("hotel", {
         });
         const result = response.data;
         console.log(result);
+        window.location.reload()
       } catch (error) {
         console.log(error);
       }
@@ -149,6 +153,7 @@ export const hotelStore = defineStore("hotel", {
           },
         });
         const result = response.data;
+        window.location.reload()
         console.log(result);
       } catch (error) {
         console.log(error);
@@ -170,10 +175,12 @@ export const hotelStore = defineStore("hotel", {
       try {
         const response = await axios.delete( `hotel/${idd}/rooms/${RoomId}` )
         const result = response.data
+        window.location.reload()
         console.log(result)
         const id = router.params.id
+        
+
         console.log(id)
-        router.push(`/HotelDetails/${id} `)
 
       }catch(error){
 

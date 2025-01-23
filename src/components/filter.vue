@@ -54,6 +54,7 @@
           <star-rating  v-model:rating="rating" :star-size="15" :show-rating="false" />
         </p>
       </div>
+      <button @click="clearfilter" class=" p-2 rounded-2xl  bg-[#4796A9] text-white " > clear filter  </button>
     </div>
   </template>
   
@@ -85,6 +86,10 @@
     methods: {
       filterr() {
         this.hotel.search();
+      },
+      clearfilter(){
+        this.location = ''
+        this.rating = ''
       },
       openFilter(){
         this.filter = !this.filter 

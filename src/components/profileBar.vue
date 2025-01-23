@@ -4,7 +4,7 @@
         :class="{ 'hidden': !toggle }">
         <div class=" w-full h-full bg-[#e5ecee]   ">
              <router-link to="/profile"> <button class=" w-full h-[40px] flex items-center pl-5 text-[16px] text-[#4796A9] font-[500] hover:text-[#7eb6c4] " > Profile </button></router-link>
-           <router-link to="chatRoom"> <button class=" w-full h-[40px] flex items-center pl-5 text-[16px] text-[#4796A9] font-[500]  hover:text-[#7eb6c4] " > Chat </button></router-link>
+           <router-link to="/chatRoom"> <button class=" w-full h-[40px] flex items-center pl-5 text-[16px] text-[#4796A9] font-[500]  hover:text-[#7eb6c4] " > Chat </button></router-link>
             <button class=" w-full h-[40px] flex items-center pl-5 text-[16px] text-[#4796A9] font-[500]  hover:text-[#7eb6c4]" > Search </button>
             <button class=" w-full h-[40px] flex items-center pl-5 text-[16px] text-[#4796A9] font-[500]  hover:text-[#7eb6c4]" > Settings </button>
             <button @click="logout" class="  w-full h-[40px] flex items-center pl-5 text-[16px] text-[#DE5B5B] font-[500] hover:text-[#e68282] " > Sign out </button>
