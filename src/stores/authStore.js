@@ -60,7 +60,7 @@ export const authStore = defineStore("user", {
         console.log(error);
       }
     },
-    async updateProfile(imagee, phone, name) {
+    async updateProfile(imagee, phone, name , description) {
       try {
         const formData = new FormData(); // Create a FormData instance
     
@@ -73,6 +73,10 @@ export const authStore = defineStore("user", {
         }
         if (name) {
           formData.append('name', name); // Append the name
+        }
+
+        if (description) {
+          formData.append('description', description); // Append the name
         }
         const id = this.User._id ? this.User._id : this.User.userId
         // Send the FormData object in the request

@@ -7,16 +7,22 @@ export const hotelStore = defineStore("hotel", {
     name: "",
     location: "",
     rating: "",
+    services:[],
     searched: [],
     updateData: null,
   }),
   actions: {
-    async createHotel(name, description, location, map, images) {
+    async createHotel(name, description, location, map, images ,phone , email ,services) {
       const formata = new FormData();
       formata.append("name", name);
       formata.append("description", description);
       formata.append("location", location);
       formata.append("map", map);
+      formata.append("phone", phone);
+      formata.append("email", email);
+      for (let i = 0; i < services.length; i++) {
+        formata.append("services", services[i]);
+      }
       for (let i = 0; i < images.length; i++) {
         formata.append("images", images[i]);
       }
@@ -32,14 +38,16 @@ export const hotelStore = defineStore("hotel", {
       } catch (error) {
         console.log(error);
       }
-    },
+    }, 
 
-    async update(id, name, description, location, map, images, indexs) {
+    async update(id, name, description, location, map, images, indexs , phone , email) {
       const formata = new FormData();
       formata.append("name", name);
       formata.append("description", description);
       formata.append("location", location);
       formata.append("map", map);
+      formata.append("phone" , phone)
+      formata.append("email", email)
       if (images) {
         for (let i = 0; i < images.length; i++) {
           formata.append("images", images[i]);
@@ -81,8 +89,9 @@ export const hotelStore = defineStore("hotel", {
     },
     async search() {
       try {
+        const servicesQuery = this.services.join(',');
         const response = await axios.get(
-          `hotel/search/?name=${this.name}&location=${this.location}&hotelRating=${this.rating} `
+          `hotel/search/?name=${this.name}&location=${this.location}&hotelRating=${this.rating}&services=${servicesQuery}`
         );
         const result = response.data;
         result.length == 0 ? this.searched[0] = 'no items found' : this.searched = result;  

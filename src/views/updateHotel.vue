@@ -16,18 +16,7 @@
 
             </div>
 
-            <div class=" flex  md:flex-row flex-col gap-3 items-center w-full ">
-                <div class=" md:w-1/2 w-full ">
-                    <label for="map" class="block text-[#4796A9] mb-1 text-[14px] font-[500] ">map</label>
-                    <input type="text" id="map" v-model="map"
-                        class="  border-[1px] border-[#3A7988] border-opacity-20 w-full text-[14px] text-[#1e4e5a] pl-4 bg-[#4796A9] bg-opacity-5 h-[40px] outline-none rounded-[15px] " />
-                </div>
-                <div class=" md:w-1/2 w-full ">
-                    <label for="locaion" class="block text-[#4796A9] mb-1 text-[14px] font-[500] ">location</label>
-                    <input type="text" id="location" v-model="location"
-                        class="  border-[1px] border-[#3A7988] border-opacity-20 w-full text-[14px] text-[#1e4e5a] pl-4 bg-[#4796A9] bg-opacity-5 h-[40px] outline-none rounded-[15px] " />
-                </div>
-            </div>
+            
 
 
 
@@ -65,16 +54,10 @@
 
 
 
-                <div>
-                    <h1 class=" text-[#4796A9]  text-[14px] font-[500] ">Services and facilities</h1>
-                    <div class=" flex flex-col gap-3  w-[150px]  mt-5">
-                        <NewHotelBox v-for="(item, index) in advantages" :key="index" :item="item" />
-                    </div>
-                </div>
+          
 
 
 
-                <div class=" md:w-[1px] w-full  md:h-[300px] h-[1px] bg-[#4796A9] bg-opacity-30 "></div>
 
 
 
@@ -82,9 +65,9 @@
 
                 <div>
                     <h1 class=" text-[#4796A9] pl-5 text-[14px] font-[500] ">Contact</h1>
-                    <input type="text" id="Phone number"
+                    <input type="text" id="Phone number" v-model="phone"
                         class=" border-[1px] mt-5 border-[#3A7988] border-opacity-20 w-full text-[14px] text-[#1e4e5a] h-[40px] pl-4 bg-[#4796A9] bg-opacity-5 outline-none rounded-[15px] " />
-                    <input type="text" id="Phone number"
+                    <input type="text" id="Phone number" v-model="email"
                         class=" border-[1px] mt-2 border-[#3A7988] border-opacity-20 w-full text-[14px] text-[#1e4e5a] h-[40px] pl-4 bg-[#4796A9] bg-opacity-5 outline-none rounded-[15px] " />
                 </div>
 
@@ -121,7 +104,6 @@
     <confermDelete :toggleDelete="toggleDelete" :toggleDeleteAction="toggleDeleteAction" :id="this.route.params.id" />
 </template>
 <script>
-import NewHotelBox from '../components/newHotelBox.vue';
 import { hotelStore } from '../stores/hotelsStore';
 import { useRoute } from 'vue-router';
 import addRoom from '../components/addRoom.vue';
@@ -130,7 +112,7 @@ import confermDelete from '../components/confermDelete.vue';
 
 export default {
     components: {
-        NewHotelBox,
+        
         addRoom,
         updateRoom,
         confermDelete
@@ -144,6 +126,8 @@ export default {
             description: '',
             map: '',
             location: '',
+            phone:'',
+            email:'',
             imagess: [null ,null , null , null , null ], 
             images:[],
             modifiedIndexes: [], 
@@ -185,7 +169,7 @@ export default {
 
         createHotel(){
           
-             this.hotel.update(  this.route.params.id  , this.name , this.description , this.location , this.map , this.images , this.modifiedIndexes )
+             this.hotel.update(  this.route.params.id  , this.name , this.description , this.location , this.map , this.images , this.modifiedIndexes , this.phone , this.email )
       
             
         },
@@ -201,6 +185,8 @@ export default {
         this.location = this.hotel.updateData.location
         this.imagess = this.hotel.updateData.images.map(image => `http://localhost:5000/${image}`);
         this.Rooms = this.hotel.updateData.rooms
+        this.phone = this.hotel.updateData.phone
+        this.email = this.hotel.updateData.email
         console.log(this.Rooms)
     }
 }

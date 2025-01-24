@@ -128,7 +128,7 @@
         imagess: [],
         images: [],
         auth: authStore(),
-        description: "",
+        description: authStore().User.description ? authStore().User.description : "" ,
         name: authStore().User.name,
         phone: authStore().User.phone,
         errors: {
@@ -157,7 +157,7 @@
         }
   
         if (!hasError) {
-          this.auth.updateProfile(this.images, this.phone, this.name);
+          this.auth.updateProfile(this.images, this.phone, this.name , this.description);
         }
       },
       triggerFileInput() {

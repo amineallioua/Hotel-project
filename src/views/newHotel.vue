@@ -13,7 +13,8 @@
 
             <!-- Description Field -->
             <div>
-                <label for="Add description" class="block text-[#4796A9] mb-1 text-[14px] font-[500]">Add description</label>
+                <label for="Add description" class="block text-[#4796A9] mb-1 text-[14px] font-[500]">Add
+                    description</label>
                 <textarea v-model="description"
                     class="border-[1px] border-[#3A7988] border-opacity-20 w-full text-[14px] text-[#1e4e5a] px-4 py-3 bg-[#4796A9] bg-opacity-5 h-[150px] outline-none rounded-[15px]"
                     id="Add description"></textarea>
@@ -30,8 +31,12 @@
                 </div>
                 <div class="md:w-1/2 w-full">
                     <label for="location" class="block text-[#4796A9] mb-1 text-[14px] font-[500]">Location</label>
-                    <input type="text" id="location" v-model="location"
-                        class="border-[1px] border-[#3A7988] border-opacity-20 w-full text-[14px] text-[#1e4e5a] pl-4 bg-[#4796A9] bg-opacity-5 h-[40px] outline-none rounded-[15px]" />
+                    <div  ></div>
+                    <select name="" id=""class="border-[1px] border-[#3A7988] border-opacity-20 w-full text-[14px] text-[#1e4e5a] pl-4 bg-[#4796A9] bg-opacity-5 h-[40px] outline-none rounded-[15px]"  v-model="location">
+        <option :value="item"   class="border-[1px] border-[#3A7988] border-opacity-20 w-full text-[14px] text-[#1e4e5a] pl-4 bg-[#4796A9] bg-opacity-5 h-[40px] outline-none rounded-[15px]" v-for="(item, index) in wilayas"
+          :key="index">{{ item }}</option>
+      </select>
+                   
                     <p v-if="errors.location" class="text-red-500 text-xs mt-1">{{ errors.location }}</p>
                 </div>
             </div>
@@ -49,8 +54,7 @@
                                 <line x1="12.5" y1="1.09278e-07" x2="12.5" y2="25" stroke="#3A7988" stroke-width="5" />
                                 <line y1="12.5" x2="25" y2="12.5" stroke="#3A7988" stroke-width="5" />
                             </svg>
-                            <img v-else :src="photo"
-                                class="inset-0 w-full h-full object-cover rounded-[15px]" />
+                            <img v-else :src="photo" class="inset-0 w-full h-full object-cover rounded-[15px]" />
                             <input type="file" :id="`file-input-${index}`" accept="image/*" class="hidden"
                                 @change="handleFileChange($event, index)" />
                         </div>
@@ -64,8 +68,15 @@
                 <div>
                     <h1 class="text-[#4796A9] text-[14px] font-[500]">Services and facilities</h1>
                     <div class="flex flex-col gap-3 w-[150px] mt-5">
-                        <NewHotelBox v-for="(item, index) in advantages" :key="index" :item="item" />
+                        <div class=" flex items-center gap-2 "  v-for="(item, index) in advantages" :key="index"  >
+                            <div @click="addToServices(item)"  class="w-[13px] h-[13px] rounded-[50%] border-[1.5px] border-[#4796A9] " 
+                            :class="{ 'bg-white' : !this.services.includes(item) ,  'bg-[#4796A9]' : this.services.includes(item)   }">
+                        </div>
+                            <p class=" text-[14px] text-[#4796A9] font-[400] ">{{ item }}</p>
+                        </div>
                     </div>
+                    <p v-if="errors.services" class="text-red-500 text-xs mt-1">{{ errors.services }}</p>
+
                 </div>
 
                 <div class="md:w-[1px] w-full md:h-[300px] h-[1px] bg-[#4796A9] bg-opacity-30"></div>
@@ -73,10 +84,12 @@
                 <!-- Contact -->
                 <div>
                     <h1 class="text-[#4796A9] pl-5 text-[14px] font-[500]">Contact</h1>
-                    <input type="text" id="Phone number"
+                    <input type="text" id="Phone number" placeholder="phone" v-model="phone"
                         class="border-[1px] mt-5 border-[#3A7988] border-opacity-20 w-full text-[14px] text-[#1e4e5a] h-[40px] pl-4 bg-[#4796A9] bg-opacity-5 outline-none rounded-[15px]" />
-                    <input type="text" id="Phone number"
+                    <p v-if="errors.phone" class="text-red-500 text-xs mt-1">{{ errors.phone }}</p>
+                    <input type="text" id="Phone number" placeholder="email" v-model="email"
                         class="border-[1px] mt-2 border-[#3A7988] border-opacity-20 w-full text-[14px] text-[#1e4e5a] h-[40px] pl-4 bg-[#4796A9] bg-opacity-5 outline-none rounded-[15px]" />
+                    <p v-if="errors.email" class="text-red-500 text-xs mt-1">{{ errors.email }}</p>
                 </div>
             </div>
 
@@ -93,28 +106,44 @@
 </template>
 
 <script>
-import NewHotelBox from '../components/newHotelBox.vue';
 import { hotelStore } from '../stores/hotelsStore';
 
 export default {
-    components: {
-        NewHotelBox
-    },
+   
     data() {
         return {
-            advantages: ['Wi-Fi', 'Parking', 'Laundry services', 'Gym', 'On-site restaurant'],
+            advantages: ["Free Wi-Fi", "Parking", "Gym", "Swimming pool", "Restaurant", "Business center", "Free breakfast"],
             name: '',
             description: '',
             map: '',
             location: '',
+            phone: '',
+            email: '',
+            services:[],
             imagess: [null, null, null, null, null], // Ensure 5 images max
             images: [],
             hotel: hotelStore(),
-            errors: {} // To store validation errors
+            errors: {} ,// To store validation errors
+            wilayas: ["",
+        "Adrar", "Chlef", "Laghouat", "Oum El Bouaghi", "Batna", "Béjaïa", "Biskra", "Blida", "Bouira",
+        "Tamanrasset", "Tébessa", "Tiaret", "Tizi Ouzou", "Algiers", "Djelfa", "Jijel", "Sétif", "Saïda",
+        "Skikda", "Sidi Bel Abbès", "Annaba", "Guelma", "Constantine", "Médéa", "Mostaganem", "M'Sila", "Mascara",
+        "Ouargla", "Oran", "El Bayadh", "El Tarf", "Tindouf", "Tissemsilt", "El Oued", "Khenchela", "Souk Ahras",
+        "Tipaza", "Mila", "Aïn Defla", "Naâma", "Aïn Témouchent", "Ghardaïa", "Relizane", "El M'ghair", "El Meniaa",
+        "Mostaganem", "Chlef"
+      ],
         };
     },
 
     methods: {
+        addToServices(ittem){
+            if(this.services.includes(ittem)){
+                this.services = this.services.filter(item => item !== ittem);
+                return
+            }
+            this.services.push(ittem)
+            console.log(this.services)
+        },
         triggerFileInput(index) {
             const input = document.getElementById(`file-input-${index}`);
             input.click();
@@ -141,6 +170,9 @@ export default {
             if (!this.description) this.errors.description = "Description is required.";
             if (!this.map) this.errors.map = "Map is required.";
             if (!this.location) this.errors.location = "Location is required.";
+            if (!this.phone) this.errors.phone = "Phone is required"
+            if (!this.email) this.errors.email = "email is required"
+            if(this.services.length == 0) this.errors.services = "atleast one service must be "
             if (this.images.filter(img => img !== null).length !== 5) {
                 this.errors.images = "Exactly 5 images must be uploaded.";
             }
@@ -151,7 +183,7 @@ export default {
             }
 
             // Call hotel creation method
-            this.hotel.createHotel(this.name, this.description, this.location, this.map, this.images);
+            this.hotel.createHotel(this.name, this.description, this.location, this.map, this.images, this.phone, this.email , this.services);
             console.log(this.images);
         }
     },
