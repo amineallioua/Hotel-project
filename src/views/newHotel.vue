@@ -15,7 +15,7 @@
             <div>
                 <label for="Add description" class="block text-[#4796A9] mb-1 text-[14px] font-[500]">Add
                     description</label>
-                <textarea v-model="description"
+                <textarea v-model="description" maxlength="540 "
                     class="border-[1px] border-[#3A7988] border-opacity-20 w-full text-[14px] text-[#1e4e5a] px-4 py-3 bg-[#4796A9] bg-opacity-5 h-[150px] outline-none rounded-[15px]"
                     id="Add description"></textarea>
                 <p v-if="errors.description" class="text-red-500 text-xs mt-1">{{ errors.description }}</p>
@@ -31,12 +31,15 @@
                 </div>
                 <div class="md:w-1/2 w-full">
                     <label for="location" class="block text-[#4796A9] mb-1 text-[14px] font-[500]">Location</label>
-                    <div  ></div>
-                    <select name="" id=""class="border-[1px] border-[#3A7988] border-opacity-20 w-full text-[14px] text-[#1e4e5a] pl-4 bg-[#4796A9] bg-opacity-5 h-[40px] outline-none rounded-[15px]"  v-model="location">
-        <option :value="item"   class="border-[1px] border-[#3A7988] border-opacity-20 w-full text-[14px] text-[#1e4e5a] pl-4 bg-[#4796A9] bg-opacity-5 h-[40px] outline-none rounded-[15px]" v-for="(item, index) in wilayas"
-          :key="index">{{ item }}</option>
-      </select>
-                   
+                    <div></div>
+                    <select name="" id=""
+                        class="border-[1px] border-[#3A7988] border-opacity-20 w-full text-[14px] text-[#1e4e5a] pl-4 bg-[#4796A9] bg-opacity-5 h-[40px] outline-none rounded-[15px]"
+                        v-model="location">
+                        <option :value="item"
+                            class="border-[1px] border-[#3A7988] border-opacity-20 w-full text-[14px] text-[#1e4e5a] pl-4 bg-[#4796A9] bg-opacity-5 h-[40px] outline-none rounded-[15px]"
+                            v-for="(item, index) in wilayas" :key="index">{{ item }}</option>
+                    </select>
+
                     <p v-if="errors.location" class="text-red-500 text-xs mt-1">{{ errors.location }}</p>
                 </div>
             </div>
@@ -68,10 +71,11 @@
                 <div>
                     <h1 class="text-[#4796A9] text-[14px] font-[500]">Services and facilities</h1>
                     <div class="flex flex-col gap-3 w-[150px] mt-5">
-                        <div class=" flex items-center gap-2 "  v-for="(item, index) in advantages" :key="index"  >
-                            <div @click="addToServices(item)"  class="w-[13px] h-[13px] rounded-[50%] border-[1.5px] border-[#4796A9] " 
-                            :class="{ 'bg-white' : !this.services.includes(item) ,  'bg-[#4796A9]' : this.services.includes(item)   }">
-                        </div>
+                        <div class=" flex items-center gap-2 " v-for="(item, index) in advantages" :key="index">
+                            <div @click="addToServices(item)"
+                                class="w-[13px] h-[13px] rounded-[50%] border-[1.5px] border-[#4796A9] "
+                                :class="{ 'bg-white': !this.services.includes(item), 'bg-[#4796A9]': this.services.includes(item) }">
+                            </div>
                             <p class=" text-[14px] text-[#4796A9] font-[400] ">{{ item }}</p>
                         </div>
                     </div>
@@ -109,7 +113,7 @@
 import { hotelStore } from '../stores/hotelsStore';
 
 export default {
-   
+
     data() {
         return {
             advantages: ["Free Wi-Fi", "Parking", "Gym", "Swimming pool", "Restaurant", "Business center", "Free breakfast"],
@@ -119,30 +123,39 @@ export default {
             location: '',
             phone: '',
             email: '',
-            services:[],
+            services: [],
             imagess: [null, null, null, null, null], // Ensure 5 images max
             images: [],
             hotel: hotelStore(),
-            errors: {} ,// To store validation errors
+            errors: {},// To store validation errors
             wilayas: ["",
-        "Adrar", "Chlef", "Laghouat", "Oum El Bouaghi", "Batna", "Béjaïa", "Biskra", "Blida", "Bouira",
-        "Tamanrasset", "Tébessa", "Tiaret", "Tizi Ouzou", "Algiers", "Djelfa", "Jijel", "Sétif", "Saïda",
-        "Skikda", "Sidi Bel Abbès", "Annaba", "Guelma", "Constantine", "Médéa", "Mostaganem", "M'Sila", "Mascara",
-        "Ouargla", "Oran", "El Bayadh", "El Tarf", "Tindouf", "Tissemsilt", "El Oued", "Khenchela", "Souk Ahras",
-        "Tipaza", "Mila", "Aïn Defla", "Naâma", "Aïn Témouchent", "Ghardaïa", "Relizane", "El M'ghair", "El Meniaa",
-        "Mostaganem", "Chlef"
-      ],
+                "Adrar", "Chlef", "Laghouat", "Oum El Bouaghi", "Batna", "Béjaïa", "Biskra", "Blida", "Bouira",
+                "Tamanrasset", "Tébessa", "Tiaret", "Tizi Ouzou", "Algiers", "Djelfa", "Jijel", "Sétif", "Saïda",
+                "Skikda", "Sidi Bel Abbès", "Annaba", "Guelma", "Constantine", "Médéa", "Mostaganem", "M'Sila", "Mascara",
+                "Ouargla", "Oran", "El Bayadh", "El Tarf", "Tindouf", "Tissemsilt", "El Oued", "Khenchela", "Souk Ahras",
+                "Tipaza", "Mila", "Aïn Defla", "Naâma", "Aïn Témouchent", "Ghardaïa", "Relizane", "El M'ghair", "El Meniaa",
+                "Mostaganem", "Chlef"
+            ],
         };
     },
 
     methods: {
-        addToServices(ittem){
-            if(this.services.includes(ittem)){
+        addToServices(ittem) {
+            if (this.services.includes(ittem)) {
                 this.services = this.services.filter(item => item !== ittem);
                 return
             }
             this.services.push(ittem)
             console.log(this.services)
+        },
+        isPhoneValid() {
+            const re = /^[0-9]{10}$/;  // Adjust this based on your desired format
+            return re.test(this.phone) && this.phone.trim().length > 0;
+
+        },
+        isEmailValid() {
+            const re = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            return re.test(this.email);
         },
         triggerFileInput(index) {
             const input = document.getElementById(`file-input-${index}`);
@@ -169,23 +182,25 @@ export default {
             if (!this.name) this.errors.name = "Title is required.";
             if (!this.description) this.errors.description = "Description is required.";
             if (!this.map) this.errors.map = "Map is required.";
-            if (!this.location) this.errors.location = "Location is required.";
-            if (!this.phone) this.errors.phone = "Phone is required"
-            if (!this.email) this.errors.email = "email is required"
-            if(this.services.length == 0) this.errors.services = "atleast one service must be "
+            if (!this.location) this.errors.location = "Location is required."; 
+            if (this.services.length == 0) this.errors.services = "atleast one service must be "
             if (this.images.filter(img => img !== null).length !== 5) {
                 this.errors.images = "Exactly 5 images must be uploaded.";
             }
+            if (!this.isPhoneValid() && !this.isEmailValid() ) this.errors.phone = "invalid phone .", this.errors.email = "Invalid email address.";
 
             // If there are validation errors, stop form submission
             if (Object.keys(this.errors).length > 0) {
                 return;
             }
-
+         
             // Call hotel creation method
-            this.hotel.createHotel(this.name, this.description, this.location, this.map, this.images, this.phone, this.email , this.services);
-            console.log(this.images);
-        }
+  
+            this.hotel.createHotel(this.name, this.description, this.location, this.map, this.images, this.phone, this.email, this.services);
+            console.log(this.images)
+       
+        },
+   
     },
 };
 </script>

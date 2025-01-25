@@ -17,10 +17,10 @@
       </div>
   
       <div class="flex flex-col gap-[22px] mt-[22px]">
-        <div class="flex w-full gap-10">
+        <div class="flex md:flex-row flex-col w-full gap-10">
           <div
             @click="triggerFileInput"
-            class="overflow-hidden mt-5 min-w-[151px] h-[151px] flex justify-center items-center rounded-[20px] bg-[#3A798838] bg-opacity-20 border-[1px] border-[#3A798838]"
+            class="overflow-hidden mt-5 min-w-[151px] max-w-[151px] h-[151px] flex justify-center items-center rounded-[20px] bg-[#3A798838] bg-opacity-20 border-[1px] border-[#3A798838]"
           >
             <svg
               v-if="this.imagess[0] == null"

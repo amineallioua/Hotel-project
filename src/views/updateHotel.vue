@@ -10,7 +10,7 @@
             <div>
                 <label for="Add description" class="block text-[#4796A9] mb-1 text-[14px] font-[500]">Add
                     description</label>
-                <textarea name="" v-model="description"
+                <textarea name="" v-model="description" maxlength="540 "
                     class="border-[1px] border-[#3A7988] border-opacity-20 w-full text-[14px] text-[#1e4e5a] px-4 py-3 bg-[#4796A9] bg-opacity-5 h-[150px] outline-none rounded-[15px] "
                     id="Add description"></textarea>
 

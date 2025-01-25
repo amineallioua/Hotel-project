@@ -1,7 +1,7 @@
 <template>
     <div class=" w-full h-[51px] bg-[#f7fdff]  md:px-[65px] px-5 flex justify-between items-center fixed z-20 ">
         <h2 class="md:w-[194px]  w-[100px] text-[#4796A9] text-[16px] font-[500] "> <router-link to="/">
-                Booking</router-link> </h2>
+               <button class="   h-[41px] w-[41px] rounded-[50%] overflow-hidden " > <img src="../assets//logoo.jpg" class=" w-full h-full "  alt=""> </button></router-link> </h2>
         <router-link class=" p-0 m-0 h-full " to="/explore">
             <button
                 class=" md:w-[194px] w-[100px] h-full rounded-[7px] bg-custom-gradient hover:opacity-90 active:opacity-100 text-white text-[12px] font-[500] ">Explore

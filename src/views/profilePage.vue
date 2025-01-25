@@ -3,8 +3,7 @@
         <div class=" flex justify-between mt-5 md:flex-row flex-col md-gap-0 gap-3  ">
             <div
                 class=" relative md:w-[70%] w-full md:h-[260px] bg-[#CEE1E5] bg-opacity-5 md:px-[36px] px-[10px] p-[10px] shadow-custom rounded-[20px] ">
-                <p class=" absolute text-[#4796A9] font-[400] text-[10px] md:bottom-5 bottom-1 right-5 "> X Send message
-                </p>
+  
                 <h1 class=" font-[500] text-[22px] text-[#4796A9] mb-6 ">Profile</h1>
                 <div class="  flex md:flex-row flex-col  gap-8 ">
 
@@ -19,7 +18,7 @@
 
 
 
-                    <div class="w-full flex flex-col gap-5 lg:pr-10 ">
+                    <div class=" w-full md:max-w-[60%] lg:max-w-[80%] flex flex-col gap-5 lg:pr-10 ">
                         <div class=" flex justify-between h-[20px]   ">
                             <h1 class=" font-[500] text-[18px] text-[#4796A9] ">{{ auth.User.name }}</h1>
                             <router-link to="/settings">
@@ -29,7 +28,7 @@
                             </router-link>
                         </div>
 
-                        <p class=" text-[#729FAA] font-[400] lg:text-[10px] text-[8px] mt-1  ">{{ auth.User.description }}</p>
+                        <p class=" text-[#729FAA] font-[400] lg:text-[10px] text-[8px] mt-1 break-words  ">{{ auth.User.description }}</p>
                     </div>
                 </div>
             </div>
@@ -40,11 +39,11 @@
                         <h1>Contact information</h1>
 
                     </div>
-                    <div class=" flex justify-between ">
+                    <div class="flex md:block lg:flex justify-between ">
                         <h1 class=" font-[600] text-[16px] ">email:</h1>
                         <p>{{ auth.User.email }}</p>
                     </div>
-                    <div class=" flex justify-between ">
+                    <div class=" flex md:block lg:flex justify-between ">
                         <h1 class=" font-[600] text-[16px] ">phone:</h1>
                         <p>{{ auth.User.phone }}</p>
                     </div>

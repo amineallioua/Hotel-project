@@ -12,7 +12,7 @@
                 </div>
                 <div  > <star-rating :rating="hotel.averageRating" :show-rating="false" :read-only="true" :star-size="15" /></div>
             </div>
-            <p class=" ml-8 md:text-[12px] text-[10px] font-[400] text-[#729FAA] ">
+            <p class=" ml-3 md:text-[12px] text-[10px] font-[400] text-[#729FAA] break-words ">
               {{ hotel.description }}
             </p>
         </div>

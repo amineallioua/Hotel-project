@@ -46,11 +46,11 @@
                 <div class=" flex justify-between md:flex-row flex-col  items-between ">
 
 
-                    <div class=" md:flex gap-3 mt-6 mb-2 md:mb-0 ">
+                    <div class=" md:flex gap-3 mt-6 mb-2 md:mb-0  w-full ">
                         <div
                             class=" bg-white md:w-[70%] mb-2 md:mb-0   rounded-[20px] relative lg:p-[30px] p-[25px] opacity-85 ">
                             <p
-                                class="lg:text-[14px] sm:text-[10px] text-[8px] text-[#729FAA] font-[400] break-words  max-w-full ">
+                                class="lg:text-[14px] sm:text-[10px] text-[8px] text-[#729FAA] font-[400] break-words  max-w-1/2 ">
                                 {{ hotelObject.description }}
                             </p>
                         </div>
@@ -123,6 +123,7 @@
         </div>
         <h3 v-if="this.auth.User.role == 'owner' && this.auth.User._id == this.hotelObject.ownerId || this.auth.User.userId == this.hotelObject.ownerId"
             class=" text-[22px] text-[#4796A9] font-[500] mt-[50px] ">Requests</h3>
+            <p  v-if="this.myBooks.books.length == 0" class=" text-[15px] text-black font-[500] mt-[50px] " > there is no requests in this hotel </p>
         <div v-if="this.auth.User.role == 'owner' && this.auth.User._id == this.hotelObject.ownerId || this.auth.User.userId == this.hotelObject.ownerId"
             class="  h-[280px] overflow-scroll ">
             <div class="flex flex-col gap-2  ">
@@ -219,16 +220,19 @@
             }">
                 <swiper-slide v-for="(comment, index) in hotelObject.comments" :key="index">
                     <CommentsCard :comment="comment" />
+                    
                 </swiper-slide>
 
             </swiper>
+
         </div>
+        <div v-if="this.hotelObject.comments.length == 0" class="flex justify-center items-center text-black " > no comments </div>
 
 
 
         <div class=" flex md:flex-row flex-col items-center gap-5 mt-5 relative ">
             <div class="relative  md:w-auto w-full ">
-                <input type="text" v-model="comment"
+                <input type="text" v-model="comment"     
                     class=" border-[#ACDAE4] bg-[#F5F7F7]  text-[#4796A9] text-opacity-80 text-[12px] font-[400] pl-3 md:pr-[85px] pr-[80px] border-[2px] shadow-filter outline-none  md:w-[540px]  w-full h-[40px] rounded-[15px] "
                     placeholder="Add your comment" id="">
                 <div class=" absolute md:left-[460px] right-[10px] top-[-3px] w-auto h-[40px] flex items-center ">
