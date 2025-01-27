@@ -4,9 +4,9 @@
         <div class=" w-full    flex flex-col gap-2 ">
             <div class=" flex justify-between items-center ">
                 <div class=" flex items-center gap-3 ">
-                    <div class=" h-7 w-7 rounded-[50%] bg-[#3A7988] overflow-hidden " @click="goHotel" > <img :src="`http://localhost:5000/${hotel.images[0]}`" class=" w-full h-full  " alt=""> </div>
+                    <button class=" h-7 w-7 rounded-[50%] bg-[#3A7988] overflow-hidden " @click="goHotel" > <img :src="`http://localhost:5000/${hotel.images[0]}`" class=" w-full h-full  " alt=""> </button>
                     <div class=" flex flex-col  gap-0 ">
-                        <h1 class=" font-[500] text-[15px] text-[#3A7988] m-0 ">{{hotel.name}}</h1>
+                        <button @click="goHotel" class=" font-[500] text-[15px] text-[#3A7988] m-0 ">{{hotel.name}}</button>
                         <p class=" font-[400] text-[10px] text-[#3A7988] m-0">{{ hotel.location }}</p>
                     </div>
                 </div>

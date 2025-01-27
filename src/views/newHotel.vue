@@ -71,8 +71,8 @@
                 <div>
                     <h1 class="text-[#4796A9] text-[14px] font-[500]">Services and facilities</h1>
                     <div class="flex flex-col gap-3 w-[150px] mt-5">
-                        <div class=" flex items-center gap-2 " v-for="(item, index) in advantages" :key="index">
-                            <div @click="addToServices(item)"
+                        <div @click="addToServices(item)" class=" flex items-center gap-2 " v-for="(item, index) in advantages" :key="index">
+                            <div 
                                 class="w-[13px] h-[13px] rounded-[50%] border-[1.5px] border-[#4796A9] "
                                 :class="{ 'bg-white': !this.services.includes(item), 'bg-[#4796A9]': this.services.includes(item) }">
                             </div>
@@ -116,7 +116,7 @@ export default {
 
     data() {
         return {
-            advantages: ["Free Wi-Fi", "Parking", "Gym", "Swimming pool", "Restaurant", "Business center", "Free breakfast"],
+            advantages: ["Free Wi-Fi", "Parking",  "Swimming pool", "Restaurant",  ],
             name: '',
             description: '',
             map: '',

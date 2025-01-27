@@ -49,6 +49,7 @@ export default {
         filTer
     },
     mounted() {
+        this.hotels.search()
         console.log(this.hotels.searched)
     }
 }

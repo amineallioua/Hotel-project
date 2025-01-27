@@ -73,6 +73,9 @@
 </template>
 <script>
 import { authStore } from '../../stores/authStore';
+import { useRoute } from 'vue-router';
+import { notify } from '@kyvg/vue3-notification'; // Import a notification library like vue3-notification
+
 export default {
     data() {
         return {
@@ -80,6 +83,7 @@ export default {
             password: '',
             auth: authStore(),
             error: null,
+            route:useRoute()
         }
     },
     methods: {
@@ -95,6 +99,16 @@ export default {
         logingoogle() {
             window.location.href = 'http://localhost:5000/api/auth/google';
         }
+    },
+    mounted(){
+       if(this.route.query.cd == "eee" ){
+        notify({
+            type: 'error',
+            title: `account error `, // Optional: Include the status code in the title
+            text: 'this email already have an account ', // Display the server-provided message
+        });
+            this.route.query.cd == ""
+       } 
     }
 }
 </script>
