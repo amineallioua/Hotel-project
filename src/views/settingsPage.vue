@@ -4,15 +4,7 @@
         <h1 class="text-[#4796A9] text-[22px] font-[500]">Settings</h1>
         <div class="flex flex-col">
           <h1 class="text-[#3A7988] text-[14px] font-[500]">Notification</h1>
-          <div
-            @click="changeNotifichation"
-            class="w-[46px] h-[21px] border-[1px] border-[#4796A9] rounded-[10px] flex items-center px-[2px] relative"
-          >
-            <div
-              class="w-[15px] h-[15px] rounded-[50%] bg-custom-gradient transition-all duration-500 ease-in-out transform shadow-notifichationButton"
-              :class="NotificationOn ? 'translate-x-[25px]' : 'translate-x-0'"
-            ></div>
-          </div>
+     
         </div>
       </div>
   
@@ -138,9 +130,7 @@
       };
     },
     methods: {
-      changeNotifichation() {
-        this.NotificationOn = !this.NotificationOn;
-      },
+    
       updateProfile() {
         this.errors.name = null;
         this.errors.phone = null;

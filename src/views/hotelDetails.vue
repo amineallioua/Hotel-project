@@ -165,12 +165,12 @@
             class="  h-[280px] overflow-scroll ">
             <div class="flex flex-col gap-2  ">
                 <div v-for="(book, index) in myBooks.books" :key="index"
-                    class=" flex justify-between items-center px-5 text-[#4796A9] w-full h-[40px] bg-[#4796A9] bg-opacity-10 rounded-[10px] ">
+                    class=" flex justify-between items-center px-5 text-[#4796A9] w-[800px] md:w-full h-[40px] bg-[#4796A9] bg-opacity-10 rounded-[10px] ">
                     <p class=" text-[13px] font-[500] ">{{ book.user.name }}</p>
                     <p class=" text-[11px] ">{{ book.user.email }}</p>
                     <p class=" text-[11px] ">{{ book.user.phone }}</p>
-                    <p class=" text-[11px] ">{{ book.room }}</p>
-                    <p class=" text-[11px] ">{{ book.endDate }}</p>
+                    <p class=" text-[11px] ">{{ book.room.name }}</p>
+                    <p class=" text-[11px] "> {{ date(book.startDate)  }}    <span class=" font-[700] " >/</span>  {{ date(book.endDate)  }}</p>
                     <p class=" text-[11px] "
                         :class="{ 'text-orange-500': book.status == 'pending', 'text-red-500': book.status == 'cancelled', 'text-green-500': book.status == 'confirmed' }">
                         {{ book.status }}</p>
@@ -329,6 +329,12 @@ export default {
 
 
     methods: {
+        date(date11 , ){
+            const date1 = new Date(date11)
+                     
+                   return date1.toLocaleDateString('en-US')
+                        
+        },
         cancelBook(id) {
             this.book.cancelBook(id)
         },

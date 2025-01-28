@@ -146,6 +146,16 @@ export const hotelStore = defineStore("hotel", {
       }
     },
 
+   async getSuggestion(){
+      try{
+        const response = await axios.get('hotel/suggestion')
+        const result = response.data
+        console.log(result)
+        return result
+      }catch(error){
+        console.log(error)
+      }
+    },
 
     async updateRoom(id, roomType, price, images , roomId ) {
       const data = new FormData();

@@ -40,6 +40,7 @@ export const bookStore = defineStore( 'book', {
                 const response = await axios.put(`books/confirm `, { id })
                 const result = response.data
                 console.log(result)
+                window.location.reload()
                 return result
             }catch(error){
                 console.log(error)
@@ -50,6 +51,7 @@ export const bookStore = defineStore( 'book', {
                 const response = await axios.put(`books/cancel `, { id })
                 const result = response.data
                 console.log(result)
+                window.location.reload()
                 return result
             }catch(error){
                 console.log(error)
