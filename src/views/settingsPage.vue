@@ -2,10 +2,7 @@
     <div class="w-full md:px-[65px] px-[30px] pt-[51px] text-white pb-5">
       <div class="flex justify-between items-center mt-[20px]">
         <h1 class="text-[#4796A9] text-[22px] font-[500]">Settings</h1>
-        <div class="flex flex-col">
-          <h1 class="text-[#3A7988] text-[14px] font-[500]">Notification</h1>
-     
-        </div>
+   
       </div>
   
       <div class="flex flex-col gap-[22px] mt-[22px]">

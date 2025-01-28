@@ -72,7 +72,7 @@ export default {
     return {
       hotel: hotelStore(),
       services: [
-        "Free Wi-Fi", "Parking", "Gym", "Swimming pool", "Restaurant", "Business center", "Free breakfast"
+        "Free Wi-Fi", "Parking",  "Swimming pool", "Restaurant",
       ],
       wilayas: ["",
         "Adrar", "Chlef", "Laghouat", "Oum El Bouaghi", "Batna", "Béjaïa", "Biskra", "Blida", "Bouira",

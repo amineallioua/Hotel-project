@@ -19,11 +19,11 @@
 
 
                         <button @click="addtoVaf"
-                            v-if="!this.auth.User.favoriteHotels.map(hotel => hotel._id).includes(this.hotelObject._id) && this.auth.User.role == 'customer'"
+                            v-if=" this.auth.User.favoriteHotels && !this.auth.User.favoriteHotels.map(hotel => hotel._id).includes(this.hotelObject._id) && this.auth.User.role == 'customer'"
                             class=" flex justify-center items-center p-2 rounded-[20px] bg-white active:bg-white text-[#4796A9] active:text-[#4796A9] hover:text-white hover:bg-[#4796A9] duration-200 ease-in-out hover:scale-105 active:scale-100 font-[400] text-[14px] ">
                             add to favorite </button>
                         <button @click="removeVaf"
-                            v-if="this.auth.User.favoriteHotels.map(hotel => hotel._id).includes(this.hotelObject._id) && this.auth.User.role == 'customer'"
+                            v-if=" this.auth.User.favoriteHotels && this.auth.User.favoriteHotels.map(hotel => hotel._id).includes(this.hotelObject._id) && this.auth.User.role == 'customer'"
                             class=" flex justify-center items-center p-2 rounded-[20px] bg-white active:bg-white text-[#4796A9] active:text-[#4796A9] hover:text-white hover:bg-[#4796A9] duration-200 ease-in-out hover:scale-105 active:scale-100 font-[400] text-[14px] ">
                             remove favorite </button>
 
@@ -96,12 +96,7 @@
 
 
 
-                    <div class=" flex flex-col justify-end  md:h-full h-fit ">
-
-                        <button v-if="this.auth.User.role == 'customer'" @click="toBook(null)"
-                            class=" hover:scale-110 active:scale-100 duration-200 ease-in-out w-[110px] h-[40px] bg-white rounded-[15px] opacity-90 font-[500] text-[18px] text-[#4796A9] hover:text-white hover:bg-[#4796A9] ">Book
-                            any</button>
-                    </div>
+                   
 
 
 
@@ -131,7 +126,7 @@
 
                 <img :src="`http://localhost:5000/${room.images[0]}`" class="w-full h-full object-cover absolute"
                     alt="Room Image">
-                <div @click=" toBook(room._id)"
+                <div @click=" this.auth.User.role == 'customer' ? toBook(room._id) : 'nothing' "
                     class=" w-full h-full absolute bg-profileCard-gradient px-5 py-5 flex flex-col justify-end ">
                     <div>
                         <h1 class="font-[500] text-[16px] text-white"> {{ room.roomType }}</h1>
@@ -159,7 +154,7 @@
         </div>
         <h3 v-if="this.auth.User.role == 'owner' && this.auth.User._id == this.hotelObject.ownerId || this.auth.User.userId == this.hotelObject.ownerId"
             class=" text-[22px] text-[#4796A9] font-[500] mt-[50px] ">Requests</h3>
-        <p v-if="this.myBooks.books.length == 0" class=" text-[15px] text-black font-[500] mt-[50px] "> there is no
+        <p v-if=" this.myBooks.books && this.myBooks.books.length == 0" class=" text-[15px] text-black font-[500] mt-[50px] "> there is no
             requests in this hotel </p>
         <div v-if="this.auth.User.role == 'owner' && this.auth.User._id == this.hotelObject.ownerId || this.auth.User.userId == this.hotelObject.ownerId"
             class="  h-[280px] overflow-scroll ">
